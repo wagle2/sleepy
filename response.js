@@ -12,7 +12,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
     cut = String.fromCharCode(8237).repeat(500)  
     r = { replier: replier, msg: msg, sender: sender, room: room};
-    if (room == 'test' || room == '시립대 봇제작방') {
+    if (room == 'test' || room == '시립대 봇제작방' || room == '고딩') {
         if(msg =="!로딩" ){
             reload(r);
             return;
@@ -22,6 +22,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         r.replier.reply("애옹애옹");
     } else if(msg == "애옹"){
         r.replier.reply("어흐으응")
+    }
 
     if (room == '고딩') {
         if(msg == "송재형"){
@@ -29,12 +30,12 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         } else if(msg == "양대훈"){
             r.replier.reply("20cm & 휴지심")        
         } else if(msg == "고건훈"){
-            r.replier.reply("성매매충")
+            r.replier.reply("유흥중입니다.")
         } else if(msg == "이명훈"){
             r.replier.reply("기아수저")           
         }
     }
- }
+}
 
  function reload(r) {
     if(r.sender=='잠만보'){
