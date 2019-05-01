@@ -20,7 +20,7 @@ module.exports = function DBManagerBuilder(fileName){
             os.write(buf,0,len);
          }
       }catch(e){
-         throw e;
+         throw e;+
       }finally{
          is.close();
          os.close();

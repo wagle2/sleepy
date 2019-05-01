@@ -32,7 +32,11 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         } else if(msg == "고건훈"){
             r.replier.reply("유흥중입니다.")
         } else if(msg == "이명훈"){
-            r.replier.reply("기아수저")           
+            r.replier.reply("기아수저") 
+        } else if(msg == "박경관"){
+            r.replier.reply("보험계리사")   
+        } else if(msg == "천승현"){
+            r.replier.reply("팀플영고")             
         }
     }
 }
