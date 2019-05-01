@@ -26,8 +26,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         reloadcheck = 1;
         var Timer = new Date();
         file = "storage/emulated/0/kbot/response.js";
-        //checksum = org.jsoup.Jsoup.connect("https://github.com/wagle2/sleepy/commits/master").get().select("div.repository-content>a").attr("href").split('commit/')[1];
-        conn = new java.net.URL("https://raw.githubusercontent.com/wagle2/sleepy/master/response.js").openConnection();
+        checksum = org.jsoup.Jsoup.connect("https://github.com/wagle2/sleepy/commits/master").get().select("div.repository-content>a").attr("href").split('commit/')[1];
+        conn = new java.net.URL("https://raw.githubusercontent.com/wagle2/sleepy/"+checksum+"/response.js").openConnection();
         br = new java.io.BufferedReader(new java.io.InputStreamReader(conn.getInputStream()));
         str = "";
         tmp = null;
