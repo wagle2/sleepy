@@ -25,7 +25,11 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     } else if(msg == "송재형"){
         r.replier.reply("인간조무사")
     } else if(msg == "양대훈"){
-        r.replier.reply("꼬추20센치")        
+        r.replier.reply("20cm & 휴지심")        
+    } else if(msg == "고건훈"){
+        r.replier.reply("성매매충")
+    } else if(msg == "이명훈"){
+        r.replier.reply("기아수저")           
     }
 
  }
