@@ -24,6 +24,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         r.replier.reply("어흐으응"+cut)
     } else if(msg == "송재형"){
         r.replier.reply("인간조무사")
+    } else if(msg == "양대훈"){
+        r.replier.reply("꼬추20센치")        
     }
 
  }
