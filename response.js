@@ -13,11 +13,12 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         if(msg =="!로딩" ){
             reload(r);
             return;
-        if(msg == "어흥"){
-            r.replier.reply("애오오옹")
         }
-        }
-        }
+    }
+    if(msg == "어흥"){
+        r.replier.reply("애오오옹")
+    }
+    
  }
 
  function reload(r) {
