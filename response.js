@@ -16,7 +16,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         }
     }
     if(msg == "어흥"){
-        r.replier.reply("애옹");
+        r.replier.reply("애옹애옹");
     }
 
  }
