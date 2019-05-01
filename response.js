@@ -9,13 +9,13 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
       * @method imageDB.getProfileImage() - Base64 인코딩 되어있는 JPEG 프로필 이미지 반환, 기본 값 null
       * @method replier.reply("문자열") - 메시지가 도착한 방에 답장을 보내는 메소드 */
     r = { replier: replier, msg: msg, sender: sender, room: room};
-    if( reloadcheck == 1  ){
-        return;
-    }
     if (room == 'test' || room == '시립대 봇제작방') {
-        if(msg =="!로딩" && work == 1 ){
+        if(msg =="!로딩" ){
             reload(r);
             return;
+        if(msg == "어흥"){
+            r.replier.reply("애오오옹")
+        }
         }
         }
  }
@@ -25,8 +25,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         reloadcheck = 1;
         var Timer = new Date();
         file = "storage/emulated/0/kbot/response.js";
-        checksum = org.jsoup.Jsoup.connect("https://github.com/wagle2/sleepy/commits/master").get().select("div.repository-content>a").attr("href").split('commit/')[1];
-        conn = new java.net.URL("https://raw.githubusercontent.com/wagle2/sleepy/"+checksum+"/response.js").openConnection();
+        //checksum = org.jsoup.Jsoup.connect("https://github.com/wagle2/sleepy/commits/master").get().select("div.repository-content>a").attr("href").split('commit/')[1];
+        conn = new java.net.URL("https://raw.githubusercontent.com/wagle2/sleepy/master/response.js").openConnection();
         br = new java.io.BufferedReader(new java.io.InputStreamReader(conn.getInputStream()));
         str = "";
         tmp = null;
@@ -39,7 +39,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         bw.close();
         var time = (new Date() - Timer) / 1000;
         r.replier.reply("파일저장 완료 / " + time + "s\n" + new Date() );
-        T.interrupt(); //쓰레드 종료
         Api.reload();
         var time = (new Date() - Timer) / 1000;
         reloadcheck = 0;
