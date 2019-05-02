@@ -14,7 +14,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         cut = String.fromCharCode(8237).repeat(500)  
         r = { replier: replier, msg: msg, sender: sender, room: room};
 
-        광주버스정류장불러오기(r);
+        bis = 광주버스정류장불러오기(r);
         if (room == 'test' || room == '시립대 봇제작방' || room == '고딩' || room == '정인') {
             if(msg =="!로딩" ){
                 reload(r);
@@ -88,7 +88,7 @@ function 광주버스정류장불러오기(r){
     url = "http://api.gwangju.go.kr/json/stationInfo?ServiceKey=BknKnKlcOt5e3xllE%2Fboca5kw2Dzmqwm2lNf7XEmAporlHM7JPggxLbS8GgtoSO6%2FcLjBJKOgOMSH6Bmt4EUlw%3D%3D&serviceKey="
     busstopName = org.jsoup.Jsoup.connect(url).get()
     bis = JSON.parse(busstopName.select("body").text()).STATION_LIST;
-    Flag.set('gameinfo', r.room, gameinfo);
+    return bis;
 }
 
 function 광주버스정류장이름찾기(r){
