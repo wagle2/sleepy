@@ -100,16 +100,33 @@ function 광주버스정류장불러오기(r){
 function 광주버스정류장이름찾기(r){
     try{
         busstopId = r.msg.split(" ")[1];
-        busstopName0 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[0].BUSSTOP_ID;
-        busstopName1 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[1].BUSSTOP_ID;
-        next_busstopName0 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[0].NEXT_BUSSTOP;
-        next_busstopName1 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[1].NEXT_BUSSTOP;
+        length = bis.filter(v=>v.BUSSTOP_NAME==busstopId).length;
+        for(i=0;i<length;i++){
+            busstopName[i] = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[i].BUSSTOP_ID;
+            next_busstopName[i] = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[i].NEXT_BUSSTOP;
+        }
         //include를 사용해도 됨  v.includes("석산") 이런식으로
-        r.replier.reply("["+busstopId+"]\n"+ next_busstopName0 +"방향 : " + busstopName0 + "\n" + next_busstopName1 +"방향 : " + busstopName1);
+
+        if(length == 1){
+            r.replier.reply("["+busstopId+"]\n"+ next_busstopName[0] +"방향 : " + busstopName[0]);
+        }else if(length == 2)
+        r.replier.reply("["+busstopId+"]\n"+ next_busstopName[0] +"방향 : " + busstopName[0] + "\n" + next_busstopName[1] +"방향 : " + busstopName[1]);
+        else{
+            r.replier.reply("정류장명을 다시 확인해주세요zzZ");
+        }
     } catch (e) {
-        r.replier.reply("["+busstopId+"]\n"+ next_busstopName0 +"방향 : " + busstopName0);
+        //비슷한 정류장 이름을 찾아준다
+        try{
+            
+        } catch(e){
+            r.replier.reply("정류장명을 다시 확인해주세요zzZ");
+        }
+        //r.replier.reply("["+busstopId+"]\n"+ next_busstopName0 +"방향 : " + busstopName0);
     }
 }
+
+
+
 
  function reload(r) {
     if(r.sender=='잠만보'|| r.sender=='정인' || r.sender=='승현'){
