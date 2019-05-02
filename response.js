@@ -41,7 +41,7 @@ function 고딩방(r) {
     } else if(r.msg == "박경관"){
         r.replier.reply("보험계리사")   
     } else if(r.msg == "천승현"){
-        r.replier.reply("팀플영고")             
+        r.replier.reply("자발적 모쏠8000일")             
     }
 }
 
