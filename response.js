@@ -107,6 +107,7 @@ function 버스현재위치(r){
     for(i=0;i<busNum;i++){
         test += (busstopInfoJson.BUSSTOP_LIST[i].LINE_NAME.toString() + "  ("+ busstopInfoJson.BUSSTOP_LIST[i].REMAIN_MIN.toString() + "분) (" + busstopInfoJson.BUSSTOP_LIST[i].BUSSTOP_NAME.toString()  + ")\n")
     }
+    r.replier.reply(test);
 
 function 광주버스정류장받아오기(r){
     busstopId = r.msg.split(" ")[1];
