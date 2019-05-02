@@ -103,7 +103,12 @@ function 버스_test(r){
         //busstopInfo.NEXT_BUSSTOP1 = "";
         //busstopInfo.length = 0;
     if (info.length == 1){
-        r.msg = "/정류장 "+ info.Name0;
+        r.msg = " "+ info.Name0;
+        버스현재위치(r);
+    } else if(info.length == 2){
+        r.msg = " "+ info.Name0;
+        버스현재위치(r);
+        r.msg = " "+ info.Name1;
         버스현재위치(r);
     }
     
@@ -155,7 +160,6 @@ function 정류장현황(r){
           }
           else{
               r.replier.reply("정류장명을 다시 확인해주세요zzZ");
-              r.replier.reply(busstopId)
           }
       } catch (e) {
           r.replier.reply("정류장명을 다시 확인해주세요zzZ\n"+e);
