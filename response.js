@@ -36,7 +36,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             r.replier.reply("어흐으응");
         }
 
-        if (room == '고딩' || room == '정인') {
+        if (room == '고딩' || room == '정인' || room == '시립대 봇제작방') {
             고딩방(r);
         }
 
