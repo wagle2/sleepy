@@ -83,11 +83,21 @@ function 고딩방(r) {
         버스현재위치(r);
         //notice(r);
     }
+    else if(r.msg.indexOf("*버스")!=-1){
+        버스_test(r);
+        //notice(r);
+    }    
     else if(r.msg.indexOf("!정류장현황")!=-1){
         정류장현황(r);
         //notice(r);
     }
 }
+
+
+function 버스_test(r){
+    광주버스정류장이름찾기(r)
+}
+
 function 정류장현황(r){
       try{
           busstopId = r.msg.split(" ")[1];
@@ -175,28 +185,36 @@ function 광주버스정류장받아오기(r){
 }
 
 function 광주버스정류장이름찾기(r){
+    var busstopInfo = new Object();
+    busstopInfo.Id = "";
+    busstopInfo.Name0 = "";
+    busstopInfo.NEXT_BUSSTOP0 = "";
+    busstopInfo.Name1 = "";
+    busstopInfo.NEXT_BUSSTOP1 = "";
+    busstopInfo.length = 0;
+
     try{
-        busstopId = r.msg.split(" ")[1];
-        length = bis.filter(v=>v.BUSSTOP_NAME==busstopId).length;
+        busstopInfo.Id = r.msg.split(" ")[1];
+        busstopInfo.length = bis.filter(v=>v.BUSSTOP_NAME==busstopInfo.Id).length;
         
-        if (length == 1){
-            busstopName0 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[0].BUSSTOP_ID;
-            next_busstopName0 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[0].NEXT_BUSSTOP;
-        }else if(length ==2){
-            busstopName0 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[0].BUSSTOP_ID;
-            next_busstopName0 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[0].NEXT_BUSSTOP;
-            busstopName1 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[1].BUSSTOP_ID;
-            next_busstopName1 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[1].NEXT_BUSSTOP;
+        if (busstopInfo.length == 1){
+            busstopInfo.Name0 = bis.filter(v=>v.BUSSTOP_NAME==busstopInfo.Id)[0].BUSSTOP_ID;
+            busstopInfo.NEXT_BUSSTOP0 = bis.filter(v=>v.BUSSTOP_NAME==busstopInfo.Id)[0].NEXT_BUSSTOP;
+        }else if(busstopInfo.length ==2){
+            busstopInfo.Name0 = bis.filter(v=>v.BUSSTOP_NAME==busstopInfo.Id)[0].BUSSTOP_ID;
+            busstopInfo.NEXT_BUSSTOP0 = bis.filter(v=>v.BUSSTOP_NAME==busstopInfo.Id)[0].NEXT_BUSSTOP;
+            busstopInfo.Name1 = bis.filter(v=>v.BUSSTOP_NAME==busstopInfo.Id)[1].BUSSTOP_ID;
+            busstopInfo.NEXT_BUSSTOP1 = bis.filter(v=>v.BUSSTOP_NAME==busstopInfo.Id)[1].NEXT_BUSSTOP;
         }
 
         //include를 사용해도 됨  v.includes("석산") 이런식으로
   
-        if(length == 1){
+        if(busstopInfo.length == 1){
             test="          [버스정보알림]\n------------------------------------\n"
-            r.replier.reply("["+busstopId+"]\n"+ next_busstopName0 +"방향 : " + busstopName0);
+            r.replier.reply("["+busstopInfo.Id+"]\n"+ busstopInfo.NEXT_BUSSTOP0 +"방향 : " + busstopInfo.Name0);
             
-        }else if(length == 2){
-            r.replier.reply("["+busstopId+"]\n"+ next_busstopName0 +"방향 : " + busstopName0 + "\n" + next_busstopName1 +"방향 : " + busstopName1);
+        }else if(busstopInfo.length == 2){
+            r.replier.reply("["+busstopInfo.Id+"]\n"+ busstopInfo.NEXT_BUSSTOP0 +"방향 : " + busstopInfo.Name0 + "\n" + busstopInfo.NEXT_BUSSTOP1 +"방향 : " + busstopInfo.Name1);
           
         }
         else{
