@@ -9,6 +9,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
       * @method imageDB.getProfileImage() - Base64 인코딩 되어있는 JPEG 프로필 이미지 반환, 기본 값 null
       * @method replier.reply("문자열") - 메시지가 도착한 방에 답장을 보내는 메소드 */
 
+     if(msg.indexOf("/버스")!=-1){
+        광주버스(r);
 
     cut = String.fromCharCode(8237).repeat(500)  
     r = { replier: replier, msg: msg, sender: sender, room: room};
@@ -17,8 +19,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             reload(r);
             return;
         }
-        if(msg.indexOf("/버스")!=-1){
-            광주버스(r);
     }
     if(msg == "어흥"){
         r.replier.reply("애옹애옹");
