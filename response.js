@@ -65,7 +65,7 @@ function 고딩방(r) {
 function 광주버스(r){
 
     var cookie1 = org.jsoup.Jsoup.connect("http://m.gwangju.go.kr/bus/api/stationArrive.do").cookies(cookie1)
-			.data("searchStation","%5B%7B%22KWD%22%3A%22646%22%2C%22DT%22%3A%2220190502%22%7D%5D").data("JSESSIONID","UsDhIzgKdTyhHYw6DscSUm1deWwqCj0LN3Hwrv18JZoxh4ULUN2lNAy1fM4JffWx.Z2pob21lL21vYmlsZXdhczJfcG9ydGFs")
+			.data("searchStation","%5B%7B%22KWD%22%3A%22646%22%2C%22DT%22%3A%2220190502%22%7D%5D")
 			.method(org.jsoup.Connection.Method.POST).execute().cookies();
     
             //Flag.set('cookie1', 'test', cookie1);
