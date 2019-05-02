@@ -42,7 +42,7 @@ Flag=(function(){
     }
     return Flag;
  })();
- 
+
 function 고딩방(r) {
     if(r.msg == "송재형"){
         r.replier.reply("인간조무사");
@@ -73,7 +73,7 @@ function 광주버스(r){
         cookies(Flag.get('cookie1', 'test')).get().select('tbody');
         
 
-    r.replier.reply(doc.toString())
+    //r.replier.reply(doc.toString())
 }
 
  function reload(r) {
