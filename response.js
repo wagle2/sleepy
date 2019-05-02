@@ -17,7 +17,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             reload(r);
             return;
         }
-        if(r.msg.indexOf("/버스")!=-1){
+        if(msg.indexOf("/버스")!=-1){
             광주버스(r);
     }
     if(msg == "어흥"){
