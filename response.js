@@ -95,6 +95,17 @@ function 고딩방(r) {
 
 function 버스_test(r){
     info = 광주버스정류장이름찾기(r);
+        //var busstopInfo = new Object();
+        //busstopInfo.Id = "";
+        //busstopInfo.Name0 = "";
+        //busstopInfo.NEXT_BUSSTOP0 = "";
+        //busstopInfo.Name1 = "";
+        //busstopInfo.NEXT_BUSSTOP1 = "";
+        //busstopInfo.length = 0;
+    
+    if (info.length == 1){
+        정류장현황(r.msg(" "+info.Name0));
+    }
     
 }
 
