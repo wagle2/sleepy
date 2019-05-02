@@ -104,7 +104,7 @@ function 버스_test(r){
         //busstopInfo.length = 0;
     if (info.length == 1){
         r.msg = "/정류장 "+ info.Name0;
-        정류장현황(r);
+        버스현재위치(r);
     }
     
 }
