@@ -96,10 +96,15 @@ function 광주버스정류장불러오기(r){
 }
 
 function 광주버스정류장이름찾기(r){
-    busstopId = r.msg.split(" ")[1];
-    busstopName0 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[0].BUSSTOP_ID;
-    busstopName1 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[1].BUSSTOP_ID;
-    r.replier.reply("["+busstopId+"]"+"\n순방향 : " + busstopName0 + "\n역방향 : " + busstopName1);
+    try{
+        busstopId = r.msg.split(" ")[1];
+        busstopName0 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[0].BUSSTOP_ID;
+        busstopName1 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[1].BUSSTOP_ID;
+        //include를 사용해도 됨  v.includes("석산") 이런식으로
+        r.replier.reply("["+busstopId+"]"+"\n순방향 : " + busstopName0 + "\n역방향 : " + busstopName1);
+    } catch (e) {
+        r.replier.reply("["+busstopId+"]"+"\n순방향 : ");
+    }
 }
 
  function reload(r) {
