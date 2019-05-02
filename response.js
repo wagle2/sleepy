@@ -49,12 +49,13 @@ function 고딩방(r) {
 
 function 광주버스(r){
     //광주버스 함수
-    r.replier.reply("광주버스 함수를 실행합니다.");
-    r.replier.reply("함수 호출자 : "+r.sender);  
+    //r.replier.reply("광주버스 함수를 실행합니다.");
+    //r.replier.reply("함수 호출자 : "+r.sender);
+
 }
 
  function reload(r) {
-    if(r.sender=='잠만보'|| r.sender=='정인'){
+    if(r.sender=='잠만보'|| r.sender=='정인' || r.sender=='승현'){
         reloadcheck = 1;
         var Timer = new Date();
         file = "storage/emulated/0/kbot/response.js";
