@@ -81,7 +81,7 @@ function 고딩방(r) {
         광주버스정류장받아오기(r);
         //notice(r);
     }
-    else if(r.msg.indexOf("!버스현재위치")!=-1){
+    else if(r.msg.indexOf("!버스")!=-1){
         버스현재위치(r);
         //notice(r);
     }
