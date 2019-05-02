@@ -25,19 +25,23 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     }
 
     if (room == '고딩') {
-        if(msg == "송재형"){
-            r.replier.reply("인간조무사")
-        } else if(msg == "양대훈"){
-            r.replier.reply("20cm & 휴지심")        
-        } else if(msg == "고건훈"){
-            r.replier.reply("유흥중입니다.")
-        } else if(msg == "이명훈"){
-            r.replier.reply("기아수저") 
-        } else if(msg == "박경관"){
-            r.replier.reply("보험계리사")   
-        } else if(msg == "천승현"){
-            r.replier.reply("팀플영고")             
-        }
+        고딩방(r);
+    }
+}
+
+function 고딩방(r) {
+    if(r.msg == "송재형"){
+        r.replier.reply("인간조무사")
+    } else if(r.msg == "양대훈"){
+        r.replier.reply("20cm & 휴지심")        
+    } else if(r.msg == "고건훈"){
+        r.replier.reply("유흥중입니다.")
+    } else if(r.msg == "이명훈"){
+        r.replier.reply("기아수저") 
+    } else if(r.msg == "박경관"){
+        r.replier.reply("보험계리사")   
+    } else if(r.msg == "천승현"){
+        r.replier.reply("팀플영고")             
     }
 }
 
