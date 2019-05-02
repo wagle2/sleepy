@@ -34,7 +34,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             고딩방(r);
         }
     } catch (e) {
-        Api.replyRoom("정인", e + "\n" + e.stack);
+        r.replier.reply('정인', e + "\n" + e.stack);
 	}
 }
 
@@ -88,6 +88,7 @@ function 광주버스정류장불러오기(r){
     url = "http://api.gwangju.go.kr/json/stationInfo?ServiceKey=BknKnKlcOt5e3xllE%2Fboca5kw2Dzmqwm2lNf7XEmAporlHM7JPggxLbS8GgtoSO6%2FcLjBJKOgOMSH6Bmt4EUlw%3D%3D&serviceKey="
     busstopName = org.jsoup.Jsoup.connect(url).get()
     bis = JSON.parse(busstopName.select("body").text()).STATION_LIST;
+    Flag.set('gameinfo', r.room, gameinfo);
 }
 
 function 광주버스정류장이름찾기(r){
