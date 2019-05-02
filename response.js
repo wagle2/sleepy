@@ -156,6 +156,7 @@ function 정류장현황(r){
           }
           else{
               r.replier.reply("정류장명을 다시 확인해주세요zzZ");
+              r.replier.reply(busstopId)
           }
       } catch (e) {
           r.replier.reply("정류장명을 다시 확인해주세요zzZ\n"+e);
