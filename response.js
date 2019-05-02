@@ -104,7 +104,8 @@ function 버스_test(r){
         //busstopInfo.length = 0;
     r.replier.reply(info.length);
     if (info.length == 1){
-        정류장현황(r.msg(" "+info.Name0));
+        r.msg = " "+ info.Name0;
+        정류장현황(r);
     }
     
 }
