@@ -59,7 +59,7 @@ function 광주버스(r){
             Flag.set('cookie', 'test', cookie);
 
     var doc = org.jsoup.Jsoup.connect("http://m.gwangju.go.kr/bus/api/stationArrive.do")
-        cookies(Flag.get('cookie1', 'test')).get().select('tbody');
+        cookies(Flag.get('cookie', 'test')).get().select('tbody');
         
 
     r.replier.reply(doc.toString())
