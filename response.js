@@ -17,6 +17,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
 
         try {
+            bis = 광주버스정류장불러오기(r);
+            bisLength = bis.length;
             if (room == 'test' || room == '시립대 봇제작방' || room == '고딩' || room == '정인') {
                 if(msg =="!로딩" ){
                     reload(r);
@@ -34,8 +36,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         } else if(msg == "애옹"){
             r.replier.reply("어흐으응");
         }
-        bis = 광주버스정류장불러오기(r);
-        bisLength = bis.length;
+
         if (room == '고딩' || room == '정인' || room == '시립대 봇제작방') {
             고딩방(r);
         }
