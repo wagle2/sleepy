@@ -83,9 +83,8 @@ function 고딩방(r) {
         버스현재위치(r);
         //notice(r);
     }
-    else if(r.msg.indexOf("*버스")!=-1){
+    else if(r.msg.indexOf("#버스")!=-1){
         버스_test(r);
-        //notice(r);
     }    
     else if(r.msg.indexOf("!정류장현황")!=-1){
         정류장현황(r);
