@@ -110,6 +110,7 @@ function 버스_test(r){
     } else if(info.length == 2){
         r.replier.reply("조회하실 방향을 선택해주세요.");
         if(r.msg == "1"){
+            r.replier.reply(r.msg)
             r.msg = " "+ info.Name0;
             버스현재위치(r);
         } else if(r.msg == "2"){
