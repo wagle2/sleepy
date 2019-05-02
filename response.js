@@ -105,6 +105,7 @@ function 광주버스정류장이름찾기(r){
             busstopName[i] = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[i].BUSSTOP_ID;
             next_busstopName[i] = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[i].NEXT_BUSSTOP;
         }
+        r.replier.reply("여기까진됨")
         //include를 사용해도 됨  v.includes("석산") 이런식으로
 
         if(length == 1){
