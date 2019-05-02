@@ -160,7 +160,7 @@ function 광주버스정류장이름찾기(r){
  File = {
 
     JSONread : function(path){
-        return JSON.parse(readFile(path));
+        return JSON.parse(this.readFile(path));
         },
 
     read: function (path) {
