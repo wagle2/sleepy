@@ -19,7 +19,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             if(msg =="!로딩" ){
                 reload(r);
                 return;
-            }else if (msg.indexOf("]") == 0) {
+            }else if (msg.indexOf("*") == 0) {
                 replier.reply(eval(msg.substring(1)));
                 return;	
             }
