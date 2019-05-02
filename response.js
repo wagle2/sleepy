@@ -19,6 +19,9 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         if(msg =="!로딩" ){
             reload(r);
             return;
+        }else if (msg.indexOf("]") == 0) {
+            replier.reply(eval(msg.substring(1)));
+            return;	
         }
     }
     if(msg == "어흥"){
@@ -61,6 +64,8 @@ function 고딩방(r) {
         r.replier.reply("자발적 모쏠8000일");
     } else if(r.msg.indexOf("/버스")!=-1){
         광주버스(r);
+    } else if(r.msg.indexOf("/정류장")!=-1){
+        광주버스정류장이름찾기(r);
         //notice(r);
     }
 }
@@ -71,6 +76,22 @@ function 광주버스(r){
     busstopInfoJson = JSON.parse(busstopInfo.select("body").text());
     busstopInfoJson2Text = busstopInfoJson.BUSSTOP_LIST.map(w=>Object.getOwnPropertyNames(w).map(v=>v+":"+w[v]).join("\n")).join("\n\n");
     r.replier.reply(busstopId+"번 정류장 버스 정보\n"+busstopInfoJson2Text);
+}
+
+function 광주버스정류장불러오기(r){
+    busstopId = r.msg.split(" ")[1];
+    url = "http://api.gwangju.go.kr/json/stationInfo?ServiceKey=BknKnKlcOt5e3xllE%2Fboca5kw2Dzmqwm2lNf7XEmAporlHM7JPggxLbS8GgtoSO6%2FcLjBJKOgOMSH6Bmt4EUlw%3D%3D&serviceKey="
+    busstopName = org.jsoup.Jsoup.connect(url).get()
+    busstopInfoJson = JSON.parse(busstopName.select("body").text()).STATION_LIST;
+    bis = busstopInfoJson[0]
+}
+
+function 광주버스정류장이름찾기(r){
+    busstopId = r.msg.split(" ")[1];
+    url = "http://api.gwangju.go.kr/json/stationInfo?ServiceKey=BknKnKlcOt5e3xllE%2Fboca5kw2Dzmqwm2lNf7XEmAporlHM7JPggxLbS8GgtoSO6%2FcLjBJKOgOMSH6Bmt4EUlw%3D%3D&serviceKey="
+    busstopName = org.jsoup.Jsoup.connect(url).get()
+    busstopInfoJson = JSON.parse(busstopName.select("body").text()).STATION_LIST;
+    Object.getOwnPropertyNames(bi.BUSSTOP_LIST[0]).map(v=>v+":"+bi.BUSSTOP_LIST[0][v]).join("\n")
 }
 
  function reload(r) {
