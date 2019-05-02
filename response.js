@@ -21,7 +21,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     if(msg == "어흥"){
         r.replier.reply("애옹애옹");
     } else if(msg == "애옹"){
-        r.replier.reply("어흐으응")
+        r.replier.reply("어흐으응");
     }
 
     if (room == '고딩') {
@@ -31,18 +31,26 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
 function 고딩방(r) {
     if(r.msg == "송재형"){
-        r.replier.reply("인간조무사")
+        r.replier.reply("인간조무사");
     } else if(r.msg == "양대훈"){
-        r.replier.reply("20cm & 휴지심")        
+        r.replier.reply("20cm & 휴지심") ;       
     } else if(r.msg == "고건훈"){
-        r.replier.reply("유흥중입니다.")
+        r.replier.reply("유흥중입니다.");
     } else if(r.msg == "이명훈"){
-        r.replier.reply("기아수저") 
+        r.replier.reply("기아수저");
     } else if(r.msg == "박경관"){
-        r.replier.reply("보험계리사")   
+        r.replier.reply("보험계리사");  
     } else if(r.msg == "천승현"){
-        r.replier.reply("자발적 모쏠8000일")             
+        r.replier.reply("자발적 모쏠8000일");
+    } else if(r.msg.indexOf("/버스")!=-1){
+        광주버스(r);
     }
+}
+
+function 광주버스(r){
+    //광주버스 함수
+    r.replier.reply("광주버스 함수를 실행합니다.");
+    r.replier.reply("함수 호출자 : "+r.sender);  
 }
 
  function reload(r) {
