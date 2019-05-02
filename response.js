@@ -15,6 +15,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         r = { replier: replier, msg: msg, sender: sender, room: room};
 
         bis = 광주버스정류장불러오기(r);
+        bisLength = bis.length;
+
         try {
             if (room == 'test' || room == '시립대 봇제작방' || room == '고딩' || room == '정인') {
                 if(msg =="!로딩" ){
@@ -95,10 +97,9 @@ function 광주버스정류장불러오기(r){
 
 function 광주버스정류장이름찾기(r){
     busstopId = r.msg.split(" ")[1];
-    url = "http://api.gwangju.go.kr/json/stationInfo?ServiceKey=BknKnKlcOt5e3xllE%2Fboca5kw2Dzmqwm2lNf7XEmAporlHM7JPggxLbS8GgtoSO6%2FcLjBJKOgOMSH6Bmt4EUlw%3D%3D&serviceKey="
-    busstopName = org.jsoup.Jsoup.connect(url).get()
-    busstopInfoJson = JSON.parse(busstopName.select("body").text()).STATION_LIST;
-    Object.getOwnPropertyNames(bi.BUSSTOP_LIST[0]).map(v=>v+":"+bi.BUSSTOP_LIST[0][v]).join("\n")
+    busstopName0 = bis.filter(v=>v.BUSSTOP_NAME==r)[0].BUSSTOP_ID;
+    busstopName1 = bis.filter(v=>v.BUSSTOP_NAME==r)[1].BUSSTOP_ID;
+    r.replier.reply("순방향 :" + busstopName0 + "역방향 : " + busstopName1);
 }
 
  function reload(r) {
