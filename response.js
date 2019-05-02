@@ -93,6 +93,7 @@ function 광주버스정류장불러오기(r){
     busstopName = org.jsoup.Jsoup.connect(url).get()
     bis = JSON.parse(busstopName.select("body").text()).STATION_LIST;
     return bis;
+    //STATION_NUM,BUSSTOP_NAME,ARS_ID,NEXT_BUSSTOP,BUSSTOP_ID,LONGITUDE,NAME_E,LATITUDE
 }
 
 function 광주버스정류장이름찾기(r){
@@ -100,10 +101,12 @@ function 광주버스정류장이름찾기(r){
         busstopId = r.msg.split(" ")[1];
         busstopName0 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[0].BUSSTOP_ID;
         busstopName1 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[1].BUSSTOP_ID;
+        next_busstopName0 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[0].BUSSTOP_ID;
+        next_busstopName1 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[1].BUSSTOP_ID;
         //include를 사용해도 됨  v.includes("석산") 이런식으로
-        r.replier.reply("["+busstopId+"]"+"\n순방향 : " + busstopName0 + "\n역방향 : " + busstopName1);
+        r.replier.reply("["+busstopId+"]\n"+ next_busstopName0 +" 방향" + busstopName0 + "\n" + next_busstopName1 +" 방향" + busstopName1);
     } catch (e) {
-        r.replier.reply("["+busstopId+"]"+"\n순방향 : " + busstopName0);
+        r.replier.reply("["+busstopId+"]\n"+ next_busstopName0 +" 방향" + busstopName0);
     }
 }
 
