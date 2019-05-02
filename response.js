@@ -48,16 +48,11 @@ function 고딩방(r) {
 }
 
 function 광주버스(r){
-    //광주버스 함수
-    //r.replier.reply("광주버스 함수를 실행합니다.");
-    //r.replier.reply("함수 호출자 : "+r.sender);
 
     var cookie1 = org.jsoup.Jsoup.connect("http://m.gwangju.go.kr/bus/api/stationArrive.do").cookies(cookie1)
 			.data("searchStation","%5B%7B%22KWD%22%3A%22646%22%2C%22DT%22%3A%2220190502%22%7D%5D").data("JSESSIONID","UsDhIzgKdTyhHYw6DscSUm1deWwqCj0LN3Hwrv18JZoxh4ULUN2lNAy1fM4JffWx.Z2pob21lL21vYmlsZXdhczJfcG9ydGFs")
 			.method(org.jsoup.Connection.Method.POST).execute().cookies();
     
-            Flag.set('cookie1', 'test', cookie1);
-
     var doc = org.jsoup.Jsoup.connect("http://m.gwangju.go.kr/bus/api/stationArrive.do")
         cookies(Flag.get('cookie1', 'test')).get().select('tbody');
         
