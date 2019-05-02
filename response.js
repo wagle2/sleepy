@@ -12,7 +12,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
     cut = String.fromCharCode(8237).repeat(500)  
     r = { replier: replier, msg: msg, sender: sender, room: room};
-    if (room == 'test' || room == '시립대 봇제작방' || room == '고딩') {
+    if (room == 'test' || room == '시립대 봇제작방' || room == '고딩' || room == '정인') {
         if(msg =="!로딩" ){
             reload(r);
             return;
@@ -24,7 +24,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         r.replier.reply("어흐으응");
     }
 
-    if (room == '고딩') {
+    if (room == '고딩' || room == '정인') {
         고딩방(r);
     }
 }
@@ -73,7 +73,14 @@ function 광주버스(r){
     //광주버스 함수
     //r.replier.reply("광주버스 함수를 실행합니다.");
     //r.replier.reply("함수 호출자 : "+r.sender);
-
+    conn = new java.net.URL("http://m.gwangju.go.kr/bus/station.do").openConnection();
+    br = new java.io.BufferedReader(new java.io.InputStreamReader(conn.getInputStream()));
+    str = "";
+    tmp = null;
+    while ((tmp = br.readLine()) != null) {
+        str += tmp + "\n";
+    }
+    r.replier.reply(str.toString())
 }
 
  function reload(r) {
