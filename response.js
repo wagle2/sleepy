@@ -102,7 +102,7 @@ function 버스_test(r){
         //busstopInfo.Name1 = "";
         //busstopInfo.NEXT_BUSSTOP1 = "";
         //busstopInfo.length = 0;
-    
+    r.replier.reply(info.length);
     if (info.length == 1){
         정류장현황(r.msg(" "+info.Name0));
     }
