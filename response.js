@@ -157,6 +157,38 @@ function 광주버스정류장이름찾기(r){
     }
  }
  
+ File = {
+    read: function (path) {
+        //read file data from path and return it (str)
+        var filedir = new java.io.File(path);
+        try {
+            var br = new java.io.BufferedReader(new java.io.FileReader(filedir));
+            var readStr = "";
+            var str = null;
+            while (((str = br.readLine()) != null)) {
+                readStr += str + "\n";
+            }
+            br.close();
+            return readStr.trim();
+        } catch (e) {
+            return e;
+        }
+    },
+
+    save: function (path, str) {
+        //get file data from 'str' and save it to 'path'
+        var filedir = new java.io.File(path);
+        new java.io.File(filedir.getParent()).mkdirs();
+        try {
+            var bw = new java.io.BufferedWriter(new java.io.FileWriter(filedir));
+            bw.write(str.toString());
+            bw.close();
+        } catch (e) {
+            return e;
+        }
+    }
+};
+
 //이 아래 6가지 메소드는 스크립트 액티비티에서 사용하는 메소드들
 function onCreate(savedInstanceState, activity) {}
 function onStart(activity) {}
