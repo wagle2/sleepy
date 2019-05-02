@@ -16,8 +16,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
     if(msg.indexOf("/버스")!=-1){
         광주버스(r);
+    }
 
-        
     if (room == 'test' || room == '시립대 봇제작방' || room == '고딩' || room == '정인') {
         if(msg =="!로딩" ){
             reload(r);
