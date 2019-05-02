@@ -212,13 +212,14 @@ function 광주버스정류장이름찾기(r){
         if(busstopInfo.length == 1){
             test="          [버스정보알림]\n------------------------------------\n"
             r.replier.reply("["+busstopInfo.Id+"]\n"+ busstopInfo.NEXT_BUSSTOP0 +"방향 : " + busstopInfo.Name0);
-            
+            return busstopInfo;
         }else if(busstopInfo.length == 2){
             r.replier.reply("["+busstopInfo.Id+"]\n"+ busstopInfo.NEXT_BUSSTOP0 +"방향 : " + busstopInfo.Name0 + "\n" + busstopInfo.NEXT_BUSSTOP1 +"방향 : " + busstopInfo.Name1);
-          
+            return busstopInfo;
         }
         else{
             r.replier.reply("정류장명을 다시 확인해주세요zzZ");
+            return busstopInfo;
         }
     } catch (e) {
         r.replier.reply("정류장명을 다시 확인해주세요zzZ\n"+e);
