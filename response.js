@@ -1,3 +1,5 @@
+var I = require("Interactive.js");
+
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
     /** @param {String} room - 방 이름
       * @param {String} msg - 메세지 내용
@@ -8,7 +10,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
       * @method imageDB.getImage() - 수신된 이미지가 있을 경우 Base64 인코딩 되어있는 JPEG 이미지 반환, 기본 값 null
       * @method imageDB.getProfileImage() - Base64 인코딩 되어있는 JPEG 프로필 이미지 반환, 기본 값 null
       * @method replier.reply("문자열") - 메시지가 도착한 방에 답장을 보내는 메소드 */
-
+        I.run(room, sender, msg);
+        //인터렉티브 적용
 
 
         cut = String.fromCharCode(8237).repeat(500)  
@@ -94,34 +97,36 @@ function 고딩방(r) {
 
 
 function 버스_test(r){
-    info = 광주버스정류장이름찾기(r);
-        //var busstopInfo = new Object();
-        //busstopInfo.Id = "";
-        //busstopInfo.Name0 = "";
-        //busstopInfo.NEXT_BUSSTOP0 = "";
-        //busstopInfo.Name1 = "";
-        //busstopInfo.NEXT_BUSSTOP1 = "";
-        //busstopInfo.length = 0;
+    I.register("busSelect"+r.sender,r.room,r.sender,function(input){
+        info = 광주버스정류장이름찾기(r);
+            //var busstopInfo = new Object();
+            //busstopInfo.Id = "";
+            //busstopInfo.Name0 = "";
+            //busstopInfo.NEXT_BUSSTOP0 = "";
+            //busstopInfo.Name1 = "";
+            //busstopInfo.NEXT_BUSSTOP1 = "";
+            //busstopInfo.length = 0;
 
-    //r.replier.reply(info.length);
-    if (info.length == 1){
-        r.msg = " "+ info.Name0;
-        버스현재위치(r);
-    } else if(info.length == 2){
-        r.replier.reply("조회하실 방향을 선택해주세요.");
-        if(r.msg == "1"){
-            r.replier.reply(r.msg)
+        //r.replier.reply(info.length);
+        if (info.length == 1){
             r.msg = " "+ info.Name0;
             버스현재위치(r);
-        } else if(r.msg == "2"){
-            r.msg = " "+ info.Name1;
-            버스현재위치(r);
-        } else{
-            r.replier("제대로 입력해주세요.");
-        }
+        } else if(info.length == 2){
+            r.replier.reply("조회하실 방향을 선택해주세요.");
+            msg=input.getMsg();
+            if(r.msg == "1"){
+                r.replier.reply(r.msg)
+                r.msg = " "+ info.Name0;
+                버스현재위치(r);
+            } else if(r.msg == "2"){
+                r.msg = " "+ info.Name1;
+                버스현재위치(r);
+            } else{
+                r.replier("제대로 입력해주세요.");
+            }
 
-    }
-    
+        }
+    })
 }
 
 function 정류장현황(r){
