@@ -37,7 +37,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             r.replier.reply("어흐으응");
         }
 
-        if (room == '고딩' || room == '정인' || room == '시립대 봇제작방') {
+        if (room == '고딩' || room == '정인' || room == '시립대 봇제작방' || room == '카톡봇 개발') {
             고딩방(r);
         }
 
@@ -102,10 +102,16 @@ function 광주버스정류장이름찾기(r){
         busstopId = r.msg.split(" ")[1];
         length = bis.filter(v=>v.BUSSTOP_NAME==busstopId).length;
         
-        busstopName0 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[0].BUSSTOP_ID;
-        next_busstopName0 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[0].NEXT_BUSSTOP;
-        busstopName1 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[1].BUSSTOP_ID;
-        next_busstopName1 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[1].NEXT_BUSSTOP;
+        if (length == 1){
+            busstopName0 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[0].BUSSTOP_ID;
+            next_busstopName0 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[0].NEXT_BUSSTOP;
+        }else if(length ==2){
+            busstopName0 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[0].BUSSTOP_ID;
+            next_busstopName0 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[0].NEXT_BUSSTOP;
+            busstopName1 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[1].BUSSTOP_ID;
+            next_busstopName1 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[1].NEXT_BUSSTOP;
+        }
+
         //include를 사용해도 됨  v.includes("석산") 이런식으로
 
         if(length == 1){
