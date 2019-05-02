@@ -42,45 +42,27 @@ function 고딩방(r) {
         r.replier.reply("보험계리사");  
     } else if(r.msg == "천승현"){
         r.replier.reply("자발적 모쏠8000일");
-    } else if(r.msg == "전두환"){
-        r.replier.reply("부릉부릉"); 
     } else if(r.msg.indexOf("/버스")!=-1){
         광주버스(r);
     }
-}
-
-function set_cookie ( name, value, exp_y, exp_m, exp_d, path, domain, secure ){
-    var cookie_string = name + "=" + escape ( value );
-    if ( exp_y )
-    {
-        var expires = new Date ( exp_y, exp_m, exp_d );
-        cookie_string += "; expires=" + expires.toGMTString();
-    }
-
-    if ( path )
-    cookie_string += "; path=" + escape ( path );
-
-    if ( domain )
-    cookie_string += "; domain=" + escape ( domain );
-
-    if ( secure )
-    cookie_string += "; secure";
-
-    document.cookie = cookie_string;
 }
 
 function 광주버스(r){
     //광주버스 함수
     //r.replier.reply("광주버스 함수를 실행합니다.");
     //r.replier.reply("함수 호출자 : "+r.sender);
-    conn = new java.net.URL("http://m.gwangju.go.kr/bus/station.do").openConnection();
-    br = new java.io.BufferedReader(new java.io.InputStreamReader(conn.getInputStream()));
-    str = "";
-    tmp = null;
-    while ((tmp = br.readLine()) != null) {
-        str += tmp + "\n";
-    }
-    r.replier.reply(str.toString())
+
+    var cookie = org.jsoup.Jsoup.connect("http://m.gwangju.go.kr/bus/api/stationArrive.do").cookies(cookie1)
+			.data("searchStation","%5B%7B%22KWD%22%3A%22646%22%2C%22DT%22%3A%2220190502%22%7D%5D").data("JSESSIONID","UsDhIzgKdTyhHYw6DscSUm1deWwqCj0LN3Hwrv18JZoxh4ULUN2lNAy1fM4JffWx.Z2pob21lL21vYmlsZXdhczJfcG9ydGFs")
+			.method(org.jsoup.Connection.Method.POST).execute().cookies();
+    
+            Flag.set('cookie', 'test', cookie);
+
+    var doc = org.jsoup.Jsoup.connect("http://m.gwangju.go.kr/bus/api/stationArrive.do")
+        cookies(Flag.get('cookie1', 'test')).get().select('tbody');
+        
+
+    r.replier.reply(doc.toString())
 }
 
  function reload(r) {
