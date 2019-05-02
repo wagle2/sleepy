@@ -145,18 +145,11 @@ function 광주버스정류장이름찾기(r){
 
         if(length == 1){
             test="          [버스정보알림]\n------------------------------------\n"
-            //r.replier.reply("["+busstopId+"]\n"+ next_busstopName0 +"방향 : " + busstopName0);
-            for(i=0;i<busNum;i++){
-                test += (busstopInfoJson.BUSSTOP_LIST[i].LINE_NAME.toString() + "  ("+ busstopInfoJson.BUSSTOP_LIST[i].REMAIN_MIN.toString() + "분) (" + busstopInfoJson.BUSSTOP_LIST[i].BUSSTOP_NAME.toString()  + ")\n")
-            }
-            r.replier.reply(test);
+            r.replier.reply("["+busstopId+"]\n"+ next_busstopName0 +"방향 : " + busstopName0);
             
         }else if(length == 2){
-            //r.replier.reply("["+busstopId+"]\n"+ next_busstopName0 +"방향 : " + busstopName0 + "\n" + next_busstopName1 +"방향 : " + busstopName1);
-            for(i=0;i<busNum;i++){
-                test += (busstopInfoJson.BUSSTOP_LIST[i].LINE_NAME.toString() + "  ("+ busstopInfoJson.BUSSTOP_LIST[i].REMAIN_MIN.toString() + "분) (" + busstopInfoJson.BUSSTOP_LIST[i].BUSSTOP_NAME.toString()  + ")\n")
-            }
-            r.replier.reply(test);
+            r.replier.reply("["+busstopId+"]\n"+ next_busstopName0 +"방향 : " + busstopName0 + "\n" + next_busstopName1 +"방향 : " + busstopName1);
+          
         }
         else{
             r.replier.reply("정류장명을 다시 확인해주세요zzZ");
