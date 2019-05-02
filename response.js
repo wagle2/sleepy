@@ -43,10 +43,30 @@ function 고딩방(r) {
     } else if(r.msg == "천승현"){
         r.replier.reply("자발적 모쏠8000일");
     } else if(r.msg == "전두환"){
-        r.replier.reply("부릉부릉") ; 
+        r.replier.reply("부릉부릉"); 
     } else if(r.msg.indexOf("/버스")!=-1){
         광주버스(r);
     }
+}
+
+function set_cookie ( name, value, exp_y, exp_m, exp_d, path, domain, secure ){
+    var cookie_string = name + "=" + escape ( value );
+    if ( exp_y )
+    {
+        var expires = new Date ( exp_y, exp_m, exp_d );
+        cookie_string += "; expires=" + expires.toGMTString();
+    }
+
+    if ( path )
+    cookie_string += "; path=" + escape ( path );
+
+    if ( domain )
+    cookie_string += "; domain=" + escape ( domain );
+
+    if ( secure )
+    cookie_string += "; secure";
+
+    document.cookie = cookie_string;
 }
 
 function 광주버스(r){
