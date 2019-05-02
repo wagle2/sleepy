@@ -82,7 +82,7 @@ function 고딩방(r) {
         //notice(r);
     }
     else if(r.msg.indexOf("!버스현재위치")!=-1){
-        광주버스정류장받아오기(r);
+        버스현재위치(r);
         //notice(r);
     }
 }
