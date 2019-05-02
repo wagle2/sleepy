@@ -97,8 +97,8 @@ function 광주버스정류장불러오기(r){
 
 function 광주버스정류장이름찾기(r){
     busstopId = r.msg.split(" ")[1];
-    busstopName0 = bis.filter(v=>v.BUSSTOP_NAME==r)[0].BUSSTOP_ID;
-    busstopName1 = bis.filter(v=>v.BUSSTOP_NAME==r)[1].BUSSTOP_ID;
+    busstopName0 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[0].BUSSTOP_ID;
+    busstopName1 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[1].BUSSTOP_ID;
     r.replier.reply("순방향 :" + busstopName0 + "역방향 : " + busstopName1);
 }
 
