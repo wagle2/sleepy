@@ -72,9 +72,9 @@ function 고딩방(r) {
         r.replier.reply("보험계리사");  
     } else if(r.msg == "천승현"){
         r.replier.reply("자발적 모쏠8000일");
-    } else if(r.msg.indexOf("!버스")!=-1){
+    } else if(r.msg.indexOf("/버스")!=-1){
         광주버스(r);
-    } else if(r.msg.indexOf("!정류장")!=-1){
+    } else if(r.msg.indexOf("/정류장")!=-1){
         광주버스정류장이름찾기(r);
         //notice(r);
     } else if(r.msg.indexOf("!정류장로딩")!=-1){
