@@ -158,6 +158,11 @@ function 광주버스정류장이름찾기(r){
  }
  
  File = {
+
+    JSONread : function(path){
+        return JSON.parse(readFile(path));
+        },
+
     read: function (path) {
         //read file data from path and return it (str)
         var filedir = new java.io.File(path);
