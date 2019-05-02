@@ -14,8 +14,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         cut = String.fromCharCode(8237).repeat(500)  
         r = { replier: replier, msg: msg, sender: sender, room: room};
 
-        bis = 광주버스정류장불러오기(r);
-        bisLength = bis.length;
+
 
         try {
             if (room == 'test' || room == '시립대 봇제작방' || room == '고딩' || room == '정인') {
@@ -35,7 +34,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         } else if(msg == "애옹"){
             r.replier.reply("어흐으응");
         }
-
+        bis = 광주버스정류장불러오기(r);
+        bisLength = bis.length;
         if (room == '고딩' || room == '정인' || room == '시립대 봇제작방') {
             고딩방(r);
         }
@@ -104,9 +104,9 @@ function 광주버스정류장이름찾기(r){
         next_busstopName0 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[0].NEXT_BUSSTOP;
         next_busstopName1 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[1].NEXT_BUSSTOP;
         //include를 사용해도 됨  v.includes("석산") 이런식으로
-        r.replier.reply("["+busstopId+"]\n"+ next_busstopName0 +"방향 :" + busstopName0 + "\n" + next_busstopName1 +"방향 :" + busstopName1);
+        r.replier.reply("["+busstopId+"]\n"+ next_busstopName0 +"방향 : " + busstopName0 + "\n" + next_busstopName1 +"방향 : " + busstopName1);
     } catch (e) {
-        r.replier.reply("["+busstopId+"]\n"+ next_busstopName0 +"방향 :" + busstopName0);
+        r.replier.reply("["+busstopId+"]\n"+ next_busstopName0 +"방향 : " + busstopName0);
     }
 }
 
