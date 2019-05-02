@@ -109,20 +109,16 @@ function 광주버스정류장이름찾기(r){
 
         if(length == 1){
             r.replier.reply("["+busstopId+"]\n"+ next_busstopName[0] +"방향 : " + busstopName[0]);
-        }else if(length == 2)
-        r.replier.reply("["+busstopId+"]\n"+ next_busstopName[0] +"방향 : " + busstopName[0] + "\n" + next_busstopName[1] +"방향 : " + busstopName[1]);
+        }else if(length == 2){
+            r.replier.reply("["+busstopId+"]\n"+ next_busstopName[0] +"방향 : " + busstopName[0] + "\n" + next_busstopName[1] +"방향 : " + busstopName[1]);
+        }
         else{
             r.replier.reply("정류장명을 다시 확인해주세요zzZ");
         }
     } catch (e) {
-        //비슷한 정류장 이름을 찾아준다
-        try{
-            
-        } catch(e){
-            r.replier.reply("정류장명을 다시 확인해주세요zzZ");
-        }
-        //r.replier.reply("["+busstopId+"]\n"+ next_busstopName0 +"방향 : " + busstopName0);
+        r.replier.reply("정류장명을 다시 확인해주세요zzZ");
     }
+        //r.replier.reply("["+busstopId+"]\n"+ next_busstopName0 +"방향 : " + busstopName0);
 }
 
 
