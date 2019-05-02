@@ -42,6 +42,8 @@ function 고딩방(r) {
         r.replier.reply("보험계리사");  
     } else if(r.msg == "천승현"){
         r.replier.reply("자발적 모쏠8000일");
+    } else if(r.msg == "전두환"){
+        r.replier.reply("부릉부릉") ; 
     } else if(r.msg.indexOf("/버스")!=-1){
         광주버스(r);
     }
