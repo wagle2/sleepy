@@ -116,7 +116,7 @@ function 광주버스정류장이름찾기(r){
             r.replier.reply("정류장명을 다시 확인해주세요zzZ");
         }
     } catch (e) {
-        r.replier.reply("정류장명을 다시 확인해주세요zzZ");
+        r.replier.reply("정류장명을 다시 확인해주세요zzZ\n"+e);
     }
         //r.replier.reply("["+busstopId+"]\n"+ next_busstopName0 +"방향 : " + busstopName0);
 }
