@@ -69,7 +69,7 @@ function 광주버스(r){
     busstopId = r.msg.split(" ")[1];
     busstopInfo = org.jsoup.Jsoup.connect("http://api.gwangju.go.kr/json/arriveInfo?ServiceKey=BknKnKlcOt5e3xllE%2Fboca5kw2Dzmqwm2lNf7XEmAporlHM7JPggxLbS8GgtoSO6%2FcLjBJKOgOMSH6Bmt4EUlw%3D%3D&serviceKey=&BUSSTOP_ID="+busstopId).get()
     busstopInfoJson = JSON.parse(busstopInfo.select("body").text());
-    busstopInfoJson2Text = busstopInfoJson.BUSSTOP_LIST.map(w=>Object.getOwnPropertyNames(w).map(v=>v+":"+w[v]).join("\n")).join("\n\n")
+    busstopInfoJson2Text = busstopInfoJson.BUSSTOP_LIST.map(w=>Object.getOwnPropertyNames(w).map(v=>v+":"+w[v]).join("\n")).join("\n\n");
     r.replier.reply(busstopId+"번 정류장 버스 정보\n"+busstopInfoJson2Text);
 }
 
