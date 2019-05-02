@@ -77,6 +77,9 @@ function 고딩방(r) {
     } else if(r.msg.indexOf("/정류장")!=-1){
         광주버스정류장이름찾기(r);
         //notice(r);
+    } else if(r.msg.indexOf("!정류장로딩")!=-1){
+        광주버스정류장받아오기(r);
+        //notice(r);
     }
 }
 
@@ -89,11 +92,18 @@ function 광주버스(r){
 }
 
 function 광주버스정류장불러오기(r){
+    bis = File.JSONread("/sdcard/test.json")
+    return bis
+}
+
+
+function 광주버스정류장받아오기(r){
     busstopId = r.msg.split(" ")[1];
     url = "http://api.gwangju.go.kr/json/stationInfo?ServiceKey=BknKnKlcOt5e3xllE%2Fboca5kw2Dzmqwm2lNf7XEmAporlHM7JPggxLbS8GgtoSO6%2FcLjBJKOgOMSH6Bmt4EUlw%3D%3D&serviceKey="
     busstopName = org.jsoup.Jsoup.connect(url).get()
     bis = JSON.parse(busstopName.select("body").text()).STATION_LIST;
-    return bis;
+    File.save("/sdcard/test.json",JSON.stringify(bis));
+    r.replier.reply("버스정류장 로딩완료!")
     //STATION_NUM,BUSSTOP_NAME,ARS_ID,NEXT_BUSSTOP,BUSSTOP_ID,LONGITUDE,NAME_E,LATITUDE
 }
 
