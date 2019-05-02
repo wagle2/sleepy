@@ -94,7 +94,8 @@ function 고딩방(r) {
 
 
 function 버스_test(r){
-    광주버스정류장이름찾기(r)
+    info = 광주버스정류장이름찾기(r);
+    
 }
 
 function 정류장현황(r){
