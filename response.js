@@ -95,7 +95,14 @@ function 광주버스정류장불러오기(r){
     bis = File.JSONread("/sdcard/test.json")
     return bis
 }
-
+function 버스현재위치(r){
+    busstopId = r.msg.split(" ")[1];
+    busstopInfo = org.jsoup.Jsoup.connect("http://api.gwangju.go.kr/json/arriveInfo?ServiceKey=BknKnKlcOt5e3xllE%2Fboca5kw2Dzmqwm2lNf7XEmAporlHM7JPggxLbS8GgtoSO6%2FcLjBJKOgOMSH6Bmt4EUlw%3D%3D&serviceKey=&BUSSTOP_ID="+busstopId).get()
+    busstopInfoJson = JSON.parse(busstopInfo.select("body").text());
+    sex="          [버스정보알림]\n------------------------------------\n"
+    for(i=0;i<busNum;i++){
+        test += (busstopInfoJson.BUSSTOP_LIST[i].LINE_NAME.toString() + "  ("+ busstopInfoJson.BUSSTOP_LIST[i].REMAIN_MIN.toString() + "분) (" + busstopInfoJson.BUSSTOP_LIST[i].BUSSTOP_NAME.toString()  + ")\n")
+    }
 
 function 광주버스정류장받아오기(r){
     busstopId = r.msg.split(" ")[1];
