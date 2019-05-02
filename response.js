@@ -72,8 +72,6 @@ function 고딩방(r) {
         r.replier.reply("보험계리사");  
     } else if(r.msg == "천승현"){
         r.replier.reply("자발적 모쏠8000일");
-    } else if(r.msg.indexOf("/버스")!=-1){
-        광주버스(r);
     } else if(r.msg.indexOf("/정류장")!=-1){
         광주버스정류장이름찾기(r);
         //notice(r);
@@ -86,7 +84,7 @@ function 고딩방(r) {
         //notice(r);
     }
 }
-
+/*
 function 광주버스(r){
     busstopId = r.msg.split(" ")[1];
     busstopInfo = org.jsoup.Jsoup.connect("http://api.gwangju.go.kr/json/arriveInfo?ServiceKey=BknKnKlcOt5e3xllE%2Fboca5kw2Dzmqwm2lNf7XEmAporlHM7JPggxLbS8GgtoSO6%2FcLjBJKOgOMSH6Bmt4EUlw%3D%3D&serviceKey=&BUSSTOP_ID="+busstopId).get()
@@ -94,7 +92,7 @@ function 광주버스(r){
     busstopInfoJson2Text = busstopInfoJson.BUSSTOP_LIST.map(w=>Object.getOwnPropertyNames(w).map(v=>v+":"+w[v]).join("\n")).join("\n\n");
     r.replier.reply(busstopId+"번 정류장 버스 정보\n"+busstopInfoJson2Text);
 }
-
+*/
 function 광주버스정류장불러오기(r){
     bis = File.JSONread("/sdcard/test.json")
     return bis
