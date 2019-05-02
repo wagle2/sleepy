@@ -106,6 +106,7 @@ function 광주버스정류장이름찾기(r){
         //include를 사용해도 됨  v.includes("석산") 이런식으로
         r.replier.reply("["+busstopId+"]\n"+ next_busstopName0 +" 방향" + busstopName0 + "\n" + next_busstopName1 +" 방향" + busstopName1);
     } catch (e) {
+        r.replier.reply("오류")
         r.replier.reply("["+busstopId+"]\n"+ next_busstopName0 +" 방향" + busstopName0);
     }
 }
