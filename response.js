@@ -8,21 +8,25 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
       * @method imageDB.getImage() - 수신된 이미지가 있을 경우 Base64 인코딩 되어있는 JPEG 이미지 반환, 기본 값 null
       * @method imageDB.getProfileImage() - Base64 인코딩 되어있는 JPEG 프로필 이미지 반환, 기본 값 null
       * @method replier.reply("문자열") - 메시지가 도착한 방에 답장을 보내는 메소드 */
-    try {
+
 
 
         cut = String.fromCharCode(8237).repeat(500)  
         r = { replier: replier, msg: msg, sender: sender, room: room};
 
         bis = 광주버스정류장불러오기(r);
-        if (room == 'test' || room == '시립대 봇제작방' || room == '고딩' || room == '정인') {
-            if(msg =="!로딩" ){
-                reload(r);
-                return;
-            }else if (msg.indexOf("*") == 0) {
-                replier.reply(eval(msg.substring(1)));
-                return;	
-            }
+        try {
+            if (room == 'test' || room == '시립대 봇제작방' || room == '고딩' || room == '정인') {
+                if(msg =="!로딩" ){
+                    reload(r);
+                    return;
+                }else if (msg.indexOf("*") == 0) {
+                    replier.reply(eval(msg.substring(1)));
+                    return;	
+                }
+            } 
+        }catch (e) {
+                replier.reply( e + "\n" + e.stack);
         }
         if(msg == "어흥"){
             r.replier.reply("애옹애옹");
@@ -33,9 +37,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         if (room == '고딩' || room == '정인') {
             고딩방(r);
         }
-    } catch (e) {
-        r.replier.reply('정인', e + "\n" + e.stack);
-	}
+
 }
 
 
