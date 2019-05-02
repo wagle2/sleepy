@@ -101,10 +101,9 @@ function 광주버스정류장이름찾기(r){
     try{
         busstopId = r.msg.split(" ")[1];
         length = bis.filter(v=>v.BUSSTOP_NAME==busstopId).length;
-        for(i=0;i<length;i++){
-            busstopName[i] = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[i].BUSSTOP_ID;
-            next_busstopName[i] = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[i].NEXT_BUSSTOP;
-        }
+        
+        busstopName0 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[0].BUSSTOP_ID;
+        next_busstopName1 = bis.filter(v=>v.BUSSTOP_NAME==busstopId)[1].NEXT_BUSSTOP;
         r.replier.reply("여기까진됨")
         //include를 사용해도 됨  v.includes("석산") 이런식으로
 
