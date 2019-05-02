@@ -102,15 +102,23 @@ function 버스_test(r){
         //busstopInfo.Name1 = "";
         //busstopInfo.NEXT_BUSSTOP1 = "";
         //busstopInfo.length = 0;
-    r.replier.reply(info.length);
+
+    //r.replier.reply(info.length);
     if (info.length == 1){
         r.msg = " "+ info.Name0;
         버스현재위치(r);
     } else if(info.length == 2){
-        r.msg = " "+ info.Name0;
-        버스현재위치(r);
-        r.msg = " "+ info.Name1;
-        버스현재위치(r);
+        r.replier.reply("조회하실 방향을 선택해주세요.");
+        if(r.msg == "1"){
+            r.msg = " "+ info.Name0;
+            버스현재위치(r);
+        } else if(r.msg == "2"){
+            r.msg = " "+ info.Name1;
+            버스현재위치(r);
+        } else{
+            r.replier("제대로 입력해주세요.");
+        }
+
     }
     
 }
@@ -148,7 +156,7 @@ function 정류장현황(r){
               for(i=0;i<busNum;i++){
                   test += (busstopInfoJson.BUSSTOP_LIST[i].LINE_NAME.toString() + "  ("+ busstopInfoJson.BUSSTOP_LIST[i].REMAIN_MIN.toString() + "분) (" + busstopInfoJson.BUSSTOP_LIST[i].BUSSTOP_NAME.toString()  + ")\n")
               }
-              r.replier.reply("["+busstopId+"]\n"+ next_busstopName0 +"방향 : " + busstopName0 + "\n" + test);
+              r.replier.reply("["+busstopId+"]\n[1] "+ next_busstopName0 +"방향 : " + busstopName0 + "\n" + test);
             
           }else if(length == 2){
               for(i=0;i<busNum;i++){
@@ -156,7 +164,7 @@ function 정류장현황(r){
                   busstopInfoJson = JSON.parse(busstopInfo1.select("body").text());
                   test += (busstopInfoJson.BUSSTOP_LIST[i].LINE_NAME.toString() + "  ("+ busstopInfoJson.BUSSTOP_LIST[i].REMAIN_MIN.toString() + "분) (" + busstopInfoJson.BUSSTOP_LIST[i].BUSSTOP_NAME.toString()  + ")\n")
               }
-              r.replier.reply("["+busstopId+"]\n"+ next_busstopName0 +"방향 : " + busstopName0 + "\n" + next_busstopName1 +"방향 : " + busstopName1+"\n" +test);
+              r.replier.reply("["+busstopId+"]\n[1] "+ next_busstopName0 +"방향 : " + busstopName0 + "\n[2] " + next_busstopName1 +"방향 : " + busstopName1+"\n" +test);
           
           }
           else{
