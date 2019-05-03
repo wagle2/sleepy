@@ -1,4 +1,3 @@
-var D = require("DBManager.js")("D");
 var T = require("ThreadManager.js");
 var I = require("Interactive.js");
 
