@@ -1,3 +1,5 @@
+var D = require("DBManager.js")("D");
+var T = require("ThreadManager.js");
 var I = require("Interactive.js");
 
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
@@ -115,7 +117,6 @@ function 버스_test(r){
             r.replier.reply("조회하실 방향을 선택해주세요.");
             msg=input.getMsg();
             if(msg == "1"){
-                r.replier.reply(msg)
                 r.msg = " "+ info.Name0;
                 버스현재위치(r);
             } else if(msg == "2"){
