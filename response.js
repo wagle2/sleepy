@@ -87,13 +87,15 @@ function 고딩방(r) {
 function 광주버스(r){
     I.register("busSelect"+r.sender,r.room,r.sender,function(input){
         info = 광주버스정류장이름찾기(r);
-            //var busstopInfo = new Object();
-            //busstopInfo.Id = "";
-            //busstopInfo.Name0 = "";
-            //busstopInfo.NEXT_BUSSTOP0 = "";
-            //busstopInfo.Name1 = "";
-            //busstopInfo.NEXT_BUSSTOP1 = "";
-            //busstopInfo.length = 0;
+            var busstopInfo = new Object();
+            /* 
+             *   busstopInfo.Id = "";
+             *   busstopInfo.Name0 = "";
+             *   busstopInfo.NEXT_BUSSTOP0 = "";
+             *   busstopInfo.Name1 = "";
+             *   busstopInfo.NEXT_BUSSTOP1 = "";
+             *   busstopInfo.length = 0;
+             */
 
         //r.replier.reply(info.length);
         if (info.length == 1){
@@ -156,6 +158,11 @@ function 광주버스정류장이름찾기(r){
 
     try{
         busstopInfo.Id = r.msg.split(" ")[1];
+        if(busstopInfo.Id=="일사"){busstopInfo.Id = "일곡사거리"};
+        if(busstopInfo.Id=="북경"){busstopInfo.Id = "북부경찰서"};
+        if(busstopInfo.Id=="삼호"){busstopInfo.Id = "일곡삼호아파트"};
+        if(busstopInfo.Id=="삼익"){busstopInfo.Id = "매곡삼익아파트"};
+
         busstopInfo.length = bis.filter(v=>v.BUSSTOP_NAME==busstopInfo.Id).length;
         
         if (busstopInfo.length == 1){
