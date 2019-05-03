@@ -111,6 +111,7 @@ function 버스_test(r){
         //r.replier.reply(info.length);
         if (info.length == 1){
             r.msg = " "+ info.Name0;
+            r.replier.reply(info.bussstopName0+" "+info.next_busstopName0);
             버스현재위치(r,info.bussstopName0,info.next_busstopName0);
         } else if(info.length == 2){
             r.replier.reply("조회하실 방향을 선택해주세요.");
@@ -196,8 +197,8 @@ function 버스현재위치(r,busStopName,next_busStopName){
     busstopId = r.msg.split(" ")[1];
     busstopInfo = org.jsoup.Jsoup.connect("http://api.gwangju.go.kr/json/arriveInfo?ServiceKey=BknKnKlcOt5e3xllE%2Fboca5kw2Dzmqwm2lNf7XEmAporlHM7JPggxLbS8GgtoSO6%2FcLjBJKOgOMSH6Bmt4EUlw%3D%3D&serviceKey=&BUSSTOP_ID="+busstopId).get()
     busstopInfoJson = JSON.parse(busstopInfo.select("body").text());
-    result="["+busStopName+"\n" +
-    　　"⇒"+next_busStopName+"\n------------------------------------\n"
+    result=busStopName+"\n" +
+    　　"⇒ "+next_busStopName+"\n------------------------------------\n"
     busNum = busstopInfoJson.BUSSTOP_LIST.length;
     for(i=0;i<busNum;i++){
         result += (busstopInfoJson.BUSSTOP_LIST[i].LINE_NAME.toString() + "  ("+ busstopInfoJson.BUSSTOP_LIST[i].REMAIN_MIN.toString() + "분) (" + busstopInfoJson.BUSSTOP_LIST[i].BUSSTOP_NAME.toString()  + ")\n")
