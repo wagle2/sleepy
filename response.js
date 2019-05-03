@@ -108,7 +108,7 @@ function 광주버스(r){
             //busstopInfo.NEXT_BUSSTOP1 = "";
             //busstopInfo.length = 0;
 
-        //r.replier.reply(info.length);
+        r.replier.reply(info.length);
         if (info.length == 1){
             r.msg = " "+ info.Name0;
             r.replier.reply(info.busstopInfo.Id+" "+info.NEXT_BUSSTOP0);
