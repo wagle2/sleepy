@@ -111,17 +111,17 @@ function 버스_test(r){
         //r.replier.reply(info.length);
         if (info.length == 1){
             r.msg = " "+ info.Name0;
-            r.replier.reply(info.bussstopName0+" "+info.next_busstopName0);
-            버스현재위치(r,info.bussstopName0,info.next_busstopName0);
+            r.replier.reply(info.Name0+" "+info.NEXT_BUSSTOP0);
+            버스현재위치(r,info.Name0,info.NEXT_BUSSTOP0);
         } else if(info.length == 2){
             r.replier.reply("조회하실 방향을 선택해주세요.");
             msg=input.getMsg();
             if(msg == "1"){
                 r.msg = " "+ info.Name0;
-                버스현재위치(r,info.bussstopName0,info.next_busstopName0);
+                버스현재위치(r,info.Name0,info.NEXT_BUSSTOP0);
             } else if(msg == "2"){
                 r.msg = " "+ info.Name1;
-                버스현재위치(r,info.bussstopName1,info.next_busstopName1);
+                버스현재위치(r,info.Name1,info.NEXT_BUSSTOP1);
             } else{
                 r.replier("제대로 입력해주세요.");
             }
