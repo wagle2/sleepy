@@ -112,7 +112,7 @@ function 광주버스(r){
         if (info.length == 1){
             r.msg = " "+ info.busstopInfo.Id;
             r.replier.reply(info.busstopInfo.Id+" "+info.NEXT_BUSSTOP0);
-            버스현재위치(r,info.Name0,info.NEXT_BUSSTOP0);
+            버스현재위치(r,info.Id,info.NEXT_BUSSTOP0);
         } else if(info.length == 2){
             r.replier.reply("조회하실 방향을 선택해주세요.");
             msg=input.getMsg();
