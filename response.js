@@ -162,6 +162,7 @@ function 광주버스정류장이름찾기(r){
         if(busstopInfo.Id=="북경"){busstopInfo.Id = "북부경찰서"};
         if(busstopInfo.Id=="삼호"){busstopInfo.Id = "일곡삼호아파트"};
         if(busstopInfo.Id=="삼익"){busstopInfo.Id = "매곡삼익아파트"};
+        if(busstopInfo.Id=="김머중"||busstopInfo.Id=="김대중"||busstopInfo.Id=="머중이"){busstopInfo.Id = "김대중컨벤션센터"};
 
         busstopInfo.length = bis.filter(v=>v.BUSSTOP_NAME==busstopInfo.Id).length;
         
