@@ -123,7 +123,8 @@ function 버스_test(r){
                 r.msg = " "+ info.Name1;
                 버스현재위치(r);
             } else{
-                r.replier("제대로 입력해주세요.");            }
+                r.replier("제대로 입력해주세요.");
+            }
         }
     })
 }
