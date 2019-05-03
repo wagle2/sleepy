@@ -110,7 +110,7 @@ function 광주버스(r){
 
         //r.replier.reply(info.length);
         if (info.length == 1){
-            r.msg = " "+ info.busstopInfo.Id;
+            r.msg = " "+ info.Name0;
             r.replier.reply(info.busstopInfo.Id+" "+info.NEXT_BUSSTOP0);
             버스현재위치(r,info.Id,info.NEXT_BUSSTOP0);
         } else if(info.length == 2){
