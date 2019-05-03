@@ -88,7 +88,7 @@ function 고딩방(r) {
         //notice(r);
     }
     else if(r.msg.indexOf("#버스")!=-1){
-        버스_test(r);
+        광주버스(r);
     }    
     else if(r.msg.indexOf("!정류장현황")!=-1){
         정류장현황(r);
@@ -97,7 +97,7 @@ function 고딩방(r) {
 }
 
 
-function 버스_test(r){
+function 광주버스(r){
     I.register("busSelect"+r.sender,r.room,r.sender,function(input){
         info = 광주버스정류장이름찾기(r);
             //var busstopInfo = new Object();
@@ -198,7 +198,7 @@ function 버스현재위치(r,busStopName,next_busStopName){
     busstopInfo = org.jsoup.Jsoup.connect("http://api.gwangju.go.kr/json/arriveInfo?ServiceKey=BknKnKlcOt5e3xllE%2Fboca5kw2Dzmqwm2lNf7XEmAporlHM7JPggxLbS8GgtoSO6%2FcLjBJKOgOMSH6Bmt4EUlw%3D%3D&serviceKey=&BUSSTOP_ID="+busstopId).get()
     busstopInfoJson = JSON.parse(busstopInfo.select("body").text());
     result=busStopName +
-    　　"⇒ "+next_busStopName+"\n------------------------------------\n"
+    　　"⇒"+next_busStopName+"\n------------------------------------\n"
     busNum = busstopInfoJson.BUSSTOP_LIST.length;
     for(i=0;i<busNum;i++){
         result += (busstopInfoJson.BUSSTOP_LIST[i].LINE_NAME.toString() + "  ("+ busstopInfoJson.BUSSTOP_LIST[i].REMAIN_MIN.toString() + "분) (" + busstopInfoJson.BUSSTOP_LIST[i].BUSSTOP_NAME.toString()  + ")\n")
