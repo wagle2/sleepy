@@ -111,17 +111,17 @@ function 버스_test(r){
         //r.replier.reply(info.length);
         if (info.length == 1){
             r.msg = " "+ info.busstopInfo.Id;
-            r.replier.reply(info.busstopInfo.Name0+" "+info.NEXT_BUSSTOP0);
+            r.replier.reply(info.busstopInfo.Id+" "+info.NEXT_BUSSTOP0);
             버스현재위치(r,info.Name0,info.NEXT_BUSSTOP0);
         } else if(info.length == 2){
             r.replier.reply("조회하실 방향을 선택해주세요.");
             msg=input.getMsg();
             if(msg == "1"){
                 r.msg = " "+ info.Name0;
-                버스현재위치(r,info.Name0,info.NEXT_BUSSTOP0);
+                버스현재위치(r,info.Id,info.NEXT_BUSSTOP0);
             } else if(msg == "2"){
                 r.msg = " "+ info.Name1;
-                버스현재위치(r,info.Name1,info.NEXT_BUSSTOP1);
+                버스현재위치(r,info.Id,info.NEXT_BUSSTOP1);
             } else{
                 r.replier("제대로 입력해주세요.");
             }
@@ -197,7 +197,7 @@ function 버스현재위치(r,busStopName,next_busStopName){
     busstopId = r.msg.split(" ")[1];
     busstopInfo = org.jsoup.Jsoup.connect("http://api.gwangju.go.kr/json/arriveInfo?ServiceKey=BknKnKlcOt5e3xllE%2Fboca5kw2Dzmqwm2lNf7XEmAporlHM7JPggxLbS8GgtoSO6%2FcLjBJKOgOMSH6Bmt4EUlw%3D%3D&serviceKey=&BUSSTOP_ID="+busstopId).get()
     busstopInfoJson = JSON.parse(busstopInfo.select("body").text());
-    result=busStopName+"\n" +
+    result=busStopName +
     　　"⇒ "+next_busStopName+"\n------------------------------------\n"
     busNum = busstopInfoJson.BUSSTOP_LIST.length;
     for(i=0;i<busNum;i++){
