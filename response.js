@@ -1,6 +1,6 @@
 var T = require("ThreadManager.js");
 var I = require("Interactive.js");
-var D = require("DBManager.js")("D");
+var D = require("DBManager.js");
 
 
 한글공백 = String.fromCharCode(12644);
