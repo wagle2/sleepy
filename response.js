@@ -293,10 +293,10 @@ weather = {
             var repeatStr = baseTodayWeather[i];
             str += String(repeatStr.select("hour").text()).extension("0",2) + " ";
             str += String(repeatStr.select("wfKor")).extensionRight(" ",5).text() + " ";
-            str += repeatStr.select("temp").text()+ "℃ "
-            str += repeatStr.select("pop").text() + "% "; 
-            str += repeatStr.select("reh").text() + "% ";
-            str += repeatStr.select("ws").text().substring(0,3) + "㎧ ";
+            str += repeatStr.select("temp").text()+ " "
+            str += repeatStr.select("pop").text() + " "; 
+            str += repeatStr.select("reh").text() + " ";
+            str += repeatStr.select("ws").text().substring(0,3) + " ";
             str += '\n';
         }
         str.trim();
