@@ -292,7 +292,7 @@ weather = {
         for(var i in baseTodayWeather){
             var repeatStr = baseTodayWeather[i];
             str += String(repeatStr.select("hour").text()).extension("0",2) + " ";
-            str += repeatStr.select("wfKor").text() + " ";
+            str += String(repeatStr.select("wfKor")).extensionRight(" ",5).text() + " ";
             str += repeatStr.select("temp").text()+ "℃ "
             str += repeatStr.select("pop").text() + "% "; 
             str += repeatStr.select("reh").text() + "% ";
