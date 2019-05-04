@@ -296,7 +296,7 @@ weather = {
             str += repeatStr.select("temp").text()+ "℃ "
             str += repeatStr.select("pop").text() + "% "; 
             str += repeatStr.select("reh").text() + "% ";
-            str += repeatStr.select("ws").text().substring(0,2) + "㎧ ";
+            str += repeatStr.select("ws").text().substring(0,3) + "㎧ ";
             str += '\n';
         }
         str.trim();
