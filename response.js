@@ -273,11 +273,15 @@ weather = {
             r.replier.reply("@날씨 기능 사용법")
         } else{
             var inputString = r.msg.split(" ")[1];
-            if (inputString=="쿠팡머"||inputString=="시립머"||inputString=="시립대"||inputString=="서울시립대"){inputString=1123056000};
-            if (inputString=="전남머"||inputString=="전남대"||inputString=="용봉동"||inputString=="전머"||inputString=="용봉"){inputString=2917059000};
-            if (inputString=="일곡동"||inputString=="일곡"||inputString=="일곡지구"){inputString=2917066900};
-            if (inputString=="상무지구"||inputString=="상무"||inputString=="머창"){inputString=2914074500};
-            if (inputString=="조선대학교"||inputString=="조선대"||inputString=="조대"||inputString=="조머"){inputString=2911063000};
+            if (inputString=="쿠팡머"||inputString=="쿠팡대"||inputString=="시립머"||inputString=="시립대"||inputString=="서울시립대"){inputString=1123056000}
+            else if (inputString=="전남머"||inputString=="전남대"||inputString=="용봉동"||inputString=="전머"||inputString=="용봉"){inputString=2917059000}
+            else if (inputString=="일곡동"||inputString=="일곡"||inputString=="일곡지구"){inputString=2917066900}
+            else if (inputString=="상무지구"||inputString=="상무"||inputString=="머창"){inputString=2914074500}
+            else if (inputString=="조선대학교"||inputString=="조선대"||inputString=="조대"||inputString=="조머"){inputString=2911063000}
+            else{
+                r.replier.reply("날씨 리스트에 존재하지 않는 지역입니다.");
+                break;
+            }
             r.replier.reply(this.parse(inputString));
         }
         
