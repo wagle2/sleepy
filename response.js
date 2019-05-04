@@ -280,7 +280,7 @@ weather = {
             else if (inputString=="조선대학교"||inputString=="조선대"||inputString=="조대"||inputString=="조머"){inputString=2911063000}
             else{
                 r.replier.reply("날씨 리스트에 존재하지 않는 지역입니다.");
-                break;
+                return;
             }
             r.replier.reply(this.parse(inputString));
         }
