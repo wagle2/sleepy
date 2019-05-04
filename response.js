@@ -291,7 +291,7 @@ weather = {
         str = '[시] [날씨] [기온] [강수] [습도] [풍량]\n';
         for(var i in baseTodayWeather){
             var repeatStr = baseTodayWeather[i];
-            str += repeatStr.select("hour").text().extension("0",2) + " ";
+            str += string(repeatStr.select("hour").text()).extension("0",2) + " ";
             str += repeatStr.select("wfKor").text() + " ";
             str += repeatStr.select("temp").text()+ "℃ "
             str += repeatStr.select("pop").text() + "% "; 
