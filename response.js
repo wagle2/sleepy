@@ -266,10 +266,10 @@ function 광주버스정류장이름찾기(r){
 
 weather = {
     func : function (r){
-        inputString = r.msg.split(" ")[1];
-        if(typeof(inputString[1])==undefined){
+        if(typeof(r.msg.split(" ")[1])==undefined){
             r.replier.reply("@날씨 기능 사용법")
         }
+        inputString = r.msg.split(" ")[1];
         if (inputString=="쿠팡머"||inputString=="시립머"||inputString=="시립대"||inputString=="서울시립대"){inputString=1123056000};
         r.replier.reply(this.parse(inputString));
         I.register("weatherSelect"+r.sender,r.room,r.sender,function(input){
@@ -284,7 +284,7 @@ weather = {
         baseParse = org.jsoup.Jsoup.connect(baseLink).get();
         area = String(baseParse.select("category").text());
         time = String(baseParse.select("pubData").text()).replace(/[()]/g, '');
-        baseTodayWeather = org.jsoup.Jsoup.connect(link).get().select('data').toArray().filter(v=>v.select("day").text() == "0" )
+        baseTodayWeather = baseParse.select('data').toArray().filter(v=>v.select("day").text() == "0" )
         //오늘인것들만 추출
         str = '[시] [날씨] [기온] [강수] [습도] [풍량]\n';
         for(var i in baseTodayWeather){
