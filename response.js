@@ -291,11 +291,11 @@ weather = {
         var time = String(baseParse.select("pubData").text()).replace(/[()]/g, '');
         var baseTodayWeather = baseParse.select('data').toArray()//.filter(v=>v.select("day").text() == "0" )
         //오늘인것들만 추출
-        str = '[시] [날씨] [기온] [강수] [습도] [풍량]\n';
+        var str = '[시] [날씨] [기온] [강수] [습도] [풍량]\n';
         for(var i in baseTodayWeather){
             var repeatStr = baseTodayWeather[i];
             str += String(repeatStr.select("hour").text()).extension("0",2) + " ";
-            str += String(repeatStr.select("wfKor").text()).replace(/\s/g,"").extensionRight(한글공백,4) + "|";
+            str += String(repeatStr.select("wfKor").text()).replace(/\s/g,"").extensionRight(한글공백,4) + "　";
             str += String(repeatStr.select("temp").text()).slice(0,-2)+ " "
             str += repeatStr.select("pop").text() + " "; 
             str += repeatStr.select("reh").text() + " ";
