@@ -291,7 +291,7 @@ weather = {
         for(var i in baseTodayWeather){
             var repeatStr = baseTodayWeather[i];
             str += String(repeatStr.select("hour").text()).extension("0",2) + " ";
-            str += String(repeatStr.select("wfKor").text()).replace(/\s/g,"").extensionRight(" ",5);
+            str += String(repeatStr.select("wfKor").text()).replace(/\s/g,"").extensionRight("　",5);
             str += String(repeatStr.select("temp").text()).slice(0,-2).extension("0",2)+ " ";
             str += repeatStr.select("pop").text();
             str += String(repeatStr.select("reh").text()).extension(" ",3) + " ";
