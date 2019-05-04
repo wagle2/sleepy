@@ -268,15 +268,17 @@ weather = {
     func : function (r){
         if(typeof(r.msg.split(" ")[1])==undefined){
             r.replier.reply("@날씨 기능 사용법")
+        } else{
+            inputString = r.msg.split(" ")[1];
+            if (inputString=="쿠팡머"||inputString=="시립머"||inputString=="시립대"||inputString=="서울시립대"){inputString=1123056000};
+            r.replier.reply(this.parse(inputString));
+            I.register("weatherSelect"+r.sender,r.room,r.sender,function(input){
+                try{
+                    //String(org.jsoup.Jsoup.connect(link).get().select("pubDate").text()).replace(/[()]/g, '')
+                }catch(e){r.replier.reply(e+"\n"+e.stack)}
+            })
         }
-        inputString = r.msg.split(" ")[1];
-        if (inputString=="쿠팡머"||inputString=="시립머"||inputString=="시립대"||inputString=="서울시립대"){inputString=1123056000};
-        r.replier.reply(this.parse(inputString));
-        I.register("weatherSelect"+r.sender,r.room,r.sender,function(input){
-            try{
-                //String(org.jsoup.Jsoup.connect(link).get().select("pubDate").text()).replace(/[()]/g, '')
-            }catch(e){r.replier.reply(e+"\n"+e.stack)}
-        })
+        
     },
 
     parse : function (areaCode){
