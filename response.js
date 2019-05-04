@@ -50,6 +50,25 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         }
 
 }
+cmd = function(ss){
+    var p =java.lang.Runtime.getRuntime().exec(ss)
+    p.waitFor()
+    var r = p.getInputStream() || p.getErrorStream()
+    return isread(r)
+    }
+
+isread=function (is) {
+        var br = new java.io.BufferedReader(new java.io.InputStreamReader(is));
+        var readStr = "";
+        var str = null;
+        while (((str = br.readLine()) != null)) {
+            readStr += str + "\n";
+        }
+        br.close();
+        return readStr.trim();
+
+
+}
 
 
 Flag=(function(){
