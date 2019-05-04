@@ -274,6 +274,7 @@ weather = {
         } else{
             var inputString = r.msg.split(" ")[1];
             if (inputString=="쿠팡머"||inputString=="시립머"||inputString=="시립대"||inputString=="서울시립대"){inputString=1123056000};
+
             r.replier.reply(this.parse(inputString));
         }
         
@@ -290,10 +291,10 @@ weather = {
         for(var i in baseTodayWeather){
             var repeatStr = baseTodayWeather[i];
             str += String(repeatStr.select("hour").text()).extension("0",2) + " ";
-            str += String(repeatStr.select("wfKor").text()).replace(/\s/g,"").extensionRight(한글공백,5);
+            str += String(repeatStr.select("wfKor").text()).replace(/\s/g,"").extensionRight(" ",5);
             str += String(repeatStr.select("temp").text()).slice(0,-2).extension("0",2)+ " ";
-            str += repeatStr.select("pop").text(); 
-            str += String(repeatStr.select("reh").text()).extension(한글공백,3) + " ";
+            str += repeatStr.select("pop").text();
+            str += String(repeatStr.select("reh").text()).extension(" ",3) + " ";
             str += repeatStr.select("ws").text().substring(0,3);
             str += '\n';
         }
