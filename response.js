@@ -286,8 +286,8 @@ weather = {
         time = String(baseParse.select("pubData").text()).replace(/[()]/g, '');
         //오늘인것들만 추출
         str = '[시] [날씨] [기온] [강수] [습도] [풍량]\n';
-        for(var i in baseTodayWeather){
-            var repeatStr = baseTodayWeather[i];
+        for(var i in baseParse){
+            var repeatStr = baseParse[i];
             str += repeatStr.select("hour").text() + " ";
             str += repeatStr.select("wfKor").text() + " ";
             str += repeatStr.select("temp").text()+ "℃ "
