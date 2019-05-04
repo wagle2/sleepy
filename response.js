@@ -1,6 +1,10 @@
 var T = require("ThreadManager.js");
 var I = require("Interactive.js");
 
+
+
+한글공백 = String.fromCharCode(12644);
+숫자공백 = String.fromCharCode(8199);
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
     /** @param {String} room - 방 이름
       * @param {String} msg - 메세지 내용
@@ -292,7 +296,7 @@ weather = {
         for(var i in baseTodayWeather){
             var repeatStr = baseTodayWeather[i];
             str += String(repeatStr.select("hour").text()).extension("0",2) + " ";
-            str += String(repeatStr.select("wfKor").text()).replace(/\s/g,"").extensionRight(" ",6) + " ";
+            str += String(repeatStr.select("wfKor").text()).replace(/\s/g,"").extensionRight(한글공백,4) + "|";
             str += String(repeatStr.select("temp").text()).slice(0,-2)+ " "
             str += repeatStr.select("pop").text() + " "; 
             str += repeatStr.select("reh").text() + " ";
@@ -313,7 +317,11 @@ String.prototype.extensionRight=function(char,length){
 	return this.toString()+char.repeat(addLength);
 }
 
-
+Object.defineProperty(String.prototype,"encoding",{
+    value:function(){
+          return this.replace(/\\u([\da-fA-F]{4})/g,(m,p1)=>String.fromCharCode(parseInt(p1,16)));
+    }
+ });
 
 
 //이 아래 6가지 메소드는 스크립트 액티비티에서 사용하는 메소드들
