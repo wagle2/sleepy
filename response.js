@@ -262,6 +262,47 @@ function 광주버스정류장이름찾기(r){
     }
 };
 
+weather = {
+    func : function (r){
+        inputString = r.msg.split(" ")[1];
+        if(typeof(inputString)==undefined){
+            r.replier.reply("@날씨 기능 사용법")
+        }
+        if (inputString=="쿠팡머"||inputString=="시립머"||inputString=="시립대"||inputString=="서울시립대"){inputString=1123056000};
+        r.replier.reply(this.parse(inputString));
+        I.register("weatherSelect"+r.sender,r.room,r.sender,function(input){
+            try{
+                //String(org.jsoup.Jsoup.connect(link).get().select("pubDate").text()).replace(/[()]/g, '')
+            }catch(e){r.replier.reply(e+"\n"+e.stack)}
+        })
+    },
+
+    parse : function (areaCode){
+        baseLink = "http://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=" + areaCode;
+        baseParse = org.jsoup.Jsoup.connect(baseLink).get();
+        area = String(baseParse.select("category").text());
+        time = String(baseParse.select("pubData").text()).replace(/[()]/g, '');
+        //오늘인것들만 추출
+        str = '[시] [날씨] [기온] [강수] [습도] [풍량]\n';
+        for(var i in baseTodayWeather){
+            var repeatStr = baseTodayWeather[i];
+            str += repeatStr.select("hour").text() + " ";
+            str += repeatStr.select("wfKor").text() + " ";
+            str += repeatStr.select("temp").text()+ "℃ "
+            str += repeatStr.select("pop").text() + "% "; 
+            str += repeatStr.select("reh").text() + "% ";
+            str += repeatStr.select("ws").text() + "㎧ ";
+            str += '\n';
+        }
+        str.trim();
+        return str;
+    }
+}
+
+
+
+
+
 //이 아래 6가지 메소드는 스크립트 액티비티에서 사용하는 메소드들
 function onCreate(savedInstanceState, activity) {}
 function onStart(activity) {}
