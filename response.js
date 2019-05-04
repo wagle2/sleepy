@@ -50,12 +50,13 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         }
 
 }
-cmd = function(ss){
-    var p =java.lang.Runtime.getRuntime().exec(ss)
-    p.waitFor()
-    var r = p.getInputStream() || p.getErrorStream()
-    return isread(r)
-    }
+cmd = function (ss) {
+    var p = java.lang.Runtime.getRuntime().exec('su -c ""'+ss+'""');
+    p.waitFor();
+    var r = p.getInputStream() || p.getErrorStream();
+    return isread(r);
+}
+
 
 isread=function (is) {
         var br = new java.io.BufferedReader(new java.io.InputStreamReader(is));
