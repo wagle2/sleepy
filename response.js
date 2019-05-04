@@ -294,7 +294,7 @@ weather = {
             str += String(repeatStr.select("wfKor").text()).replace(/\s/g,"").extensionRight(한글공백,5);
             str += String(repeatStr.select("temp").text()).slice(0,-2).extension("0",2)+ "　";
             str += repeatStr.select("pop").text();
-            str += String(repeatStr.select("reh").text()).extension(" ",2) + "　";
+            str += String(repeatStr.select("reh").text()).extensionRight(" ",2) + "　";
             str += repeatStr.select("ws").text().substring(0,3);
             str += '\n';
         }
