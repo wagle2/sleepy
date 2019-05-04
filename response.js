@@ -286,7 +286,7 @@ weather = {
         baseParse = org.jsoup.Jsoup.connect(baseLink).get();
         area = String(baseParse.select("category").text());
         time = String(baseParse.select("pubData").text()).replace(/[()]/g, '');
-        baseTodayWeather = baseParse.select('data').toArray().filter(v=>v.select("day").text() == "0" )
+        baseTodayWeather = baseParse.select('data').toArray()//.filter(v=>v.select("day").text() == "0" )
         //오늘인것들만 추출
         str = '[시] [날씨] [기온] [강수] [습도] [풍량]\n';
         for(var i in baseTodayWeather){
