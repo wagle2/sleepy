@@ -300,7 +300,7 @@ weather = {
             str += String(repeatStr.select("reh").text()) + "　";
             str += repeatStr.select("ws").text().substring(0,3)+"\n";
         }
-        str.trim()
+        str = str.trim()
         return str;
     }
 }
