@@ -278,7 +278,7 @@ weather = {
             if (inputString=="일곡동"||inputString=="일곡"||inputString=="일곡지구"){inputString=2917066900};
             if (inputString=="상무지구"||inputString=="상무"||inputString=="머창"){inputString=2914074500};
             if (inputString=="조선대학교"||inputString=="조선대"||inputString=="조대"||inputString=="조머"){inputString=2911063000};
-            r.replier.reply(this.parse(inputString));
+            r.replier.reply(this.parse(inputString).trim());
         }
         
     },
