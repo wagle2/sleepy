@@ -144,10 +144,9 @@ function 버스현재위치(r,busStopName,next_busStopName){
 
 
 function 광주버스정류장받아오기(r){
-    busstopId = r.msg.split(" ")[1];
-    url = "http://api.gwangju.go.kr/json/stationInfo?ServiceKey=BknKnKlcOt5e3xllE%2Fboca5kw2Dzmqwm2lNf7XEmAporlHM7JPggxLbS8GgtoSO6%2FcLjBJKOgOMSH6Bmt4EUlw%3D%3D&serviceKey="
-    busstopName = org.jsoup.Jsoup.connect(url).get()
-    bis = JSON.parse(busstopName.select("body").text()).STATION_LIST;
+    var url = "http://api.gwangju.go.kr/json/stationInfo?ServiceKey=BknKnKlcOt5e3xllE%2Fboca5kw2Dzmqwm2lNf7XEmAporlHM7JPggxLbS8GgtoSO6%2FcLjBJKOgOMSH6Bmt4EUlw%3D%3D&serviceKey="
+    var busstopName = org.jsoup.Jsoup.connect(url).get()
+    var bis = JSON.parse(busstopName.select("body").text()).STATION_LIST;
     File.save("/sdcard/test.json",JSON.stringify(bis));
     r.replier.reply("버스정류장 로딩완료!")
     //STATION_NUM,BUSSTOP_NAME,ARS_ID,NEXT_BUSSTOP,BUSSTOP_ID,LONGITUDE,NAME_E,LATITUDE
@@ -273,7 +272,7 @@ weather = {
         if(r.msg.length==3){
             r.replier.reply("@날씨 기능 사용법")
         } else{
-            inputString = r.msg.split(" ")[1];
+            var inputString = r.msg.split(" ")[1];
             if (inputString=="쿠팡머"||inputString=="시립머"||inputString=="시립대"||inputString=="서울시립대"){inputString=1123056000};
             r.replier.reply(this.parse(inputString));
             I.register("weatherSelect"+r.sender,r.room,r.sender,function(input){
@@ -286,11 +285,11 @@ weather = {
     },
 
     parse : function (areaCode){
-        baseLink = "http://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=" + areaCode;
-        baseParse = org.jsoup.Jsoup.connect(baseLink).get();
-        area = String(baseParse.select("category").text());
-        time = String(baseParse.select("pubData").text()).replace(/[()]/g, '');
-        baseTodayWeather = baseParse.select('data').toArray()//.filter(v=>v.select("day").text() == "0" )
+        var baseLink = "http://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=" + areaCode;
+        var baseParse = org.jsoup.Jsoup.connect(baseLink).get();
+        var area = String(baseParse.select("category").text());
+        var time = String(baseParse.select("pubData").text()).replace(/[()]/g, '');
+        var baseTodayWeather = baseParse.select('data').toArray()//.filter(v=>v.select("day").text() == "0" )
         //오늘인것들만 추출
         str = '[시] [날씨] [기온] [강수] [습도] [풍량]\n';
         for(var i in baseTodayWeather){
