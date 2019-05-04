@@ -20,7 +20,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
 
         cut = String.fromCharCode(8237).repeat(500)  
-        r = { replier: replier, msg: msg, sender: sender, room: room};
+        var r = { replier: replier, msg: msg, sender: sender, room: room};
 
 
 
