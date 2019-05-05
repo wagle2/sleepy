@@ -1,7 +1,7 @@
 var T = require("ThreadManager.js");
 var I = require("Interactive.js");
 var D = require("DBManager.js");
-
+var K = require("KBManager.js");
 
 한글공백 = String.fromCharCode(12644);
 숫자공백 = String.fromCharCode(8199);
