@@ -308,7 +308,7 @@ weather_test = {
     },
 
     isWeather : function(){ // 날씨 파트가 존재하는지 확인하는 함수
-        doc = baseSoup.select("#ct > section.sc.cs_weather_main._cs_weather_main > div.api_subject_bx > div.weather_bx").text();
+        doc = baseSoup.select("#ct > section.sc.cs_weather_main._cs_weather_main > div.api_more_wrap > a").text();
         return (doc.length() > 0 ? true : false); 
     },
 
