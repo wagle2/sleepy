@@ -303,18 +303,18 @@ weather_test = {
             r.replier.reply("입력된 문자열: "+ area);
             baseUrl = "https://www.google.com/search?q=" + area;
             baseSoup = org.jsoup.Jsoup.connect(baseUrl).get();
-            r.replier.reply(parse(baseSoup));
+            r.replier.reply(this.parse(baseSoup));
         }
     },
 
     isWeather : function(){ // 날씨 파트가 존재하는지 확인하는 함수
         doc = baseSoup.select("#rso > div:nth-child(1) > div > div > h2").text();
-        r.replier.reply("날씨가 존재합니다.");
+        r.replier.reply("날씨 존재여부 판별");
         return (doc.length() > 0 ? true : false); 
     },
 
     parse : function(baseSoup){ // 파싱
-        if(isWeather()==false){ r.replier.reply("날씨 검색 실패"); } // 날씨 파트가 존재하지 않으면
+        if(this.isWeather()==false){ r.replier.reply("날씨 검색 실패"); } // 날씨 파트가 존재하지 않으면
         else {  // 날씨 파트가 존재하면
             var location = baseSoup.select("#wob_loc").text();
             var nowTemp = baseSoup.select("#wob_tm").text();
