@@ -5,6 +5,7 @@ var K = require("KBManager.js");
 
 한글공백 = String.fromCharCode(12644);
 숫자공백 = String.fromCharCode(8199);
+투명공백 = String.fromCharCode(8237);
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
     /** @param {String} room - 방 이름
       * @param {String} msg - 메세지 내용
@@ -309,7 +310,7 @@ weather = {
 
     parse : function (r,areaCode,weatherUrl){
         var weatherUrl = "https://m.weather.naver.com/m/main.nhn?regionCode=" + String(weatherUrl)
-        r.replier.reply(weatherUrl)
+        //r.replier.reply(weatherUrl)
         var weatherSoup = org.jsoup.Jsoup.connect(weatherUrl).get();
         var location = weatherSoup.select("#content > div > div > div.section_top > div.section_location > a.title._cnLnbLinktoMap > strong").text();
         var nowWeather = (String(weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set_summary")).split("<br>")[0].split('<div class="weather_set_summary">')[1].split("</div>")[0]).trim().replace(" ","").extensionRight(한글공백,5);
@@ -339,6 +340,7 @@ weather = {
             this.str += String(repeatStr.select("pop").text()).extensionRight(" ",2) + "　";
             this.str += String(repeatStr.select("reh").text()) + "　";
             this.str += repeatStr.select("ws").text().substring(0,3)+"\n";
+            if(i==5){this.str += 투명공백.repeat(500)}
         }
         this.str =  this.str.trim()
         return  this.str;
