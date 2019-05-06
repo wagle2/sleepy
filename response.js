@@ -301,7 +301,7 @@ weather_test = {
         } else {
             var area = r.msg.substr(4,r.msg.length);
             r.replier.reply("입력된 문자열: "+ area);
-            baseUrl = "https://www.google.com/search?q=" + area + " ㄴ날씨";
+            baseUrl = "https://www.google.com/search?q=" + area + " 날씨";
             baseSoup = org.jsoup.Jsoup.connect(baseUrl).get();
             r.replier.reply(baseSoup.text());
             //r.replier.reply(this.parse(baseSoup));
