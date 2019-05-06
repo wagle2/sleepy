@@ -376,7 +376,7 @@ weather = {
         this.str += "(해)" + location + "\n　→ " 
                         + nowTime + "\n------------------------------------\n"
                         + "시　　날씨　기온 습도 최저 최고\n" 
-                        + new Date().getHours() + "　" + nowWeather.replace(/\(.*?\)/g,"") + "　" + nowTemp + "　" + nowTemp + "　"+ todayLowTemp + "　"+ todayHighTemp + "\n"
+                        + new Date().getHours() + "　" + nowWeather.replace(/\(.*?\)/g,"").extensionRight(한글공백,5) + "　" + nowTemp + "　" + nowTemp + "　"+ todayLowTemp + "　"+ todayHighTemp + "\n"
                         + "------------------------------------\n";;
 
         var baseLink = "http://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=" + areaCode;
