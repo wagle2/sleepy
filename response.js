@@ -337,7 +337,7 @@ weather_test = {
                             + "날씨　　　기온 습도 최저 최고\n" ;
             for (i in times){
                 this.resultStr += times[i]+ "　"
-                                + (i==0 ? todaysWeather[1] : todaysWeather[4*i]) + "　"
+                                + todaysWeather[3*i+1] + "　"
                                 + todaysTemp[i]+ "　"
                                 + todaysRain[i]+ "　"
                                 + todaysWind[i] + "　"
