@@ -104,8 +104,10 @@ function 고딩방(r) {
         광주버스(r);
     } else if(r.msg.indexOf("!정류장다운로드")!=-1){
         광주버스정류장받아오기(r);
-    }else if(r.msg.indexOf("@날씨")!=-1){
+    } else if(r.msg.indexOf("@날씨")!=-1){
         weather.func(r);
+    } else if(r.msg.indexOf("#날씨")!=-1){
+        weather_test.func(r);
     }
 }
 
@@ -286,6 +288,39 @@ function 광주버스정류장이름찾기(r){
         }
     }
 };
+
+weather_test = {
+
+    baseUrl : "",
+    baseSoup : "",
+    resultStr : "",
+
+    func : function(r){ // 구동부
+        if(r.msg.length == 3){
+            r.replier.reply("#날씨 기능 사용법");
+        } else {
+            baseUrl = r.msg.split(" ")[1];
+            baseSoup = org.jsoup.Jsoup.connect(baseUrl).get();
+        }
+    },
+
+    isWeather : function(baseUrl){ // 날씨 파트가 존재하는지 확인하는 함수
+        doc = org.jsoup.Jsoup.connect(baseUrl).get().select("#rso > div:nth-child(1) > div > div > h2").text();
+        return (doc.length() > 0 ? true : false); 
+    },
+
+    parse : function(r){ // 파싱
+        if(isWeather==false){ r.replier.reply("날씨 검색 실패"); } // 날씨 파트가 존재하지 않으면
+        else {  // 날씨 파트가 존재하면
+            var location = baseSoup.select("#wob_loc").text();
+            var nowTemp = baseSoup.select("#wob_tm").text();
+            resultStr += location + "\n" + nowTemp;
+        }
+    },
+
+
+}
+
 
 weather = {
     func : function (r){
