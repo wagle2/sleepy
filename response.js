@@ -339,7 +339,7 @@ weather_test = {
             for (i in times){
                 this.resultStr += times[i]+ "　"
                                 + todaysWeather[i] + "　"
-                                + todaysTemp[i].text()+ "　"
+                                + todaysTemp[i]+ "　"
                                 + todaysRain[i]+ "　"
                                 + todaysWind[i] + "　"
                                 + todaysReh[i]+"\n" 
