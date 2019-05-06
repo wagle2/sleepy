@@ -375,7 +375,7 @@ weather = {
         this.str = "";
         this.str += "(해)" + location + "\n　→ " 
                         + nowTime + "\n------------------------------------\n"
-                        + "날씨　　기온　습도　최저　최고" 
+                        + "날씨　　기온　습도　최저　최고\n" 
                         + nowWeather + "　" + nowTemp + "　" + nowTemp + "　"+ todayLowTemp + "　"+ todayHighTemp + "/n"
                         + "------------------------------------\n";;
 
