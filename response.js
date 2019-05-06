@@ -301,31 +301,33 @@ weather_test = {
         } else {
             var area = r.msg.substr(4,r.msg.length);
             r.replier.reply("입력된 문자열: "+ area);
-            baseUrl = "https://www.google.com/search?q=" + area + " 날씨";
+            baseUrl = "https://m.search.naver.com/search.naver?query=" + area + " 날씨";
             baseSoup = org.jsoup.Jsoup.connect(baseUrl).get();
-            r.replier.reply(baseSoup.text());
             r.replier.reply(this.parse(baseSoup));
         }
     },
 
     isWeather : function(){ // 날씨 파트가 존재하는지 확인하는 함수
-        doc = baseSoup.select("#rso > div:nth-child(1) > div > div > h2").text();
+        doc = baseSoup.select("#ct > section.sc.cs_weather_main._cs_weather_main > div.api_subject_bx > div.weather_bx").text();
         return (doc.length() > 0 ? true : false); 
     },
 
     parse : function(baseSoup){ // 파싱
         if(this.isWeather()==false){ r.replier.reply("날씨 검색 실패"); } // 날씨 파트가 존재하지 않으면
         else {  // 날씨 파트가 존재하면
-            var location = baseSoup.select("#wob_loc").text();
-            var nowTemp = baseSoup.select("#wob_tm").text();
-            this.resultStr += location + "\n" + nowTemp;
+            var weatherUrl = baseSoup.select("#ct > section.sc.cs_weather_main._cs_weather_main > div.api_more_wrap > a").attr("href")
+            var weatherSoup = org.jsoup.Jsoup.connect(weatherUrl).get();
+            var location = weatherSoup.select("#content > div > div > div.section_top > div.section_location > a.title._cnLnbLinktoMap > strong").text();
+            var nowTemp = weatherSoup.select("#_idMflick > div > div:nth-child(1) > div > div.card.card_now > div.weather_set > div.set.set_text > strong > em").text();
+            var nowTime = weatherSoup.select("#_idMflick > div > div:nth-child(1) > div > div.card.card_now > span").text().replace(/[()]/g, '');
+            this.resultStr += "(해)" + location + " 날씨\n" 
+                            + nowTime + "\n------------------------------------\n"
+                            + "기온 : " + nowTemp + "℃";
+                            + "습도 : " + nowTemp + "℃";
             return this.resultStr;
         }
     },
-
-
 }
-
 
 weather = {
     func : function (r){
