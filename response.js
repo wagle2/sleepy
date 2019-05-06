@@ -358,13 +358,13 @@ weather = {
                 r.replier.reply("날씨 리스트에 존재하지 않는 지역입니다.");
                 return;
             }
-            r.replier.reply(this.parse(inputString));
+            r.replier.reply(this.parse(inputString,weatherUrl));
         }
         
     },
 
     parse : function (areaCode,weatherUrl){
-        var weatherUrl = "https://m.weather.naver.com/m/main.nhn?regionCode=" + weatherUrl
+        var weatherUrl = "https://m.weather.naver.com/m/main.nhn?regionCode=" + String(weatherUrl)
         var weatherSoup = org.jsoup.Jsoup.connect(weatherUrl).get();
         var location = weatherSoup.select("#content > div > div > div.section_top > div.section_location > a.title._cnLnbLinktoMap > strong").text();
         var nowWeather = (String(weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set_summary")).split("<br>")[0].split('<div class="weather_set_summary">')[1].split("</div>")[0]).trim().replace(" ","").extensionRight(한글공백,5);
