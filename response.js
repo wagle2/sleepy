@@ -337,12 +337,12 @@ weather_test = {
                             + nowTime + "\n------------------------------------\n"
                             + "날씨　　　기온 습도 최저 최고\n" ;
             for (i in times){
-                resultStr += times[i].extension("0",2) + "　";
-                resultStr += todaysWeather[i].replace(/\s/g,"").extensionRight(한글공백,5);
-                resultStr += todaysTemp[i].text().extension("0",2)+ "　";
-                resultStr += todaysRain[i].extensionRight(" ",2) + "　";
-                resultStr += todaysWind[i] + "　";
-                resultStr += todaysReh[i].substring(0,3)+"\n"; 
+                this.resultStr += times[i].extension("0",2) + "　"
+                                + todaysWeather[i].replace(/\s/g,"").extensionRight(한글공백,5)
+                                + todaysTemp[i].text().extension("0",2)+ "　"
+                                + todaysRain[i].extensionRight(" ",2) + "　"
+                                + todaysWind[i] + "　"
+                                + todaysReh[i].substring(0,3)+"\n" 
             }
             return this.resultStr;
         }
