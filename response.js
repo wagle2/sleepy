@@ -318,12 +318,15 @@ weather_test = {
             var weatherUrl = baseSoup.select("#ct > section.sc.cs_weather_main._cs_weather_main > div.api_more_wrap > a").attr("href")
             var weatherSoup = org.jsoup.Jsoup.connect(weatherUrl).get();
             var location = weatherSoup.select("#content > div > div > div.section_top > div.section_location > a.title._cnLnbLinktoMap > strong").text();
-            var nowTemp = weatherSoup.select("#_idMflick > div > div:nth-child(1) > div > div.card.card_now > div.weather_set > div.set.set_text > strong > em").text();
-            var nowTime = weatherSoup.select("#_idMflick > div > div:nth-child(1) > div > div.card.card_now > span").text().replace(/[()]/g, '');
+            var nowWeather = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set_summary").text().split(" ")[0]
+            var nowTemp = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set > div.set.set_text > strong > em").text();
+            var nowTime = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > span").text()
+
             this.resultStr += "(해)" + location + " 날씨\n" 
                             + nowTime + "\n------------------------------------\n"
+                            + "날씨 : " + nowWeather + " "
                             + "기온 : " + nowTemp + "℃";
-                            + "습도 : " + nowTemp + "℃";
+                            + "습도 : " + nowTemp + "%";
             return this.resultStr;
         }
     },
