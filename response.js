@@ -301,6 +301,7 @@ weather_test = {
         } else {
             baseUrl = "https://www.google.com/search?q=" + r.msg.split(" ")[1];
             baseSoup = org.jsoup.Jsoup.connect(baseUrl).get();
+            r.replier.reply(parse(baseSoup));
         }
     },
 
@@ -309,7 +310,7 @@ weather_test = {
         return (doc.length() > 0 ? true : false); 
     },
 
-    parse : function(r){ // 파싱
+    parse : function(baseSoup){ // 파싱
         if(isWeather==false){ r.replier.reply("날씨 검색 실패"); } // 날씨 파트가 존재하지 않으면
         else {  // 날씨 파트가 존재하면
             var location = baseSoup.select("#wob_loc").text();
