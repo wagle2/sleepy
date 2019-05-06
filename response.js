@@ -303,7 +303,7 @@ weather_test = {
             r.replier.reply("입력된 문자열: "+ area);
             baseUrl = "https://www.google.com/search?q=" + area;
             baseSoup = org.jsoup.Jsoup.connect(baseUrl).get();
-            r.replier.reply(this.parse(baseSoup));
+            //r.replier.reply(this.parse(baseSoup));
         }
     },
 
