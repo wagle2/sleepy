@@ -318,8 +318,8 @@ weather_test = {
         else {  // 날씨 파트가 존재하면
             var location = baseSoup.select("#wob_loc").text();
             var nowTemp = baseSoup.select("#wob_tm").text();
-            resultStr += location + "\n" + nowTemp;
-            return resultStr;
+            this.resultStr += location + "\n" + nowTemp;
+            return this.resultStr;
         }
     },
 
