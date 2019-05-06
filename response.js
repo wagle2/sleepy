@@ -336,7 +336,8 @@ weather_test = {
             this.resultStr += "(해)" + location + "\n　→ " 
                             + nowTime + "\n------------------------------------\n"
                             + "날씨　　기온　습도　최저　최고" 
-                            + nowWeather + "　" + nowTemp + "　" + nowTemp + "　"+ todayLowTemp + "　"+ todayHighTemp + " ";
+                            + nowWeather + "　" + nowTemp + "　" + nowTemp + "　"+ todayLowTemp + "　"+ todayHighTemp + "\n"
+                            + "------------------------------------\n";
             return this.resultStr;
         }
     },
