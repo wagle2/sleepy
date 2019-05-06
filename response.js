@@ -321,7 +321,7 @@ weather_test = {
             var nowWeather = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set_summary").text().split(" ")[0]
             var nowTemp = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set > div.set.set_text > strong > em").text();
             var nowTime = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > span").text()
-
+            this.resultStr = "";
             this.resultStr += "(해)" + location + " 날씨\n" 
                             + nowTime + "\n------------------------------------\n"
                             + "날씨 : " + nowWeather + " "
