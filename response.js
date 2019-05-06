@@ -308,9 +308,8 @@ weather_test = {
         }
     },
 
-    isWeather : function(r){ // 날씨 파트가 존재하는지 확인하는 함수
+    isWeather : function(){ // 날씨 파트가 존재하는지 확인하는 함수
         doc = baseSoup.select("#rso > div:nth-child(1) > div > div > h2").text();
-        r.replier.reply("날씨 존재여부 판별");
         return (doc.length() > 0 ? true : false); 
     },
 
