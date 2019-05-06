@@ -299,8 +299,9 @@ weather_test = {
         if(r.msg.length == 3){
             r.replier.reply("#날씨 기능 사용법");
         } else {
-            r.replier.reply(r.msg.split(" ")[1]);
-            baseUrl = "https://www.google.com/search?q=" + r.msg.split(" ")[1];
+            var area = r.msg.substr(4,s.length);
+            r.replier.reply("입력된 문자열: "+ area);
+            baseUrl = "https://www.google.com/search?q=" + area;
             baseSoup = org.jsoup.Jsoup.connect(baseUrl).get();
             r.replier.reply(parse(baseSoup));
         }
@@ -317,6 +318,7 @@ weather_test = {
             var location = baseSoup.select("#wob_loc").text();
             var nowTemp = baseSoup.select("#wob_tm").text();
             resultStr += location + "\n" + nowTemp;
+            return resultStr;
         }
     },
 
