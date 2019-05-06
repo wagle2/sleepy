@@ -307,13 +307,14 @@ weather_test = {
         }
     },
 
-    isWeather : function(baseUrl){ // 날씨 파트가 존재하는지 확인하는 함수
-        doc = org.jsoup.Jsoup.connect(baseUrl).get().select("#rso > div:nth-child(1) > div > div > h2").text();
+    isWeather : function(){ // 날씨 파트가 존재하는지 확인하는 함수
+        doc = baseSoup.select("#rso > div:nth-child(1) > div > div > h2").text();
+        r.replier.reply("날씨가 존재합니다.");
         return (doc.length() > 0 ? true : false); 
     },
 
     parse : function(baseSoup){ // 파싱
-        if(isWeather==false){ r.replier.reply("날씨 검색 실패"); } // 날씨 파트가 존재하지 않으면
+        if(isWeather()==false){ r.replier.reply("날씨 검색 실패"); } // 날씨 파트가 존재하지 않으면
         else {  // 날씨 파트가 존재하면
             var location = baseSoup.select("#wob_loc").text();
             var nowTemp = baseSoup.select("#wob_tm").text();
