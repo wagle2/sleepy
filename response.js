@@ -320,7 +320,7 @@ weather = {
         var todayLowTemp = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set > div.set.set_text > div > span.day_low > em").text()
         var todayHighTemp = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set > div.set.set_text > div > span.day_high > em").text() 
         this.str = "";
-        this.str += "(해)" + location + "\n　→ " 
+        this.str += "(야옹)" + location + "\n　→ " 
                         + nowTime + "\n------------------------------------\n"
                         + "시　　날씨　기온 습도 최저 최고\n" 
                         + new Date().getHours() + "　" + nowWeather.replace(/\(.*?\)/g,"").extensionRight(한글공백,5) + nowTemp + "　" + nowTemp + "　"+ todayLowTemp + "　"+ todayHighTemp + "\n"
