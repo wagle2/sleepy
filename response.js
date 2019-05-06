@@ -317,17 +317,17 @@ weather_test = {
             var weatherUrl = baseSoup.select("#ct > section.sc.cs_weather_main._cs_weather_main > div.api_more_wrap > a").attr("href")
             var weatherSoup = org.jsoup.Jsoup.connect(weatherUrl).get();
             var location = weatherSoup.select("#content > div > div > div.section_top > div.section_location > a.title._cnLnbLinktoMap > strong").text();
-            var nowWeather = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set_summary").text().split(" ")[0]
+            var nowWeather = (String(weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set_summary")).split("<br>")[0].split(">")[1]).trim()
             var nowTemp = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set > div.set.set_text > strong > em").text();
             var nowTime = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > span").text()
             var todayLowTemp = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set > div.set.set_text > div > span.day_low > em").text()
             var todayHighTemp = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set > div.set.set_text > div > span.day_high > em").text()
 
             this.resultStr = "";
-            this.resultStr += "(해)" + location + " 날씨(해)\n　→ " 
+            this.resultStr += "(해)" + location + "\n　→ " 
                             + nowTime + "\n------------------------------------\n"
                             + "날씨　　기온　습도　최저　최고" 
-                            + nowWeather + "　" + nowTemp + "℃　" + nowTemp + "%"+ todayLowTemp + "℃　"+ todayHighTemp + "℃";
+                            + nowWeather + "　" + nowTemp + "　" + nowTemp + "　"+ todayLowTemp + "　"+ todayHighTemp + " ";
             return this.resultStr;
         }
     },
