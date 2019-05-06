@@ -313,7 +313,7 @@ weather_test = {
     },
 
     parse : function(baseSoup){ // 파싱
-        if(this.isWeather()==false){ r.replier.reply("날씨 검색 실패"); } // 날씨 파트가 존재하지 않으면
+        if(this.isWeather()==false){ r.replier.reply("날씨 검색 실패"); return; } // 날씨 파트가 존재하지 않으면
         else {  // 날씨 파트가 존재하면
             var weatherUrl = baseSoup.select("#ct > section.sc.cs_weather_main._cs_weather_main > div.api_more_wrap > a").attr("href")
             var weatherSoup = org.jsoup.Jsoup.connect(weatherUrl).get();
