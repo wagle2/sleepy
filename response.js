@@ -300,7 +300,6 @@ weather_test = {
             r.replier.reply("#날씨 기능 사용법");
         } else {
             var area = r.msg.substr(4,r.msg.length);
-            r.replier.reply("입력된 문자열: "+ area);
             baseUrl = "https://m.search.naver.com/search.naver?query=" + area + " 날씨";
             baseSoup = org.jsoup.Jsoup.connect(baseUrl).get();
             r.replier.reply(this.parse(baseSoup));
@@ -321,12 +320,14 @@ weather_test = {
             var nowWeather = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set_summary").text().split(" ")[0]
             var nowTemp = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set > div.set.set_text > strong > em").text();
             var nowTime = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > span").text()
+            var todayLowTemp = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set > div.set.set_text > div > span.day_low > em").text()
+            var todayHighTemp = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set > div.set.set_text > div > span.day_high > em").text()
+
             this.resultStr = "";
-            this.resultStr += "(해)" + location + " 날씨\n" 
+            this.resultStr += "(해)" + location + " 날씨(해)\n　→ " 
                             + nowTime + "\n------------------------------------\n"
-                            + "날씨 : " + nowWeather + " "
-                            + "기온 : " + nowTemp + "℃";
-                            + "습도 : " + nowTemp + "%";
+                            + "날씨　　기온　습도　최저　최고" 
+                            + nowWeather + "　" + nowTemp + "℃　" + nowTemp + "%"+ todayLowTemp + "℃　"+ todayHighTemp + "℃";
             return this.resultStr;
         }
     },
