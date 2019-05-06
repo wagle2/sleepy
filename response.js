@@ -349,7 +349,7 @@ weather = {
             r.replier.reply("@날씨 기능 사용법")
         } else{
             var inputString = r.msg.split(" ")[1];
-            if (inputString=="쿠팡머"||inputString=="쿠팡대"||inputString=="시립머"||inputString=="시립대"||inputString=="서울시립대"){inputString=1123056000,weatherUrl="09230104"}
+            if (inputString=="쿠팡머"||inputString=="쿠팡대"||inputString=="시립머"||inputString=="시립대"||inputString=="서울시립대"){inputString=1123056000,weatherUrl=09230104}
             else if (inputString=="전남머"||inputString=="전남대"||inputString=="용봉동"||inputString=="전머"||inputString=="용봉"){inputString=2917059000}
             else if (inputString=="일곡동"||inputString=="일곡"||inputString=="일곡지구"){inputString=2917066900}
             else if (inputString=="상무지구"||inputString=="상무"||inputString=="머창"){inputString=2914074500}
@@ -376,7 +376,7 @@ weather = {
         this.str += "(해)" + location + "\n　→ " 
                         + nowTime + "\n------------------------------------\n"
                         + "시　　날씨　기온 습도 최저 최고\n" 
-                        + new Date().getHours() + "　" + nowWeather.replace(/\(.*?\)/g,"").extensionRight(한글공백,5) + "　" + nowTemp + "　" + nowTemp + "　"+ todayLowTemp + "　"+ todayHighTemp + "\n"
+                        + new Date().getHours() + "　" + nowWeather.replace(/\(.*?\)/g,"").extensionRight(한글공백,5) + nowTemp + "　" + nowTemp + "　"+ todayLowTemp + "　"+ todayHighTemp + "\n"
                         + "------------------------------------\n";;
 
         var baseLink = "http://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=" + areaCode;
