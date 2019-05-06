@@ -299,7 +299,7 @@ weather_test = {
         if(r.msg.length == 3){
             r.replier.reply("#날씨 기능 사용법");
         } else {
-            baseUrl = r.msg.split(" ")[1];
+            baseUrl = "https://www.google.com/search?q=" + r.msg.split(" ")[1];
             baseSoup = org.jsoup.Jsoup.connect(baseUrl).get();
         }
     },
