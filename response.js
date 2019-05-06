@@ -304,7 +304,7 @@ weather_test = {
             baseUrl = "https://www.google.com/search?q=" + area + " 날씨";
             baseSoup = org.jsoup.Jsoup.connect(baseUrl).get();
             r.replier.reply(baseSoup.text());
-            r.replier.reply(this.parse(baseSoup));
+            r.replier.reply(this.parse(this.baseSoup));
         }
     },
 
@@ -319,8 +319,8 @@ weather_test = {
         else {  // 날씨 파트가 존재하면
             var location = baseSoup.select("#wob_loc").text();
             var nowTemp = baseSoup.select("#wob_tm").text();
-            resultStr += location + "\n" + nowTemp;
-            return resultStr;
+            this.resultStr += location + "\n" + nowTemp;
+            return this.resultStr;
         }
     },
 
