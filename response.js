@@ -299,7 +299,7 @@ weather_test = {
         if(r.msg.length == 3){
             r.replier.reply("#날씨 기능 사용법");
         } else {
-            var area = r.msg.substr(4,s.length);
+            var area = r.msg.substr(4,r.msg.length);
             r.replier.reply("입력된 문자열: "+ area);
             baseUrl = "https://www.google.com/search?q=" + area;
             baseSoup = org.jsoup.Jsoup.connect(baseUrl).get();
