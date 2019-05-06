@@ -322,12 +322,28 @@ weather_test = {
             var nowTime = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > span").text()
             var todayLowTemp = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set > div.set.set_text > div > span.day_low > em").text()
             var todayHighTemp = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set > div.set.set_text > div > span.day_high > em").text()
+            
+
+            var times = weatherSoup.select("div > div > div.card.card_graph > div.graph_content > div > div > table > tbody > tr:nth-child(7)").text()
+            var todaysWeather = weatherSoup.select("div > div > div.card.card_graph > div.graph_content > div > div > table > tbody > tr:nth-child(2)").text()
+            var todaysTemp = weatherSoup.select("div > div > div.card.card_graph > div._cnWtrHourlyChartData > div:nth-child(1)").text()
+            var todaysRain = weatherSoup.select("div > div > div.card.card_graph > div._cnWtrHourlyChartData > div:nth-child(2)").text()
+            var todaysWind = weatherSoup.select("div > div > div.card.card_graph > div._cnWtrHourlyChartData > div:nth-child(3)").text()
+            var todaysReh = weatherSoup.select("div > div > div.card.card_graph > div._cnWtrHourlyChartData > div:nth-child(4)").text()
+
 
             this.resultStr = "";
             this.resultStr += "(해)" + location + "\n　→ " 
                             + nowTime + "\n------------------------------------\n"
-                            + "날씨　　　기온 습도 최저 최고\n" 
-                            + nowWeather + "　" + nowTemp + "　" + nowTemp + "　"+ todayLowTemp + "　"+ todayHighTemp + " ";
+                            + "날씨　　　기온 습도 최저 최고\n" ;
+            for (i in times){
+                resultStr += times[i].extension("0",2) + "　";
+                resultStr += todaysWeather[i].replace(/\s/g,"").extensionRight(한글공백,5);
+                resultStr += todaysTemp[i].text().extension("0",2)+ "　";
+                resultStr += todaysRain[i].extensionRight(" ",2) + "　";
+                resultStr += todaysWind[i] + "　";
+                resultStr += todaysReh[i].substring(0,3)+"\n"; 
+            }
             return this.resultStr;
         }
     },
