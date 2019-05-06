@@ -338,11 +338,11 @@ weather_test = {
                             + "날씨　　　기온 습도 최저 최고\n" ;
             for (i in times){
                 this.resultStr += times[i].extension("0",2) + "　"
-                                //+ todaysWeather[i].extensionRight(한글공백,5)
-                                + todaysTemp[i].text().extension("0",2)+ "　"
-                                + todaysRain[i].extensionRight(" ",2) + "　"
+                                + todaysWeather[i] + "　"
+                                + todaysTemp[i].text()+ "　"
+                                + todaysRain[i]+ "　"
                                 + todaysWind[i] + "　"
-                                + todaysReh[i].substring(0,3)+"\n" 
+                                + todaysReh[i]+"\n" 
             }
             return this.resultStr;
         }
