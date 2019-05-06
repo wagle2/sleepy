@@ -324,12 +324,12 @@ weather_test = {
             var todayHighTemp = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set > div.set.set_text > div > span.day_high > em").text()
             
 
-            var times = weatherSoup.select("div > div > div.card.card_graph > div.graph_content > div > div > table > tbody > tr:nth-child(7)").text()
-            var todaysWeather = weatherSoup.select("div > div > div.card.card_graph > div.graph_content > div > div > table > tbody > tr:nth-child(2)").text()
-            var todaysTemp = weatherSoup.select("div > div > div.card.card_graph > div._cnWtrHourlyChartData > div:nth-child(1)").text()
-            var todaysRain = weatherSoup.select("div > div > div.card.card_graph > div._cnWtrHourlyChartData > div:nth-child(2)").text()
-            var todaysWind = weatherSoup.select("div > div > div.card.card_graph > div._cnWtrHourlyChartData > div:nth-child(3)").text()
-            var todaysReh = weatherSoup.select("div > div > div.card.card_graph > div._cnWtrHourlyChartData > div:nth-child(4)").text()
+            var times = weatherSoup.select("div > div > div.card.card_graph > div.graph_content > div > div > table > tbody > tr:nth-child(7)").text().split(" ")
+            var todaysWeather = weatherSoup.select("div > div > div.card.card_graph > div.graph_content > div > div > table > tbody > tr:nth-child(2)").text().split(" ")
+            var todaysTemp = weatherSoup.select("div > div > div.card.card_graph > div._cnWtrHourlyChartData > div:nth-child(1)").text().split(" ")
+            var todaysRain = weatherSoup.select("div > div > div.card.card_graph > div._cnWtrHourlyChartData > div:nth-child(2)").text().split(" ")
+            var todaysWind = weatherSoup.select("div > div > div.card.card_graph > div._cnWtrHourlyChartData > div:nth-child(3)").text().split(" ")
+            var todaysReh = weatherSoup.select("div > div > div.card.card_graph > div._cnWtrHourlyChartData > div:nth-child(4)").text().split(" ")
 
 
             this.resultStr = "";
