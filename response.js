@@ -95,11 +95,11 @@ function 고딩방(r) {
     } else if(r.msg == "고건훈"){
         r.replier.reply("유흥중입니다.");
     } else if(r.msg == "이명훈"){
-        r.replier.reply("기아수저");
+        r.replier.reply("조별과제마스터");
     } else if(r.msg == "박경관"){
         r.replier.reply("보험계리사");  
     } else if(r.msg == "천승현"){
-        r.replier.reply("자발적 모쏠8000일");
+        r.replier.reply("돌창");
     } else if(r.msg.indexOf("#버스")!=-1){
         광주버스(r);
     } else if(r.msg.indexOf("!정류장다운로드")!=-1){
