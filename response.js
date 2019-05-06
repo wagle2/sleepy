@@ -304,7 +304,7 @@ weather_test = {
             baseUrl = "https://www.google.com/search?q=" + area + " 날씨";
             baseSoup = org.jsoup.Jsoup.connect(baseUrl).get();
             r.replier.reply(baseSoup.text());
-            //r.replier.reply(this.parse(baseSoup));
+            r.replier.reply(this.parse(baseSoup));
         }
     },
 
