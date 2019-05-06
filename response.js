@@ -303,7 +303,7 @@ weather_test = {
             r.replier.reply("입력된 문자열: "+ area);
             baseUrl = "https://m.search.naver.com/search.naver?query=" + area + " 날씨";
             baseSoup = org.jsoup.Jsoup.connect(baseUrl).get();
-            r.replier.reply(this.parse(baseSoup,r));
+            r.replier.reply(this.parse(baseSoup));
         }
     },
 
@@ -312,8 +312,8 @@ weather_test = {
         return (doc.length() > 0 ? true : false); 
     },
 
-    parse : function(baseSoup,r){ // 파싱
-        if(this.isWeather()==false){ r.replier.reply("날씨 검색 실패"); } // 날씨 파트가 존재하지 않으면
+    parse : function(baseSoup){ // 파싱
+        if(this.isWeather()==false){ return "날씨 검색 실패" } // 날씨 파트가 존재하지 않으면
         else {  // 날씨 파트가 존재하면
             var weatherUrl = baseSoup.select("#ct > section.sc.cs_weather_main._cs_weather_main > div.api_more_wrap > a").attr("href")
             var weatherSoup = org.jsoup.Jsoup.connect(weatherUrl).get();
