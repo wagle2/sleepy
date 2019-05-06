@@ -325,12 +325,11 @@ weather_test = {
             
 
             var times = weatherSoup.select("div > div > div.card.card_graph > div.graph_content > div > div > table > tbody > tr:nth-child(7)").text().split(" ")
-            var todaysWeather = weatherSoup.select("div > div > div.card.card_graph > div.graph_content > div > div > table > tbody > tr:nth-child(2)").text().split(" ")
+            var todaysWeather = (String(weatherSoup.select("div > div > div.card.card_graph > div.graph_content > div > div > table > tbody > tr:nth-child(2) div")).split("\n"));
             var todaysTemp = weatherSoup.select("div > div > div.card.card_graph > div._cnWtrHourlyChartData > div:nth-child(1)").text().split(",")
             var todaysRain = weatherSoup.select("div > div > div.card.card_graph > div._cnWtrHourlyChartData > div:nth-child(2)").text().split(",")
             var todaysWind = weatherSoup.select("div > div > div.card.card_graph > div._cnWtrHourlyChartData > div:nth-child(3)").text().split(",")
             var todaysReh = weatherSoup.select("div > div > div.card.card_graph > div._cnWtrHourlyChartData > div:nth-child(4)").text().split(",")
-
 
             this.resultStr = "";
             this.resultStr += "(해)" + location + "\n　→ " 
@@ -338,7 +337,7 @@ weather_test = {
                             + "날씨　　　기온 습도 최저 최고\n" ;
             for (i in times){
                 this.resultStr += times[i]+ "　"
-                                + todaysWeather[i] + "　"
+                                + (i==0 ? todaysWeather[1] : todaysWeather[4*i]) + "　"
                                 + todaysTemp[i]+ "　"
                                 + todaysRain[i]+ "　"
                                 + todaysWind[i] + "　"
