@@ -106,8 +106,6 @@ function 고딩방(r) {
         광주버스정류장받아오기(r);
     } else if(r.msg.indexOf("@날씨")!=-1){
         weather.func(r);
-    } else if(r.msg.indexOf("#날씨")!=-1){
-        weather_test.func(r);
     }
 }
 
@@ -289,60 +287,6 @@ function 광주버스정류장이름찾기(r){
     }
 };
 
-weather_test = {
-
-    baseUrl : "",
-    baseSoup : "",
-    resultStr : "",
-
-    func : function(r){ // 구동부
-        if(r.msg.length == 3){
-            r.replier.reply("#날씨 기능 사용법");
-        } else {
-            var area = r.msg.substr(4,r.msg.length);
-            baseUrl = "https://m.search.naver.com/search.naver?query=" + area + " 날씨";
-            baseSoup = org.jsoup.Jsoup.connect(baseUrl).get();
-            r.replier.reply(this.parse(baseSoup));
-        }
-    },
-
-    isWeather : function(){ // 날씨 파트가 존재하는지 확인하는 함수
-        doc = baseSoup.select("#ct > section.sc.cs_weather_main._cs_weather_main > div.api_more_wrap > a").text();
-        return (doc.length() > 0 ? true : false); 
-    },
-
-    parse : function(baseSoup){ // 파싱
-        if(this.isWeather()==false){ return "날씨 검색 실패" } // 날씨 파트가 존재하지 않으면
-        else {  // 날씨 파트가 존재하면
-            var weatherUrl = baseSoup.select("#ct > section.sc.cs_weather_main._cs_weather_main > div.api_more_wrap > a").attr("href")
-            var weatherSoup = org.jsoup.Jsoup.connect(weatherUrl).get();
-            var location = weatherSoup.select("#content > div > div > div.section_top > div.section_location > a.title._cnLnbLinktoMap > strong").text();
-            var nowWeather = (String(weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set_summary")).split("<br>")[0].split('<div class="weather_set_summary">')[1].split("</div>")[0]).trim().replace(" ","").extensionRight(한글공백,5);
-            var nowTemp = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set > div.set.set_text > strong > em").text();
-            var nowTime = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > span").text()
-            var todayLowTemp = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set > div.set.set_text > div > span.day_low > em").text()
-            var todayHighTemp = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set > div.set.set_text > div > span.day_high > em").text()
-            
-
-            //var times = weatherSoup.select("div > div > div.card.card_graph > div.graph_content > div > div > table > tbody > tr:nth-child(7)").text().split(" ")
-            //var weatherlength = times.length-1;
-            //var todaysWeather = (String(weatherSoup.select("div > div > div.card.card_graph > div.graph_content > div > div > table > tbody > tr:nth-child(2) div")).split("\n"));
-            //var todaysTemp = weatherSoup.select("div > div > div.card.card_graph > div._cnWtrHourlyChartData > div:nth-child(1)").text().split(",")
-            //var todaysRain = weatherSoup.select("div > div > div.card.card_graph > div._cnWtrHourlyChartData > div:nth-child(2)").text().split(",")
-            //var todaysWind = weatherSoup.select("div > div > div.card.card_graph > div._cnWtrHourlyChartData > div:nth-child(3)").text().split(",")
-            //var todaysReh = weatherSoup.select("div > div > div.card.card_graph > div._cnWtrHourlyChartData > div:nth-child(4)").text().split(",")
-
-            this.resultStr = "";
-            this.resultStr += "(해)" + location + "\n　→ " 
-                            + nowTime + "\n------------------------------------\n"
-                            + "날씨　　기온　습도　최저　최고" 
-                            + nowWeather + "　" + nowTemp + "　" + nowTemp + "　"+ todayLowTemp + "　"+ todayHighTemp + "\n"
-                            + "------------------------------------\n";
-            return this.resultStr;
-        }
-    },
-}
-
 weather = {
     func : function (r){
         if(r.msg.length==3){
@@ -358,13 +302,14 @@ weather = {
                 r.replier.reply("날씨 리스트에 존재하지 않는 지역입니다.");
                 return;
             }
-            r.replier.reply(this.parse(inputString,weatherUrl));
+            r.replier.reply(this.parse(r,inputString,weatherUrl));
         }
         
     },
 
-    parse : function (areaCode,weatherUrl){
+    parse : function (r,areaCode,weatherUrl){
         var weatherUrl = "https://m.weather.naver.com/m/main.nhn?regionCode=" + String(weatherUrl)
+        r.replier.reply(weatherUrl)
         var weatherSoup = org.jsoup.Jsoup.connect(weatherUrl).get();
         var location = weatherSoup.select("#content > div > div > div.section_top > div.section_location > a.title._cnLnbLinktoMap > strong").text();
         var nowWeather = (String(weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set_summary")).split("<br>")[0].split('<div class="weather_set_summary">')[1].split("</div>")[0]).trim().replace(" ","").extensionRight(한글공백,5);
