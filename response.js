@@ -348,7 +348,7 @@ weather = {
             r.replier.reply("@날씨 기능 사용법")
         } else{
             var inputString = r.msg.split(" ")[1];
-            if (inputString=="쿠팡머"||inputString=="쿠팡대"||inputString=="시립머"||inputString=="시립대"||inputString=="서울시립대"){inputString=1123056000}
+            if (inputString=="쿠팡머"||inputString=="쿠팡대"||inputString=="시립머"||inputString=="시립대"||inputString=="서울시립대"){inputString=1123056000,weatherUrl="09230104"}
             else if (inputString=="전남머"||inputString=="전남대"||inputString=="용봉동"||inputString=="전머"||inputString=="용봉"){inputString=2917059000}
             else if (inputString=="일곡동"||inputString=="일곡"||inputString=="일곡지구"){inputString=2917066900}
             else if (inputString=="상무지구"||inputString=="상무"||inputString=="머창"){inputString=2914074500}
@@ -362,14 +362,28 @@ weather = {
         
     },
 
-    parse : function (areaCode){
+    parse : function (areaCode,weatherUrl){
+        var weatherUrl = "https://m.weather.naver.com/m/main.nhn?regionCode=" + weatherUrl
+        var weatherSoup = org.jsoup.Jsoup.connect(weatherUrl).get();
+        var location = weatherSoup.select("#content > div > div > div.section_top > div.section_location > a.title._cnLnbLinktoMap > strong").text();
+        var nowWeather = (String(weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set_summary")).split("<br>")[0].split('<div class="weather_set_summary">')[1].split("</div>")[0]).trim().replace(" ","").extensionRight(한글공백,5);
+        var nowTemp = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set > div.set.set_text > strong > em").text();
+        var nowTime = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > span").text()
+        var todayLowTemp = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set > div.set.set_text > div > span.day_low > em").text()
+        var todayHighTemp = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set > div.set.set_text > div > span.day_high > em").text() 
+        this.str = "";
+        this.str += "(해)" + location + "\n　→ " 
+                        + nowTime + "\n------------------------------------\n"
+                        + "날씨　　기온　습도　최저　최고" 
+                        + nowWeather + "　" + nowTemp + "　" + nowTemp + "　"+ todayLowTemp + "　"+ todayHighTemp + " ";
+
         var baseLink = "http://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=" + areaCode;
         var baseParse = org.jsoup.Jsoup.connect(baseLink).get();
         var area = String(baseParse.select("category").text());
         var time = String(baseParse.select("pubData").text()).replace(/[()]/g, '');
         var baseTodayWeather = baseParse.select('data').toArray()//.filter(v=>v.select("day").text() == "0" )
         //오늘인것들만 추출
-        var str = '시　　날씨　기온 강수 습도 풍량\n';
+        this.str += '시　　날씨　기온 강수 습도 풍량\n';
         for(var i in baseTodayWeather){
             var repeatStr = baseTodayWeather[i];
             str += String(repeatStr.select("hour").text()).extension("0",2) + "　";
