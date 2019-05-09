@@ -374,19 +374,19 @@ Character = function(name, hp, att){
     this.att = Math.floor(Math.random() * 20);
 }
 
-Character.prototype.attacked = function(damage) {
+Character.prototype.attacked = function(r,damage) {
     this.hp -= damage;
-    logMessage(this.name + '의 체력이 ' + this.hp + '가 되었습니다\n');
+    r.replier.reply(this.name + '의 체력이 ' + this.hp + '가 되었습니다\n');
     if (this.hp <= 0) {
-        logMessage(this.name + '의 패배!')
+        r.replier.reply(this.name + '의 패배!')
       isbattle = false;
       isgameover = true;
     }
 }
 
-Character.prototype.attack = function(target) {
-    logMessage(this.name + '이 ' + target.name + '을 공격합니다\n');
-    target.attacked(this.att);
+Character.prototype.attack = function(r,target) {
+    r.replier.reply(this.name + '이 ' + target.name + '을 공격합니다\n');
+    target.attacked(r,this.att);
 }  
 
 Battle = function(hero1,hero2){
