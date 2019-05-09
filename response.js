@@ -107,8 +107,8 @@ function 고딩방(r) {
         광주버스정류장받아오기(r);
     } else if(r.msg.indexOf("#날씨")!=-1){
         weather.func(r);
-    } else if(r.msg.indexOf("#Battle")!=-1){
-        r.msg = r.msg.slice(8,r.msg.length+1);
+    } else if(r.msg.indexOf("#대전")!=-1){
+        r.msg = r.msg.slice(4,r.msg.length+1);
         hero1 = r.msg.split(",")[0];
         hero2 = r.msg.split(",")[1];
         Battle(r,hero1,hero2);
