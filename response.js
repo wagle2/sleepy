@@ -377,8 +377,8 @@ Battle = {
         this.att = Math.floor(Math.random() * 20);
     },
     start : function(r,hero1,hero2){
-        hero1 = new Character(hero1);
-        hero2 = new Character(hero2);
+        hero1 = new this.Character(hero1);
+        hero2 = new this.Character(hero2);
         while (!isGameover) {
             r.replier.reply("[Battle] " + hero1 + " VS " + hero2);
            isbattle = true;   while(isBattle) {
