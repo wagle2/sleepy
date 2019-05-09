@@ -363,15 +363,33 @@ Object.defineProperty(String.prototype,"encoding",{
     }
  });
 
-logMessage = function(msg) {
-    str += msg
-    str += "\n"
-    return str
-}
-Character = function(name, hp, att){
-    this.name = name;
-    this.hp = Math.floor(Math.random() * 150);
-    this.att = Math.floor(Math.random() * 20);
+
+
+
+
+
+Battle = {
+    isGameover : false,
+    isBattle : false,
+
+    start : function(r,hero1,hero2){
+        hero1 = new Character(hero1);
+        hero2 = new Character(hero2);
+        while (!isGameover) {
+            r.replier.reply("[Battle] " + hero1 + " VS " + hero2);
+           isbattle = true;   while(isBattle) {
+                hero1.attack(r,hero2);
+                if (hero2.hp > 0) {
+                    hero2.attack(r,hero1);
+                }
+              }
+        } 
+    },
+    Character : function(name, hp, att){
+        this.name = name;
+        this.hp = Math.floor(Math.random() * 150);
+        this.att = Math.floor(Math.random() * 20);
+    }
 }
 
 Character.prototype.attacked = function(r,damage) {
@@ -388,23 +406,6 @@ Character.prototype.attack = function(r,target) {
     r.replier.reply(this.name + '이 ' + target.name + '을 공격합니다\n');
     target.attacked(r,this.att);
 }  
-
-Battle = function(hero1,hero2){
-    isGameover = false;
-    isbattle = false;
-    str = "";
-    hero1 = new Character(hero1);
-    hero2 = new Character(hero2);
-    while (!isGameover) {
-        logMessage("[Battle] " + hero1 + " VS " + hero2);
-       isbattle = true;   while(isbattle) {
-            hero1.attack(hero2);
-            if (hero2.hp > 0) {
-                hero2.attack(hero1);
-            }
-          }
-    } 
-}
 
 //이 아래 6가지 메소드는 스크립트 액티비티에서 사용하는 메소드들
 function onCreate(savedInstanceState, activity) {}
