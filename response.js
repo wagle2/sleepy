@@ -363,27 +363,28 @@ Object.defineProperty(String.prototype,"encoding",{
     }
  });
 
-Battle = {
-    gameover = false,
-    battle = false,
 
-    Character : function(name, hp, att){
-        this.name = name;
-        this.hp = Math.floor(Math.random() * 150);
-        this.att = Math.floor(Math.random() * 20);
-    },
+Character = function(name, hp, att){
+    this.name = name;
+    this.hp = Math.floor(Math.random() * 150);
+    this.att = Math.floor(Math.random() * 20);
+}
     
-    Start : function(r){
-        this.gameover = false;
-        this.battle = false;
-        var str = "";
-        hero1 = new Hero(hero1);
-        hero2 = new Hero(hero2);
-        while (!gameover) {
-            r.replier.reply("[Battle] " + hero1 + " VS " + hero2);
-
-        }   
-    }
+Battle = function(hero1,hero2){
+    var isGameover = false;
+    var isbattle = false;
+    var str = "";
+    hero1 = new Character(hero1);
+    hero2 = new Character(hero2);
+    while (!isGameover) {
+        r.replier.reply("[Battle] " + hero1 + " VS " + hero2);
+       isbattle = true;   while(isbattle) {
+            hero1.attack(hero1);
+            if (hero2.hp > 0) {
+                hero2.attack(hero1);
+            }
+          }
+    }   
 }
 
 //이 아래 6가지 메소드는 스크립트 액티비티에서 사용하는 메소드들
