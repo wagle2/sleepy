@@ -379,9 +379,9 @@ Battle = {
     start : function(r,hero1,hero2){
         hero1 = new this.Character(hero1);
         hero2 = new this.Character(hero2);
-        while (!isGameover) {
+        while (!this.isGameover) {
             r.replier.reply("[Battle] " + hero1 + " VS " + hero2);
-           isbattle = true;   while(isBattle) {
+           isbattle = true;   while(this.isBattle) {
                 hero1.attack(r,hero2);
                 if (hero2.hp > 0) {
                     hero2.attack(r,hero1);
@@ -396,8 +396,8 @@ Battle.Character.prototype.attacked = function(r,damage) {
     r.replier.reply(this.name + '의 체력이 ' + this.hp + '가 되었습니다\n');
     if (this.hp <= 0) {
         r.replier.reply(this.name + '의 패배!')
-      isBattle = false;
-      isGameover = true;
+      this.isBattle = false;
+      this.isGameover = true;
     }
 }
 
