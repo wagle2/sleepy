@@ -105,8 +105,13 @@ function 고딩방(r) {
         광주버스(r);
     } else if(r.msg.indexOf("!정류장다운로드")!=-1){
         광주버스정류장받아오기(r);
-    } else if(r.msg.indexOf("@날씨")!=-1){
+    } else if(r.msg.indexOf("#날씨")!=-1){
         weather.func(r);
+    } else if(r.msg.indexOf("#Battle")!=-1){
+        r.msg = r.msg.slice(0,r.msg.length+1);
+        hero1 = r.msg.split(",")[0];
+        hero2 = r.msg.split(",")[1];
+        Battle(r,hero1,hero2);
     }
 }
 
@@ -367,22 +372,20 @@ Object.defineProperty(String.prototype,"encoding",{
 
 
 
-
-isGameover = false;
-isBattle = false;
-
 Character = function(name, hp, att){
     this.name = name;
     this.hp = Math.floor(Math.random() * 150);
     this.att = Math.floor(Math.random() * 20);
-};
+}
     
 Battle = function(r,hero1,hero2){
-
+    isGameover = false;
+    isBattle = false;
     hero1 = new this.Character(hero1);
     hero2 = new this.Character(hero2);
+    str = ""
     while (!isGameover) {
-        r.replier.reply("[Battle] " + hero1.name + " VS " + hero2.name);
+        str += ("[Battle] " + hero1.name + " VS " + hero2.name+ "\n");
         isBattle = true;   while(isBattle) {
             hero1.attack(r,hero2);
             if (hero2.hp > 0) {
@@ -390,20 +393,22 @@ Battle = function(r,hero1,hero2){
             }
             }
     } 
+    r.replier.reply(str)
+    return "";
 }
 
 Character.prototype.attacked = function(r,damage) {
     this.hp -= damage;
-    r.replier.reply(this.name + '의 체력이 ' + this.hp + '가 되었습니다\n');
+    str += (this.name + '의 체력이 ' + this.hp + '가 되었습니다\n');
     if (this.hp <= 0) {
-        r.replier.reply(this.name + '의 패배!')
+        str += (this.name + '의 패배!')
       isBattle = false;
       isGameover = true;
     }
 }
 
 Character.prototype.attack = function(r,target) {
-    r.replier.reply(this.name + '이 ' + target.name + '을 공격합니다\n');
+    str += (this.name + '의 공격!\n');
     target.attacked(r,this.att);
 }  
 
