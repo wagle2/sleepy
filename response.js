@@ -383,7 +383,7 @@ Battle = function(r,hero1,hero2){
     hero2 = new this.Character(hero2);
     while (!isGameover) {
         r.replier.reply("[Battle] " + hero1.name + " VS " + hero2.name);
-        isbattle = true;   while(isBattle) {
+        isBattle = true;   while(isBattle) {
             hero1.attack(r,hero2);
             if (hero2.hp > 0) {
                 hero2.attack(r,hero1);
