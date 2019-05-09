@@ -363,6 +363,28 @@ Object.defineProperty(String.prototype,"encoding",{
     }
  });
 
+Battle = {
+    gameover = false,
+    battle = false,
+
+    Character : function(name, hp, att){
+        this.name = name;
+        this.hp = Math.floor(Math.random() * 150);
+        this.att = Math.floor(Math.random() * 20);
+    },
+    
+    Start : function(r){
+        this.gameover = false;
+        this.battle = false;
+        var str = "";
+        hero1 = new Hero(hero1);
+        hero2 = new Hero(hero2);
+        while (!gameover) {
+            r.replier.reply("[Battle] " + hero1 + " VS " + hero2);
+
+        }   
+    }
+}
 
 //이 아래 6가지 메소드는 스크립트 액티비티에서 사용하는 메소드들
 function onCreate(savedInstanceState, activity) {}
