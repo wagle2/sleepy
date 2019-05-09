@@ -368,40 +368,41 @@ Object.defineProperty(String.prototype,"encoding",{
 
 
 
-Battle = {
-    isGameover : false,
-    isBattle : false,
-    Character : function(name, hp, att){
-        this.name = name;
-        this.hp = Math.floor(Math.random() * 150);
-        this.att = Math.floor(Math.random() * 20);
-    },
-    start : function(r,hero1,hero2){
-        hero1 = new this.Character(hero1);
-        hero2 = new this.Character(hero2);
-        while (!this.isGameover) {
-            r.replier.reply("[Battle] " + hero1 + " VS " + hero2);
-           isbattle = true;   while(this.isBattle) {
-                hero1.attack(r,hero2);
-                if (hero2.hp > 0) {
-                    hero2.attack(r,hero1);
-                }
-              }
-        } 
-    }
+isGameover = false;
+isBattle = false;
+
+Character = function(name, hp, att){
+    this.name = name;
+    this.hp = Math.floor(Math.random() * 150);
+    this.att = Math.floor(Math.random() * 20);
+};
+    
+Battle = function(r,hero1,hero2){
+
+    hero1 = new this.Character(hero1);
+    hero2 = new this.Character(hero2);
+    while (!isGameover) {
+        r.replier.reply("[Battle] " + hero1 + " VS " + hero2);
+        isbattle = true;   while(isBattle) {
+            hero1.attack(r,hero2);
+            if (hero2.hp > 0) {
+                hero2.attack(r,hero1);
+            }
+            }
+    } 
 }
 
-Battle.Character.prototype.attacked = function(r,damage) {
+Character.prototype.attacked = function(r,damage) {
     this.hp -= damage;
     r.replier.reply(this.name + '의 체력이 ' + this.hp + '가 되었습니다\n');
     if (this.hp <= 0) {
         r.replier.reply(this.name + '의 패배!')
-      this.isBattle = false;
-      this.isGameover = true;
+      isBattle = false;
+      isGameover = true;
     }
 }
 
-Battle.Character.prototype.attack = function(r,target) {
+Character.prototype.attack = function(r,target) {
     r.replier.reply(this.name + '이 ' + target.name + '을 공격합니다\n');
     target.attacked(r,this.att);
 }  
