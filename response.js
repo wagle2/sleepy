@@ -397,8 +397,8 @@ Character.prototype.attacked = function(r,damage) {
     r.replier.reply(this.name + '의 체력이 ' + this.hp + '가 되었습니다\n');
     if (this.hp <= 0) {
         r.replier.reply(this.name + '의 패배!')
-      isbattle = false;
-      isgameover = true;
+      isBattle = false;
+      isGameover = true;
     }
 }
 
