@@ -398,7 +398,7 @@ Battle = function(hero1,hero2){
     while (!isGameover) {
         logMessage("[Battle] " + hero1 + " VS " + hero2);
        isbattle = true;   while(isbattle) {
-            hero1.attack(hero1);
+            hero1.attack(hero2);
             if (hero2.hp > 0) {
                 hero2.attack(hero1);
             }
