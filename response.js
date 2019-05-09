@@ -371,7 +371,11 @@ Object.defineProperty(String.prototype,"encoding",{
 Battle = {
     isGameover : false,
     isBattle : false,
-
+    Character : function(name, hp, att){
+        this.name = name;
+        this.hp = Math.floor(Math.random() * 150);
+        this.att = Math.floor(Math.random() * 20);
+    },
     start : function(r,hero1,hero2){
         hero1 = new Character(hero1);
         hero2 = new Character(hero2);
@@ -384,11 +388,6 @@ Battle = {
                 }
               }
         } 
-    },
-    Character : function(name, hp, att){
-        this.name = name;
-        this.hp = Math.floor(Math.random() * 150);
-        this.att = Math.floor(Math.random() * 20);
     }
 }
 
