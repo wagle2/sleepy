@@ -392,7 +392,7 @@ Battle = {
     }
 }
 
-Character.prototype.attacked = function(r,damage) {
+Battle.Character.prototype.attacked = function(r,damage) {
     this.hp -= damage;
     r.replier.reply(this.name + '의 체력이 ' + this.hp + '가 되었습니다\n');
     if (this.hp <= 0) {
@@ -402,7 +402,7 @@ Character.prototype.attacked = function(r,damage) {
     }
 }
 
-Character.prototype.attack = function(r,target) {
+Battle.Character.prototype.attack = function(r,target) {
     r.replier.reply(this.name + '이 ' + target.name + '을 공격합니다\n');
     target.attacked(r,this.att);
 }  
