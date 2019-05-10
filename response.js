@@ -415,7 +415,7 @@ Battle = {
                 }
                 }
         } 
-        r.replier.reply(str)
+        r.replier.reply(this.str)
         return "";
     }
 }
