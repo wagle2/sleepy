@@ -485,7 +485,7 @@ item.prototype.stayed = function(r){
 
 item.prototype.destroyed = function(r,Object){
     r.replier.reply("강화가 실패하여 [+"+ this.lev + "]" +this.name + " 아이템이 파괴됩니다.");
-    Object = null;
+    this.lev = 0;
     return "";
 }
 
