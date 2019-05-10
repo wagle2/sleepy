@@ -376,6 +376,7 @@ Battle = {
         this.name = name;
         this.hp = Math.floor(Math.random() * 150);
         this.att = Math.floor(Math.random() * 20);
+        this.maxHp = this.hp
     },
         
     gameStart : function(r,hero1,hero2){
@@ -387,9 +388,11 @@ Battle = {
         while (!isGameover) {
             str += ("[Battle] " + hero1.name + " VS " + hero2.name+ 투명공백.repeat(500) + "\n");
             isBattle = true;   while(isBattle) {
-                hero1.attack(r,hero2);
+                hero1.attack(hero2);
+                hero1.heal(10);
                 if (hero2.hp > 0) {
-                    hero2.attack(r,hero1);
+                    hero2.attack(hero1);
+                    hero2.heal(10)
                 }
                 }
         } 
@@ -398,7 +401,7 @@ Battle = {
     }
 }
 
-Battle.Character.prototype.attacked = function(r,damage) {
+Battle.Character.prototype.attacked = function(damage) {
     this.hp -= damage;
     str += (this.name + '의 체력이 ' + this.hp + '가 되었습니다\n');
     if (this.hp <= 0) {
@@ -408,9 +411,17 @@ Battle.Character.prototype.attacked = function(r,damage) {
     }
 }
 
-Battle.Character.prototype.attack = function(r,target) {
+Battle.Character.prototype.attack = function(target) {
     str += (this.name + '의 공격!\n');
-    target.attacked(r,this.att);
+    target.attacked(this.att);
+}  
+
+Battle.Character.prototype.heal = function(percent) {
+    if (Math.random() * 100 <= percent){
+        str += (this.name + '의 힐링!\n');
+        this.hp = this.maxHp;
+    }
+    
 }  
 
 //이 아래 6가지 메소드는 스크립트 액티비티에서 사용하는 메소드들
