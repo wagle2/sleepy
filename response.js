@@ -506,7 +506,7 @@ reinforceGame = function(r){
         //items 배열을 모두 돌아가면서 체크한다.
         for(i in items){
             //같은 sender와 같은 아이템 이름인 경우에
-            if(items[i].senderCode == senderCode && items[i].name == itemName){
+            if(items[i].name == itemName){
                 items[i].reinforced(r);
             } 
             // Case2 : 아이템이 없을 때
