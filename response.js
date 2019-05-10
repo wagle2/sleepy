@@ -502,7 +502,7 @@ reinforceGame = function(r){
         r.replier.reply("아이템을 생성합니다.");
         r.replier.reply(items.length);
         a= new item(r,itemName,senderCode)
-        items = items.push(a);
+        this.items.push(a);
     // items에 뭔가가 있을 때
     } else {
         //items 배열을 모두 돌아가면서 체크한다.
