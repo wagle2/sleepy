@@ -111,7 +111,7 @@ function 고딩방(r) {
         r.msg = r.msg.slice(4,r.msg.length+1);
         hero1 = r.msg.split(",")[0];
         hero2 = r.msg.split(",")[1];
-        Battle2.gameStart(r,hero1,hero2);
+        Battle.gameStart(r,hero1,hero2);
     }
 }
 
