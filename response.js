@@ -494,7 +494,7 @@ item = function(r,name,senderCode,lev){
     this.name = name;
     this.lev = lev || 0;
     this.senderCode = senderCode || 0;
-    r.replier.reply(r.sender + " 님의 " + this.name + " 이(가) 생성되었습니다.");
+    r.replier.reply(r.sender + " 님의 " + (this.name).이가() + "생성되었습니다.");
     return "";
 }
 
@@ -583,8 +583,20 @@ Object.defineProperty(Date.prototype,"toDateString",{
        return String(this.getHours()).extension("0",2)+sep+String(this.getMinutes()).extension("0",2)+sep+String(this.getSeconds()).extension("0",2);
     }
  });
-
-
+ Object.defineProperty(String.prototype,"받침",{
+    value:function(){
+       var lastCharCode=this.toString().charCodeAt(this.toString().length-1);
+       if(lastCharCode>="가".charCodeAt(0) && lastCharCode<="힣".charCodeAt(0)){
+          if((lastCharCode-"가".charCodeAt(0))%28==0) return false;
+          else return true;
+       }else return false;
+    }
+ });
+ Object.defineProperty(String.prototype,"이가",{
+    value:function(){
+       return this.toString().받침() ? this.toString()+"이" : this.toString()+"가"; 
+    }
+ });
 //이 아래 6가지 메소드는 스크립트 액티비티에서 사용하는 메소드들
 function onCreate(savedInstanceState, activity) {}
 function onStart(activity) {}
