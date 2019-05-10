@@ -489,37 +489,7 @@ item.prototype.destroyed = function(r,Object){
     return "";
 }
 items = [];
-reinforceGame = function(r){
-    //입력이 #강화 A
-    //생성되는건 item(A,hashcode(sender)) 해서 items에 들어감
-    //items는 배열, itemName과 Sender를 구분하기 위해서 만들었음.
-    var itemName = r.msg.slice(4,r.msg.length+1);
-    var sender = new java.lang.String(r.sender);
-    var senderCode = sender.hashCode();
-    
-    // items에 아무것도 없을 때
-    if(items.length === 0){
-        r.replier.reply("아이템을 생성합니다.1");
-        r.replier.reply(items.length);
-        items.push(new item(r,itemName,senderCode));
-        return;
-    // items에 뭔가가 있을 때
-    } else {
-        //items 배열을 모두 돌아가면서 체크한다.
-        for(i in items){
-            r.replier.reply(senderCode+" "+itemName);
-            //같은 sender와 같은 아이템 이름인 경우에
-            if(items[i].senderCode == senderCode && items[i].name == itemName){
-                items[i].reinforced(r);
-            } 
-            // Case2 : 아이템이 없을 때
-            else {
-                r.replier.reply("아이템을 생성합니다.");
-                items.push(new item(r,itemName,senderCode));
-            }
-        }
-    }
-}
+
 
 
 // Date.prototype
