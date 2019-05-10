@@ -497,20 +497,28 @@ reinforceGame = function(r){
     var sender = new java.lang.String(r.sender);
     var senderCode = sender.hashCode();
     var items = [];
+    // items에 아무것도 없을 때
+    if(items.length === 0){
+        r.replier.reply("아이템을 생성합니다.");
+        r.replier.reply(items.length);
+        a= new item(r,itemName,senderCode)
+        items = items.push(a);
+    // items에 뭔가가 있을 때
+    } else {
         //items 배열을 모두 돌아가면서 체크한다.
-        for(i in this.items){
-            r.repier.reply(i);
+        for(i in items){
             //같은 sender와 같은 아이템 이름인 경우에
-            if(this.items[i].senderCode === this.senderCode && items[i].name === this.itemName){
-                this.items[i].reinforced(r);
+            if(items[i].senderCode === senderCode && items[i].name === itemName){
+                items[i].reinforced(r);
             } 
             // Case2 : 아이템이 없을 때
-            else {
+            else if (items[i].senderCode !== senderCode && items[i].name !== itemName){
                 r.replier.reply("아이템을 생성합니다.1");
-                this.items.push(new item(r,itemName,senderCode));
+                items.push(new item(r,itemName,senderCode));
             }
         }
     }
+}
 
 
 // Date.prototype
