@@ -454,7 +454,69 @@ Battle.Character.prototype.heal = function(percent) {
         this.hp = this.maxHp;
     }
     
-}  
+}
+
+item = function(r,name,senderCode,lev){
+    this.name = name;
+    this.lev = lev || 0;
+    this.senderCode = senderCode || 0;
+    r.replier.reply(r.sender + " 님의 " + this.name + " 이(가) 생성되었습니다.");
+    return "";
+}
+
+item.prototype.reinforced = function(r){
+    this.lev++;
+    r.replier.reply("★강화성공★\n [+"+ this.lev + "]" +this.name);    
+    return "";
+}
+
+item.prototype.slipped = function(r,Object){
+    this.lev--;
+    r.replier.reply("▼강화실패▼ [+"+ this.lev + "]" +this.name); 
+    return "";
+}
+
+item.prototype.stayed = function(r){
+    r.replier.reply("▼강화실패▼\n [+"+ this.lev + "]" +this.name); 
+    return "";
+}
+
+item.prototype.destroyed = function(r,Object){
+    r.replier.reply("강화가 실패하여 [+"+ this.lev + "]" +this.name + " 아이템이 파괴됩니다.");
+    Object = null;
+    return "";
+}
+
+reinforceGame = function(r){
+    //입력이 #강화 A
+    //생성되는건 item(A,hashcode(sender)) 해서 items에 들어감
+    //items는 배열, itemName과 Sender를 구분하기 위해서 만들었음.
+    itemName = r.msg.slice(4,r.msg.length+1);
+    sender = new java.lang.String(r.sender);
+    senderCode = sender.hashCode();
+    items = [];
+    // items에 아무것도 없을 때
+    if(items.length == 0){
+        r.replier.reply("아이템을 생성합니다.");
+        items.push(new item(itemName,senderCode));
+    // items에 뭔가가 있을 때
+    } else {
+        //items 배열을 모두 돌아가면서 체크한다.
+        for(i in items){
+            //같은 sender와 같은 아이템 이름인 경우에
+            if(items[i].senderCode == senderCode && items[i].name == itemName){
+                items[i].reinforced(r);
+            } 
+            // Case2 : 아이템이 없을 때
+            else if (items[i].senderCode != senderCode && items[i].name != itemName){
+                r.replier.reply("아이템을 생성합니다.");
+                items.push(new item(itemName,senderCode));
+            }
+        }
+    }
+}
+
+
 // Date.prototype
 Object.defineProperty(Date.prototype,"toDateString",{
     value:function(sep){
