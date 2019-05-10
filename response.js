@@ -373,13 +373,13 @@ Battle = {
     isGameover : false,
     isBattle : false,
     Character : function(name, hp, att, luk){
-        this.name = name;
-        this.hp = Math.floor(Math.random() * 50) + 100;
-        this.att = Math.floor(Math.random() * 10) + 10;
-        this.luk = Math.floor(Math.random() * 30) + 10;
+        this.name = new java.lang.String(name);
+        this.rand = Math.pow(this.name.hashCode(),8);
+        this.hp = Number((this.rand).toString().slice(3,6));
+        this.att = Number((this.rand).toString().slice(6,8));
+        this.luk = Number((this.rand).toString().slice(5,7));
         this.maxHp = this.hp
     },
-        
     gameStart : function(r,hero1,hero2){
         isGameover = false;
         isBattle = false;
@@ -400,6 +400,13 @@ Battle = {
         r.replier.reply(str)
         return "";
     }
+}
+
+Battle.Character.prototype.stat = function(r) {
+    r.replier.reply("[Stat] "+ this.name + "\n"
+                    + "체력   : " + this.maxHp + "\n"
+                    + "공격력 : " + this.att + "\n"
+                    + "회피율 : " + this.luk + "\n")
 }
 
 Battle.Character.prototype.attacked = function(damage) {
