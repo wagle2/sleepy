@@ -515,9 +515,9 @@ reinforceGame = function(r){
         return;
     // items에 뭔가가 있을 때
     } else {
-        if(isItem == true){
+        if(isItem(itemName,senderCode) == true){
             items[i].reinforced(r);
-        } else if(isItem == false){
+        } else if(isItem(itemName,senderCode) == false){
             r.replier.reply("아이템을 생성합니다.");
             //r.replier.reply(items.length);
             items.push(new item(r,itemName,senderCode));
