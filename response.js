@@ -516,7 +516,17 @@ reinforceGame = function(r){
     // items에 뭔가가 있을 때
     } else {
         if(isItem(itemName,senderCode) == true){
-            items[i].reinforced(r);
+            prop = Math.random()*100;
+            if(prop <= 49){
+                items[i].reinforced(r);
+            } else if(prop <= 2){
+                items[i].slipped(r);
+            } else if(prop > 49){
+                items[i].destroyed(r);
+            } else {
+                r.replier.reply("아무런 변화도 일어나지 않았습니다.")
+            }
+            
         } else if(isItem(itemName,senderCode) == false){
             r.replier.reply("아이템을 생성합니다.");
             //r.replier.reply(items.length);
