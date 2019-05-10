@@ -499,7 +499,7 @@ reinforceGame = function(r){
     
     // items에 아무것도 없을 때
     if(items.length === 0){
-        r.replier.reply("아이템을 생성합니다.");
+        r.replier.reply("아이템을 생성합니다.1");
         r.replier.reply(items.length);
         items.push(new item(r,itemName,senderCode));
         return;
