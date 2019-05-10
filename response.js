@@ -123,7 +123,7 @@ function 고딩방(r) {
     }
 }
 
-function percent(r){
+percent = function(r){
     r.replier.reply(r.msg.split("확률")[0] + "은" + floor(Math.random()*100) + "입니다.");
 }
 
