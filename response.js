@@ -386,8 +386,8 @@ Battle = {
     Character : function(name, hp, att, luk){
         this.name = new java.lang.String(name);
         this.rand = Math.pow(this.name.hashCode(),8);
-        this.hp = Number((this.rand).toString().slice(3,6));
-        this.att = Number((this.rand).toString().slice(6,8));
+        this.hp = Number((this.rand).toString().slice(3,6))+1
+        this.att = Number((this.rand).toString().slice(6,8))+1;
         this.luk = Number((this.rand).toString().slice(8,10));
         this.maxHp = this.hp
     },
