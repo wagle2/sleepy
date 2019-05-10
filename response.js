@@ -117,7 +117,7 @@ function 고딩방(r) {
         hero = new Battle.Character(r.msg);
         hero.stat(r);
     } else if(r.msg.indexOf("#강화")!=-1){
-        reinforceGame(r.msg);
+        reinforceGame(r);
     }
 }
 
