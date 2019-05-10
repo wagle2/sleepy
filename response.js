@@ -33,7 +33,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
                     reload(r);
                     return;
                 }else if (msg.indexOf("*") == 0) {
-                    replier.reply(eval(msg.substring(1)));
+                    replier.reply(String(eval(msg.substring(1))).encoding());
                     return;	
                 }
             } 
