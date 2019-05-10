@@ -488,7 +488,7 @@ item.prototype.destroyed = function(r,Object){
     Object = null;
     return "";
 }
-
+items = [];
 reinforceGame = function(r){
     //입력이 #강화 A
     //생성되는건 item(A,hashcode(sender)) 해서 items에 들어감
@@ -496,13 +496,12 @@ reinforceGame = function(r){
     var itemName = r.msg.slice(4,r.msg.length+1);
     var sender = new java.lang.String(r.sender);
     var senderCode = sender.hashCode();
-    var items = [];
+    
     // items에 아무것도 없을 때
     if(items.length === 0){
         r.replier.reply("아이템을 생성합니다.");
         r.replier.reply(items.length);
-        a= new item(r,itemName,senderCode)
-        items.push(1);
+        items.push(new item(r,itemName,senderCode));
     // items에 뭔가가 있을 때
     } else {
         //items 배열을 모두 돌아가면서 체크한다.
