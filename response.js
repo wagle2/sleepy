@@ -112,6 +112,10 @@ function 고딩방(r) {
         hero1 = r.msg.split(",")[0];
         hero2 = r.msg.split(",")[1];
         Battle.gameStart(r,hero1,hero2);
+    } else if(r.msg.indexOf("#전투력")!=-1){
+        r.msg = r.msg.slice(5,r.msg.length+1);
+        hero = new Battle.Character(r.msg);
+        hero.stat(r);
     }
 }
 
