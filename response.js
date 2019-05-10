@@ -496,7 +496,7 @@ reinforceGame = function(r){
     var itemName = r.msg.slice(4,r.msg.length+1);
     var sender = new java.lang.String(r.sender);
     var senderCode = sender.hashCode();
-    var notFound = False;
+    var notFound = false;
 
     // items에 아무것도 없을 때
     if(items.length === 0){
@@ -513,11 +513,11 @@ reinforceGame = function(r){
             if(items[i].senderCode == senderCode && items[i].name == itemName){
                 items[i].reinforced(r);
             } else{
-                notFound = True;
+                notFound = true;
             }
         }  
     }
-    if (notFound==True){
+    if (notFound==true){
         r.replier.reply("아이템을 생성합니다.");
         r.replier.reply(items.length);
         items.push(new item(r,itemName,senderCode));
