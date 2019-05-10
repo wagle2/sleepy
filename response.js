@@ -488,7 +488,17 @@ item.prototype.destroyed = function(r,Object){
     Object = null;
     return "";
 }
+
 items = [];
+isItem = function(itemName, senderCode){
+    for(i in items){
+        if(items[i].senderCode == senderCode && items[i].name == itemName){
+            return true;
+        }
+    }
+    return false;
+}
+
 reinforceGame = function(r){
     //입력이 #강화 A
     //생성되는건 item(A,hashcode(sender)) 해서 items에 들어감
@@ -496,7 +506,6 @@ reinforceGame = function(r){
     var itemName = r.msg.slice(4,r.msg.length+1);
     var sender = new java.lang.String(r.sender);
     var senderCode = sender.hashCode();
-    var notFound = false;
 
     // items에 아무것도 없을 때
     if(items.length === 0){
@@ -506,25 +515,14 @@ reinforceGame = function(r){
         return;
     // items에 뭔가가 있을 때
     } else {
-        //items 배열을 모두 돌아가면서 체크한다.
-        for(i in items){
-            //r.replier.reply(senderCode+" "+itemName);
-            //같은 sender와 같은 아이템 이름인 경우에
-            if(items[i].senderCode == senderCode && items[i].name == itemName){
-                items[i].reinforced(r);
-                return;
-            } else{
-                notFound = true;
-                return;
-            }
-        }  
-    }
-    if (notFound==true){
-        r.replier.reply("아이템을 생성합니다.");
-        r.replier.reply(items.length);
-        items.push(new item(r,itemName,senderCode));
-        notFound==false;
-        return;
+        if(isItem == true){
+            items[i].reinforced(r);
+        } else if(isItem == false){
+            r.replier.reply("아이템을 생성합니다.");
+            //r.replier.reply(items.length);
+            items.push(new item(r,itemName,senderCode));
+            return;
+        }
     }
 
 }
