@@ -511,7 +511,7 @@ reinforceGame = function(r){
                 items[i].reinforced(r);
             } 
             // Case2 : 아이템이 없을 때
-            else if (items[i].senderCode !== senderCode && items[i].name !== itemName){
+            else {
                 r.replier.reply("아이템을 생성합니다.1");
                 items.push(new item(r,itemName,senderCode));
             }
