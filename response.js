@@ -372,10 +372,11 @@ Object.defineProperty(String.prototype,"encoding",{
 Battle = {
     isGameover : false,
     isBattle : false,
-    Character : function(name, hp, att){
+    Character : function(name, hp, att, luk){
         this.name = name;
-        this.hp = Math.floor(Math.random() * 150);
-        this.att = Math.floor(Math.random() * 20);
+        this.hp = Math.floor(Math.random() * 50) + 100;
+        this.att = Math.floor(Math.random() * 10) + 10;
+        this.luk = Math.floor(Math.random() * 30) + 10;
         this.maxHp = this.hp
     },
         
@@ -413,7 +414,11 @@ Battle.Character.prototype.attacked = function(damage) {
 
 Battle.Character.prototype.attack = function(target) {
     str += (this.name + '의 공격!\n');
-    target.attacked(this.att);
+    if (Math.random() * 100 >= target.luk){
+        target.attacked(this.att);
+    } else{
+        str += (target.name + '의 회피!\n');
+    }
 }  
 
 Battle.Character.prototype.heal = function(percent) {
