@@ -498,16 +498,16 @@ reinforceGame = function(r){
     var senderCode = sender.hashCode();
     var items = [];
         //items 배열을 모두 돌아가면서 체크한다.
-        for(i in items){
+        for(i in this.items){
             r.repier.reply(i);
             //같은 sender와 같은 아이템 이름인 경우에
-            if(items[i].senderCode === senderCode && items[i].name === itemName){
-                items[i].reinforced(r);
+            if(this.items[i].senderCode === this.senderCode && items[i].name === this.itemName){
+                this.items[i].reinforced(r);
             } 
             // Case2 : 아이템이 없을 때
-            else if (items[i].senderCode !== senderCode && items[i].name !== itemName){
+            else if (items[i].senderCode !== this.senderCode && items[i].name !== this.itemName){
                 r.replier.reply("아이템을 생성합니다.1");
-                items.push(new item(r,itemName,senderCode));
+                this.items.push(new item(r,itemName,senderCode));
             }
         }
     }
