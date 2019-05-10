@@ -439,6 +439,20 @@ Battle.Character.prototype.heal = function(percent) {
     }
     
 }  
+// Date.prototype
+Object.defineProperty(Date.prototype,"toDateString",{
+    value:function(sep){
+       sep = (sep==undefined) ? '-' : sep;
+       return String(this.getFullYear()).extension("0",4)+sep+String(this.getMonth()+1).extension("0",2)+sep+String(this.getDate()).extension("0",2);
+    }
+ });
+ Object.defineProperty(Date.prototype,"toTimeString",{
+    value:function(sep){
+    sep = (sep==undefined) ? ':' : sep;
+       return String(this.getHours()).extension("0",2)+sep+String(this.getMinutes()).extension("0",2)+sep+String(this.getSeconds()).extension("0",2);
+    }
+ });
+
 
 //이 아래 6가지 메소드는 스크립트 액티비티에서 사용하는 메소드들
 function onCreate(savedInstanceState, activity) {}
