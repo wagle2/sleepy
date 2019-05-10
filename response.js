@@ -46,9 +46,12 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             r.replier.reply("어흐으응");
         }
 
-        if (room == '고딩' || room == '정인' || room == '시립대 봇제작방' || room == '카톡봇 개발'|| room == '시립대 단톡방' || room == '만드는거') {
+        if (room == '고딩' || room == '정인' || room == '시립대 봇제작방' || room == '카톡봇 개발'|| room == '만드는거') {
             고딩방(r);
+        }else if (room == '시립대 단톡방') {
+            다른방(r);
         }
+
 
 }
 cmd = function (ss) {
@@ -87,6 +90,29 @@ Flag=(function(){
     }
     return Flag;
  })();
+
+
+ function 다른방(r) {
+    if(r.msg.indexOf("#버스")!=-1){
+        광주버스(r);
+    } else if(r.msg.indexOf("!정류장다운로드")!=-1){
+        광주버스정류장받아오기(r);
+    } else if(r.msg.indexOf("#날씨")!=-1){
+        weather.func(r);
+    } else if(r.msg.indexOf("#대전")!=-1){
+        r.msg = r.msg.slice(4,r.msg.length+1);
+        hero1 = r.msg.split(",")[0];
+        hero2 = r.msg.split(",")[1];
+        Battle.gameStart(r,hero1,hero2);
+    } else if(r.msg.indexOf("#전투력")!=-1){
+        r.msg = r.msg.slice(5,r.msg.length+1);
+        hero = new Battle.Character(r.msg);
+        hero.stat(r);
+    } else if(r.msg.indexOf("#강화")!=-1){
+        reinforceGame(r);
+    }
+}
+
 
 function 고딩방(r) {
     if(r.msg == "송재형"){
