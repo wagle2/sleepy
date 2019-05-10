@@ -385,7 +385,7 @@ Battle = {
         hero2 = new this.Character(hero2);
         str = ""
         while (!isGameover) {
-            str += ("[Battle] " + hero1.name + " VS " + hero2.name+ "\n");
+            str += ("[Battle] " + hero1.name + " VS " + hero2.name+ 투명공백.repeat(500) + "\n");
             isBattle = true;   while(isBattle) {
                 hero1.attack(r,hero2);
                 if (hero2.hp > 0) {
