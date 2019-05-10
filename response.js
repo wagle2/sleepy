@@ -372,7 +372,14 @@ Object.defineProperty(String.prototype,"encoding",{
     }
  });
 
+/* [추가사항]
+ *  1. 공격할때 특수문자.
+ *  2. 
 
+
+
+
+ */
 Battle = {
     isGameover : false,
     isBattle : false,
@@ -385,12 +392,19 @@ Battle = {
         this.maxHp = this.hp
     },
     gameStart : function(r,hero1,hero2){
-        isGameover = false;
-        isBattle = false;
-        hero1 = new this.Character(hero1);
-        hero2 = new this.Character(hero2);
-        str = ""
+        this.isGameover = false;
+        this.isBattle = false;
+        this.hero1 = new this.Character(hero1);
+        this.hero2 = new this.Character(hero2);
+        this.str = ""
+        this.turn = 0
         while (!isGameover) {
+            turn += 1;
+            if(turn >= 100){
+                r.replier.reply("두 자강두천의 대결이 무승부로 끝났습니다.");
+                isBattle=false;
+                isGameover=True;
+            }
             str += ("[Battle] " + hero1.name + " VS " + hero2.name+ 투명공백.repeat(500) + "\n");
             isBattle = true;   while(isBattle) {
                 hero1.attack(hero2);
