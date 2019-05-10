@@ -418,7 +418,7 @@ Battle.Character.prototype.attack = function(target) {
 
 Battle.Character.prototype.heal = function(percent) {
     if (Math.random() * 100 <= percent){
-        str += (this.name + '의 힐링!\n');
+        str += (this.name + '의 힐링!\n'+ this.name + '의 체력이 ' + this.hp + '가 되었습니다\n');
         this.hp = this.maxHp;
     }
     
