@@ -501,14 +501,14 @@ reinforceGame = function(r){
     // items에 아무것도 없을 때
     if(items.length === 0){
         r.replier.reply("아이템을 생성합니다.");
-        r.replier.reply(items.length);
+        //r.replier.reply(items.length);
         items.push(new item(r,itemName,senderCode));
         return;
     // items에 뭔가가 있을 때
     } else {
         //items 배열을 모두 돌아가면서 체크한다.
         for(i in items){
-            r.replier.reply(senderCode+" "+itemName);
+            //r.replier.reply(senderCode+" "+itemName);
             //같은 sender와 같은 아이템 이름인 경우에
             if(items[i].senderCode == senderCode && items[i].name == itemName){
                 items[i].reinforced(r);
@@ -521,6 +521,7 @@ reinforceGame = function(r){
         r.replier.reply("아이템을 생성합니다.");
         r.replier.reply(items.length);
         items.push(new item(r,itemName,senderCode));
+        notFound==false;
         return;
     }
 
