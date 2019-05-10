@@ -381,7 +381,7 @@ Battle = {
         this.rand = Math.pow(this.name.hashCode(),8);
         this.hp = Number((this.rand).toString().slice(3,6));
         this.att = Number((this.rand).toString().slice(6,8));
-        this.luk = Number((this.rand).toString().slice(5,7));
+        this.luk = Number((this.rand).toString().slice(5,6));
         this.maxHp = this.hp
     },
     gameStart : function(r,hero1,hero2){
