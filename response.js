@@ -399,7 +399,7 @@ Battle = {
         str = ""
         turn = 0
         while (!isGameover) {
-            turn += 1;
+            
             if(turn >= 100){
                 r.replier.reply("두 자강두천의 대결이 무승부로 끝났습니다.");
                 isBattle=false;
@@ -408,6 +408,7 @@ Battle = {
             }
             str += ("[Battle] "+ hero1.name + " VS " + hero2.name+ 투명공백.repeat(500) + "\nTurn : "+ turn + "\n");
             isBattle = true;   while(isBattle) {
+                turn += 1;
                 hero1.attack(hero2);
                 hero1.heal(10);
                 if (hero2.hp > 0) {
