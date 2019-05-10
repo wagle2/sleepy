@@ -512,8 +512,10 @@ reinforceGame = function(r){
             //같은 sender와 같은 아이템 이름인 경우에
             if(items[i].senderCode == senderCode && items[i].name == itemName){
                 items[i].reinforced(r);
+                return;
             } else{
                 notFound = true;
+                return;
             }
         }  
     }
