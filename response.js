@@ -398,7 +398,7 @@ Battle = {
         this.hero2 = new this.Character(hero2);
         this.str = ""
         this.turn = 0
-        while (!isGameover) {
+        while (!this.isGameover) {
             this.turn += 1;
             if(this.turn >= 100){
                 r.replier.reply("두 자강두천의 대결이 무승부로 끝났습니다.");
