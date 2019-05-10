@@ -410,7 +410,7 @@ Battle.Character.prototype.stat = function(r) {
     r.replier.reply("[Stat] "+ this.name + "\n"
                     + "체력   : " + this.maxHp + "\n"
                     + "공격력 : " + this.att + "\n"
-                    + "회피율 : " + this.luk + "\n")
+                    + "회피율 : " + this.luk)
 }
 
 Battle.Character.prototype.attacked = function(damage) {
