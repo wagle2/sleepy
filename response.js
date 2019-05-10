@@ -118,7 +118,13 @@ function 고딩방(r) {
         hero.stat(r);
     } else if(r.msg.indexOf("#강화")!=-1){
         reinforceGame(r);
+    } else if(r.msg.indexOf("확률")!=-1){
+        percent(r);
     }
+}
+
+function percent(r){
+    r.replier.reply(r.msg.split("확률")[0] + "은" + floor(Math.random()*100) + "입니다.");
 }
 
 
