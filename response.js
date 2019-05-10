@@ -405,7 +405,7 @@ Battle = {
                 this.isBattle=false;
                 this.isGameover=True;
             }
-            str += ("[Battle] " + this.hero1.name + " VS " + this.hero2.name+ 투명공백.repeat(500) + "\n");
+            this.str += ("[Battle] " + this.hero1.name + " VS " + this.hero2.name+ 투명공백.repeat(500) + "\n");
             this.isBattle = true;   while(this.isBattle) {
                 this.hero1.attack(hero2);
                 this.hero1.heal(10);
