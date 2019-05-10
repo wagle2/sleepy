@@ -500,7 +500,7 @@ reinforceGame = function(r){
     // items에 아무것도 없을 때
     if(items.length == 0){
         r.replier.reply("아이템을 생성합니다.");
-        items.push(new item(itemName,senderCode));
+        items.push(new item(r,itemName,senderCode));
     // items에 뭔가가 있을 때
     } else {
         //items 배열을 모두 돌아가면서 체크한다.
@@ -512,7 +512,7 @@ reinforceGame = function(r){
             // Case2 : 아이템이 없을 때
             else if (items[i].senderCode != senderCode && items[i].name != itemName){
                 r.replier.reply("아이템을 생성합니다.");
-                items.push(new item(itemName,senderCode));
+                items.push(new item(r,itemName,senderCode));
             }
         }
     }
