@@ -493,13 +493,14 @@ reinforceGame = function(r){
     //입력이 #강화 A
     //생성되는건 item(A,hashcode(sender)) 해서 items에 들어감
     //items는 배열, itemName과 Sender를 구분하기 위해서 만들었음.
-    itemName = r.msg.slice(4,r.msg.length+1);
-    sender = new java.lang.String(r.sender);
-    senderCode = sender.hashCode();
-    items = [];
+    var itemName = r.msg.slice(4,r.msg.length+1);
+    var sender = new java.lang.String(r.sender);
+    var senderCode = sender.hashCode();
+    var items = [];
     // items에 아무것도 없을 때
     if(items.length === 0){
         r.replier.reply("아이템을 생성합니다.");
+        r.replier.reply(items.length);
         a= new item(r,itemName,senderCode)
         items.push(a);
     // items에 뭔가가 있을 때
