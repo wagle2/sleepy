@@ -406,9 +406,10 @@ Battle = {
                 isGameover=true;
                 return;
             }
-            str += ("[Battle] "+ hero1.name + " VS " + hero2.name+ 투명공백.repeat(500) + "\nTurn : "+ turn + "\n");
+            str += ("[Battle] "+ hero1.name + " VS " + hero2.name+ 투명공백.repeat(500));
             isBattle = true;   while(isBattle) {
                 turn += 1;
+                r.replier.reply("★Turn : "+ turn+"\n");
                 hero1.attack(hero2);
                 hero1.heal(10);
                 if (hero2.hp > 0) {
