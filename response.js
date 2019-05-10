@@ -424,7 +424,7 @@ Battle.Character.prototype.attacked = function(damage) {
 }
 
 Battle.Character.prototype.attack = function(target) {
-    str += (this.name + '의 공격!\n');
+    str += ("🔪"+this.name + '의 공격!\n');
     if (Math.random() * 100 >= target.luk){
         target.attacked(this.att);
     } else{
