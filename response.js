@@ -399,19 +399,19 @@ Battle = {
         this.str = ""
         this.turn = 0
         while (!isGameover) {
-            turn += 1;
-            if(turn >= 100){
+            this.turn += 1;
+            if(this.turn >= 100){
                 r.replier.reply("두 자강두천의 대결이 무승부로 끝났습니다.");
-                isBattle=false;
-                isGameover=True;
+                this.isBattle=false;
+                this.isGameover=True;
             }
-            str += ("[Battle] " + hero1.name + " VS " + hero2.name+ 투명공백.repeat(500) + "\n");
-            isBattle = true;   while(isBattle) {
-                hero1.attack(hero2);
-                hero1.heal(10);
-                if (hero2.hp > 0) {
-                    hero2.attack(hero1);
-                    hero2.heal(10)
+            str += ("[Battle] " + this.hero1.name + " VS " + this.hero2.name+ 투명공백.repeat(500) + "\n");
+            this.isBattle = true;   while(this.isBattle) {
+                this.hero1.attack(hero2);
+                this.hero1.heal(10);
+                if (this.hero2.hp > 0) {
+                    this.hero2.attack(hero1);
+                    this.hero2.heal(10)
                 }
                 }
         } 
