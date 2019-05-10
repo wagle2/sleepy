@@ -404,6 +404,7 @@ Battle = {
                 r.replier.reply("두 자강두천의 대결이 무승부로 끝났습니다.");
                 isBattle=false;
                 isGameover=true;
+                return;
             }
             str += ("[Battle] " + hero1.name + " VS " + hero2.name+ 투명공백.repeat(500) + "\n");
             isBattle = true;   while(isBattle) {
