@@ -408,7 +408,7 @@ Battle = {
                     return;
                 }
                 turn += 1;
-                str += ("★Turn : "+ turn+"\n");
+                str += ("\n★Turn : "+ turn+"\n\n");
                 hero1.attack(hero2);
                 hero1.heal(10);
                 if (hero2.hp > 0) {
