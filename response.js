@@ -517,12 +517,12 @@ reinforceGame = function(r){
     } else {
         if(isItem(itemName,senderCode) == true){
             prop = Math.random()*100;
-            if(prop <= 70){
-                items[i].reinforced(r);
-            } else if(prop <= 2){
-                items[i].slipped(r);
-            } else if(prop > 70){
+            if(prop <= 2){
                 items[i].destroyed(r);
+            } else if(prop > 50){
+                items[i].slipped(r);
+            } else if(prop <= 50){
+                items[i].reinforced(r);
             } else {
                 r.replier.reply("아무런 변화도 일어나지 않았습니다.")
             }
