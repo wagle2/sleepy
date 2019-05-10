@@ -474,7 +474,7 @@ item.prototype.reinforced = function(r){
 
 item.prototype.slipped = function(r,Object){
     this.lev--;
-    r.replier.reply("▼강화실패▼ [+"+ this.lev + "]" +this.name); 
+    r.replier.reply("▼강화실패▼\n [+"+ this.lev + "]" +this.name); 
     return "";
 }
 
