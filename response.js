@@ -520,7 +520,7 @@ item = function(r,Name,itemName,lev){
                 this.lev++;
                 D.update('items',{reinforce:this.lev},"name=? and item=?",[this.name,this.itemName]);
                 r.replier.reply("★강화성공★\n [+"+ this.lev + "]" +this.name);
-            } else if(prop < 70){
+            } else if(prop > 70){
                 this.lev--;
                 D.update('items',{reinforce:this.lev},"name=? and item=?",[this.name,this.itemName]);
                 r.replier.reply("★강화실패★\n [+"+ this.lev + "]" +this.name);
