@@ -498,7 +498,7 @@ item = function(r){
     
     //쿨타임 체크
     if(isCoolTime(this.name)!=true){
-        r.replier.reply(isCoolTime());
+        r.replier.reply("남은 쿨타임"+isCoolTime());
         return;
     }
     //먼저 있는지 체크하고
