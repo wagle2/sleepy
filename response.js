@@ -492,7 +492,7 @@ Battle.Character.prototype.heal = function(percent) {
 
 item = function(r){
     this.name = r.sender;
-    this.itemName = r.msg.slice(4,r.msg.length+1);
+    this.itemName = r.msg.slice(4,r.msg.length+1).trim();
     this.lev = 0;
     this.add = ""
     //먼저 있는지 체크하고
