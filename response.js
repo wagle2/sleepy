@@ -497,12 +497,15 @@ item = function(r,Name,itemName,lev){
     //먼저 있는지 체크하고
     if(cheakOverlap(Name,itemName)==true){
         r.replier.reply("이미 있어용!");
+        return ""
     //없으면 만든다.
     } else if(cheakOverlap(Name,itemName)==false){
         D.insert('items',{name:this.name,item:this.itemName,reinforce:this.lev});
-        r.replier.reply(r.sender + " 님의 " + (this.itemName).이가() + "생성되었습니다.");
+        r.replier.reply(r.sender + " 님의 " + (this.itemName).이가() + " 생성되었습니다.");
+        return ""
     } else{
         r.replier.reply("오류!");
+        return ""
     }
     return "";
 }
