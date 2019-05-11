@@ -502,58 +502,58 @@ item = function(r){
         if(this.lev < 5){
             if(prop < 0){
                 D.delete('items',"name=? and item=?",[this.name,this.itemName]);
-                r.replier.reply("강화가 실패하여 [+"+ this.lev + "]" +this.name + " 아이템이 파괴됩니다.");
+                r.replier.reply("강화가 실패하여 [+"+ this.lev + "]" +this.itemName + " 아이템이 파괴됩니다.");
             } else if(prop <= 70){
                 this.lev++;
                 D.update('items',{reinforce:this.lev},"name=? and item=?",[this.name,this.itemName]);
-                r.replier.reply("★강화성공★\n [+"+ this.lev + "]"+ (this.lev>=5?" 은빛 ":" 동색 ") +this.name);
+                r.replier.reply("★강화성공★\n [+"+ this.lev + "]"+ (this.lev>=5?" 은빛 ":" 동색 ") +this.itemName);
             } else if(prop > 70){
-                r.replier.reply("★강화실패★\n [+"+ this.lev + "] 동색 " +this.name);
+                r.replier.reply("★강화실패★\n [+"+ this.lev + "] 동색 " +this.itemName);
             } else {
                 r.replier.reply("아무런 변화도 일어나지 않았습니다.")
             }
         } else if(this.lev >= 5 && this.lev < 10){
             if(prop < 0){
                 D.delete('items',"name=? and item=?",[this.name,this.itemName]);
-                r.replier.reply("강화가 실패하여 [+"+ this.lev + "] 은빛 " +this.name + " 아이템이 파괴됩니다.");
+                r.replier.reply("강화가 실패하여 [+"+ this.lev + "] 은빛 " +this.itemName + " 아이템이 파괴됩니다.");
             } else if(prop <= 70){
                 this.lev++;
                 D.update('items',{reinforce:this.lev},"name=? and item=?",[this.name,this.itemName]);
-                r.replier.reply("★강화성공★\n [+"+ this.lev + "]"+ (this.lev>=10?" 금빛 ":" 은빛 ") +this.name);
+                r.replier.reply("★강화성공★\n [+"+ this.lev + "]"+ (this.lev>=10?" 금빛 ":" 은빛 ") +this.itemName);
             } else if(prop > 70){
                 this.lev--;
                 D.update('items',{reinforce:this.lev},"name=? and item=?",[this.name,this.itemName]);
-                r.replier.reply("★강화실패★\n [+"+ this.lev + "]"+ (this.lev>=5?" 은빛 ":" 동색 ") +this.name);
+                r.replier.reply("★강화실패★\n [+"+ this.lev + "]"+ (this.lev>=5?" 은빛 ":" 동색 ") +this.itemName);
             } else {
                 r.replier.reply("아무런 변화도 일어나지 않았습니다.")
             }
         } else if(this.lev >= 10 && this.lev < 13){
             if(prop < 0){
                 D.delete('items',"name=? and item=?",[this.name,this.itemName]);
-                r.replier.reply("강화가 실패하여 [+"+ this.lev + "] 금빛 " +this.name + " 아이템이 파괴됩니다.");
+                r.replier.reply("강화가 실패하여 [+"+ this.lev + "] 금빛 " +this.itemName + " 아이템이 파괴됩니다.");
             } else if(prop <= 50){
                 this.lev++;
                 D.update('items',{reinforce:this.lev},"name=? and item=?",[this.name,this.itemName]);
-                r.replier.reply("★강화성공★\n [+"+ this.lev + "]"+ (this.lev>=13?" 찬란한 ":" 금빛 ") +this.name);
+                r.replier.reply("★강화성공★\n [+"+ this.lev + "]"+ (this.lev>=13?" 찬란한 ":" 금빛 ") +this.itemName);
             } else if(prop > 50){
                 this.lev--;
                 D.update('items',{reinforce:this.lev},"name=? and item=?",[this.name,this.itemName]);
-                r.replier.reply("★강화실패★\n [+"+ this.lev + "]"+ (this.lev>=10?" 금빛 ":" 은빛 ") +this.name);
+                r.replier.reply("★강화실패★\n [+"+ this.lev + "]"+ (this.lev>=10?" 금빛 ":" 은빛 ") +this.itemName);
             } else {
                 r.replier.reply("아무런 변화도 일어나지 않았습니다.")
             }
         } else if(this.lev >= 13 && this.lev < 20){
             if(prop < 4){
                 D.delete('items',"name=? and item=?",[this.name,this.itemName]);
-                r.replier.reply("강화가 실패하여 [+"+ this.lev + "]"+ (this.lev>=13?" 찬란한 ":" 금빛 ") +this.name + " 아이템이 파괴됩니다.");
+                r.replier.reply("강화가 실패하여 [+"+ this.lev + "]"+ (this.lev>=13?" 찬란한 ":" 금빛 ") +this.itemName + " 아이템이 파괴됩니다.");
             } else if(prop <= 30){
                 this.lev++;
                 D.update('items',{reinforce:this.lev},"name=? and item=?",[this.name,this.itemName]);
-                r.replier.reply("★강화성공★\n [+"+ this.lev + "]"+ (this.lev>=13?" 찬란한 ":" 금빛 ") +this.name);
+                r.replier.reply("★강화성공★\n [+"+ this.lev + "]"+ (this.lev>=13?" 찬란한 ":" 금빛 ") +this.itemName);
             } else if(prop > 30){
                 this.lev--;
                 D.update('items',{reinforce:this.lev},"name=? and item=?",[this.name,this.itemName]);
-                r.replier.reply("★강화실패★\n [+"+ this.lev + "]"+ (this.lev>=13?" 찬란한 ":" 금빛 ") +this.name);
+                r.replier.reply("★강화실패★\n [+"+ this.lev + "]"+ (this.lev>=13?" 찬란한 ":" 금빛 ") +this.itemName);
             } else {
                 r.replier.reply("아무런 변화도 일어나지 않았습니다.")
             }
