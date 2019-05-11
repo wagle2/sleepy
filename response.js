@@ -497,7 +497,16 @@ item = function(r,Name,itemName,lev){
     this.add = ""
     //먼저 있는지 체크하고
     if(cheakOverlap(Name,itemName)==true){
-        r.replier.reply("이미 있어용!");
+        prop = Math.random()*100;
+        if(prop <= 50){
+            D.delete('items',"name=? and item=?",[this.name,this.itemName]);
+        } else if(prop > 70){
+            items[i].slipped(r);
+        } else if(prop <= 30){
+            items[i].reinforced(r);
+        } else {
+            r.replier.reply("아무런 변화도 일어나지 않았습니다.")
+        }
     //없으면 만든다.
     } else if(cheakOverlap(Name,itemName)==false){
         var add = D.insert('items',{name:this.name,item:this.itemName,reinforce:this.lev});
@@ -506,6 +515,10 @@ item = function(r,Name,itemName,lev){
         r.replier.reply("오류!");
     }
     return "";
+}
+
+showItems = function(){
+    return (D.selectForString('items'));
 }
 
 cheakOverlap = function(Name,itemName){
