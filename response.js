@@ -490,7 +490,7 @@ Battle.Character.prototype.heal = function(percent) {
     
 }
 
-item = function(r,Name,itemName,lev){
+item = function(r){
     this.name = r.sender;
     this.itemName = r.msg.slice(4,r.msg.length+1);
     r.replier.reply(this.name,this.itemName);
