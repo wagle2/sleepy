@@ -561,7 +561,7 @@ item = function(r){
         }
         
     //없으면 만든다.
-    } else if(cheakOverlap(Name,itemName)==false){
+    } else if(cheakOverlap(this.Name,this.itemName)==false){
         var add = D.insert('items',{name:this.name,item:this.itemName,reinforce:this.lev});
         r.replier.reply(r.sender + " 님의 " + (this.itemName).이가() + " 생성되었습니다.");
     } else{
