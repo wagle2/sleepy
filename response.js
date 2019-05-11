@@ -499,18 +499,36 @@ item = function(r,Name,itemName,lev){
     if(cheakOverlap(Name,itemName)==true){
         this.lev = D.selectForArray('items','reinforce',"name=? and item=?",[this.name,this.itemName])
         prop = Math.random()*100;
-        if(prop <= 50){
-            D.delete('items',"name=? and item=?",[this.name,this.itemName]);
-            r.replier.reply("강화가 실패하여 [+"+ this.lev + "]" +this.name + " 아이템이 파괴됩니다.");
-        } else if(prop > 70){
-            this.lev++;
-            D.update('items',{reinforce:this.lev},"name=? and item=?",[this.name,this.itemName]);
-            r.replier.reply("★강화성공★\n [+"+ this.lev + "]" +this.name);
-        } else if(prop <= 30){
-            //items[i].reinforced(r);
-        } else {
-            r.replier.reply("아무런 변화도 일어나지 않았습니다.")
+        if(this.lev < 5){
+            if(prop < 0){
+                D.delete('items',"name=? and item=?",[this.name,this.itemName]);
+                r.replier.reply("강화가 실패하여 [+"+ this.lev + "]" +this.name + " 아이템이 파괴됩니다.");
+            } else if(prop <= 70){
+                this.lev++;
+                D.update('items',{reinforce:this.lev},"name=? and item=?",[this.name,this.itemName]);
+                r.replier.reply("★강화성공★\n [+"+ this.lev + "]" +this.name);
+            } else if(prop > 70){
+                r.replier.reply("★강화실패★\n [+"+ this.lev + "]" +this.name);
+            } else {
+                r.replier.reply("아무런 변화도 일어나지 않았습니다.")
+            }
+        } else if(this.lev >= 5 && this.lev < 10){
+            if(prop < 0){
+                D.delete('items',"name=? and item=?",[this.name,this.itemName]);
+                r.replier.reply("강화가 실패하여 [+"+ this.lev + "]" +this.name + " 아이템이 파괴됩니다.");
+            } else if(prop <= 70){
+                this.lev++;
+                D.update('items',{reinforce:this.lev},"name=? and item=?",[this.name,this.itemName]);
+                r.replier.reply("★강화성공★\n [+"+ this.lev + "]" +this.name);
+            } else if(prop < 70){
+                this.lev--;
+                D.update('items',{reinforce:this.lev},"name=? and item=?",[this.name,this.itemName]);
+                r.replier.reply("★강화실패★\n [+"+ this.lev + "]" +this.name);
+            } else {
+                r.replier.reply("아무런 변화도 일어나지 않았습니다.")
+            }
         }
+        
     //없으면 만든다.
     } else if(cheakOverlap(Name,itemName)==false){
         var add = D.insert('items',{name:this.name,item:this.itemName,reinforce:this.lev});
