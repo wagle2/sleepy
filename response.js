@@ -543,7 +543,7 @@ item = function(r){
                 r.replier.reply("아무런 변화도 일어나지 않았습니다.")
             }
         } else if(this.lev >= 13 && this.lev < 20){
-            if(prop < 4){
+            if(prop < 10){
                 D.delete('items',"name=? and item=?",[this.name,this.itemName]);
                 r.replier.reply("강화가 실패하여 [+"+ this.lev + "]"+ (this.lev>=13?" 찬란한 ":" 금빛 ") +this.itemName + " 아이템이 파괴됩니다.");
             } else if(prop <= 30){
