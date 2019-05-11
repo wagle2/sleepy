@@ -501,9 +501,9 @@ item = function(r,Name,itemName,lev){
         if(prop <= 50){
             D.delete('items',"name=? and item=?",[this.name,this.itemName]);
         } else if(prop > 70){
-            items[i].slipped(r);
+            //items[i].slipped(r);
         } else if(prop <= 30){
-            items[i].reinforced(r);
+            //items[i].reinforced(r);
         } else {
             r.replier.reply("아무런 변화도 일어나지 않았습니다.")
         }
