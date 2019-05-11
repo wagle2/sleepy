@@ -143,7 +143,7 @@ function 고딩방(r) {
         hero = new Battle.Character(r.msg);
         hero.stat(r);
     } else if(r.msg.indexOf("#강화")!=-1){
-        reinforceGame(r);
+        item(r);
     } else if(r.msg.indexOf("확률")!=-1){
         percent(r);
     }
@@ -491,8 +491,8 @@ Battle.Character.prototype.heal = function(percent) {
 }
 
 item = function(r,Name,itemName,lev){
-    this.name = Name;
-    this.itemName = itemName;
+    this.name = r.sender;
+    this.itemName = r.msg.slice(4,r.msg.length+1);
     this.lev = lev || 0;
     this.add = ""
     //먼저 있는지 체크하고
@@ -506,54 +506,54 @@ item = function(r,Name,itemName,lev){
             } else if(prop <= 70){
                 this.lev++;
                 D.update('items',{reinforce:this.lev},"name=? and item=?",[this.name,this.itemName]);
-                r.replier.reply("★강화성공★\n [+"+ this.lev + "]" +this.name);
+                r.replier.reply("★강화성공★\n [+"+ this.lev + "] 동색 " +this.name);
             } else if(prop > 70){
-                r.replier.reply("★강화실패★\n [+"+ this.lev + "]" +this.name);
+                r.replier.reply("★강화실패★\n [+"+ this.lev + "] 동색 " +this.name);
             } else {
                 r.replier.reply("아무런 변화도 일어나지 않았습니다.")
             }
         } else if(this.lev >= 5 && this.lev < 10){
             if(prop < 0){
                 D.delete('items',"name=? and item=?",[this.name,this.itemName]);
-                r.replier.reply("강화가 실패하여 [+"+ this.lev + "]" +this.name + " 아이템이 파괴됩니다.");
+                r.replier.reply("강화가 실패하여 [+"+ this.lev + "] 은빛 " +this.name + " 아이템이 파괴됩니다.");
             } else if(prop <= 70){
                 this.lev++;
                 D.update('items',{reinforce:this.lev},"name=? and item=?",[this.name,this.itemName]);
-                r.replier.reply("★강화성공★\n [+"+ this.lev + "]" +this.name);
+                r.replier.reply("★강화성공★\n [+"+ this.lev + "] 은빛 " +this.name);
             } else if(prop > 70){
                 this.lev--;
                 D.update('items',{reinforce:this.lev},"name=? and item=?",[this.name,this.itemName]);
-                r.replier.reply("★강화실패★\n [+"+ this.lev + "]" +this.name);
+                r.replier.reply("★강화실패★\n [+"+ this.lev + "] 은빛 " +this.name);
             } else {
                 r.replier.reply("아무런 변화도 일어나지 않았습니다.")
             }
         } else if(this.lev >= 10 && this.lev < 13){
             if(prop < 0){
                 D.delete('items',"name=? and item=?",[this.name,this.itemName]);
-                r.replier.reply("강화가 실패하여 [+"+ this.lev + "]" +this.name + " 아이템이 파괴됩니다.");
+                r.replier.reply("강화가 실패하여 [+"+ this.lev + "] 금빛 " +this.name + " 아이템이 파괴됩니다.");
             } else if(prop <= 50){
                 this.lev++;
                 D.update('items',{reinforce:this.lev},"name=? and item=?",[this.name,this.itemName]);
-                r.replier.reply("★강화성공★\n [+"+ this.lev + "]" +this.name);
+                r.replier.reply("★강화성공★\n [+"+ this.lev + "] 금빛 " +this.name);
             } else if(prop > 50){
                 this.lev--;
                 D.update('items',{reinforce:this.lev},"name=? and item=?",[this.name,this.itemName]);
-                r.replier.reply("★강화실패★\n [+"+ this.lev + "]" +this.name);
+                r.replier.reply("★강화실패★\n [+"+ this.lev + "] 금빛 " +this.name);
             } else {
                 r.replier.reply("아무런 변화도 일어나지 않았습니다.")
             }
         } else if(this.lev >= 13 && this.lev < 20){
             if(prop < 4){
                 D.delete('items',"name=? and item=?",[this.name,this.itemName]);
-                r.replier.reply("강화가 실패하여 [+"+ this.lev + "]" +this.name + " 아이템이 파괴됩니다.");
+                r.replier.reply("강화가 실패하여 [+"+ this.lev + "] 찬란한 " +this.name + " 아이템이 파괴됩니다.");
             } else if(prop <= 30){
                 this.lev++;
                 D.update('items',{reinforce:this.lev},"name=? and item=?",[this.name,this.itemName]);
-                r.replier.reply("★강화성공★\n [+"+ this.lev + "]" +this.name);
+                r.replier.reply("★강화성공★\n [+"+ this.lev + "] 찬란한 " +this.name);
             } else if(prop > 30){
                 this.lev--;
                 D.update('items',{reinforce:this.lev},"name=? and item=?",[this.name,this.itemName]);
-                r.replier.reply("★강화실패★\n [+"+ this.lev + "]" +this.name);
+                r.replier.reply("★강화실패★\n [+"+ this.lev + "] 찬란한 " +this.name);
             } else {
                 r.replier.reply("아무런 변화도 일어나지 않았습니다.")
             }
@@ -580,77 +580,6 @@ cheakOverlap = function(Name,itemName){
     } else{
         return true;
     }
-}
-
-item.prototype.reinforced = function(r){
-    this.lev++;
-    r.replier.reply("★강화성공★\n [+"+ this.lev + "]" +this.name);    
-    return "";
-}
-
-item.prototype.slipped = function(r,Object){
-    this.lev--;
-    r.replier.reply("▼강화실패▼\n [+"+ this.lev + "]" +this.name); 
-    return "";
-}
-
-item.prototype.stayed = function(r){
-    r.replier.reply("▼강화실패▼\n [+"+ this.lev + "]" +this.name); 
-    return "";
-}
-
-item.prototype.destroyed = function(r,Object){
-    r.replier.reply("강화가 실패하여 [+"+ this.lev + "]" +this.name + " 아이템이 파괴됩니다.");
-    this.lev = 0;
-    return "";
-}
-
-items = [];
-isItem = function(itemName, senderCode){
-    for(i in items){
-        if(items[i].senderCode == senderCode && items[i].name == itemName){
-            return true;
-        }
-    }
-    return false;
-}
-
-reinforceGame = function(r){
-    //입력이 #강화 A
-    //생성되는건 item(A,hashcode(sender)) 해서 items에 들어감
-    //items는 배열, itemName과 Sender를 구분하기 위해서 만들었음.
-    var itemName = r.msg.slice(4,r.msg.length+1);
-    var sender = new java.lang.String(r.sender);
-    var senderCode = sender.hashCode();
-
-    // items에 아무것도 없을 때
-    if(items.length === 0){
-        r.replier.reply("아이템을 생성합니다.");
-        //r.replier.reply(items.length);
-        items.push(new item(r,itemName,senderCode));
-        return;
-    // items에 뭔가가 있을 때
-    } else {
-        if(isItem(itemName,senderCode) == true){
-            prop = Math.random()*100;
-            if(prop <= 2){
-                items[i].destroyed(r);
-            } else if(prop > 50){
-                items[i].slipped(r);
-            } else if(prop <= 50){
-                items[i].reinforced(r);
-            } else {
-                r.replier.reply("아무런 변화도 일어나지 않았습니다.")
-            }
-            
-        } else if(isItem(itemName,senderCode) == false){
-            r.replier.reply("아이템을 생성합니다.");
-            //r.replier.reply(items.length);
-            items.push(new item(r,itemName,senderCode));
-            return;
-        }
-    }
-
 }
 
 
