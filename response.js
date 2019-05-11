@@ -497,11 +497,14 @@ item = function(r,Name,itemName,lev){
     this.add = ""
     //먼저 있는지 체크하고
     if(cheakOverlap(Name,itemName)==true){
+        this.lev = D.selectForArray('items','reinforce',"name=? and item=?",[this.name,this.itemName])
         prop = Math.random()*100;
         if(prop <= 50){
             D.delete('items',"name=? and item=?",[this.name,this.itemName]);
+            r.replier.reply("강화가 실패하여 [+"+ this.lev + "]" +this.name + " 아이템이 파괴됩니다.");
         } else if(prop > 70){
-            //items[i].slipped(r);
+            this.lev++;
+            D.update('items',{reinforce:this.lev},"name=? and item=?",[this.name,this.itemName]);
         } else if(prop <= 30){
             //items[i].reinforced(r);
         } else {
