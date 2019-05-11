@@ -493,18 +493,10 @@ Battle.Character.prototype.heal = function(percent) {
 item = function(r){
     this.name = r.sender;
     this.itemName = r.msg.slice(4,r.msg.length+1);
-    r.replier.reply(this.name+this.itemName);
     this.lev = 0;
     this.add = ""
     //먼저 있는지 체크하고
-    if(cheakOverlap = function(Name,itemName){
-        var item = D.selectForObject('items',['name','item'],"name=? and item=?",[Name,itemName]);
-        if(item[0]==undefined){
-            return false;
-        } else{
-            return true;
-        }
-    }==true){
+    if(cheakOverlap(this.name,this.itemName)==true){
         this.lev = D.selectForArray('items','reinforce',"name=? and item=?",[this.name,this.itemName])
         prop = Math.random()*100;
         if(this.lev < 5){
@@ -568,16 +560,9 @@ item = function(r){
         }
         
     //없으면 만든다.
-    } else if(cheakOverlap = function(Name,itemName){
-        var item = D.selectForObject('items',['name','item'],"name=? and item=?",[Name,itemName]);
-        if(item[0]==undefined){
-            return false;
-        } else{
-            return true;
-        }
-    }==false){
+    } else if(cheakOverlap(this.name,this.itemName)==false){
         var add = D.insert('items',{name:this.name,item:this.itemName,reinforce:this.lev});
-        r.replier.reply(r.sender + " 님의 " + (this.itemName).이가() + " 생성되었습니다.");
+        r.replier.reply("★ "+r.sender + "님의 " + (this.itemName).이가() + " 생성되었습니다.");
     } else{
         r.replier.reply("오류!");
     }
@@ -587,7 +572,7 @@ item = function(r){
 showItems = function(){
     return (D.selectForString('items'));
 }
-/*
+
 cheakOverlap = function(Name,itemName){
     var item = D.selectForObject('items',['name','item'],"name=? and item=?",[Name,itemName]);
     if(item[0]==undefined){
@@ -596,7 +581,7 @@ cheakOverlap = function(Name,itemName){
         return true;
     }
 }
-*/
+
 
 // Date.prototype
 Object.defineProperty(Date.prototype,"toDateString",{
