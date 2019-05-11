@@ -497,7 +497,7 @@ item = function(r){
     this.lev = 0;
     this.add = ""
     //먼저 있는지 체크하고
-    if(cheakOverlap(Name,itemName)==true){
+    if(cheakOverlap(this.Name,this.itemName)==true){
         this.lev = D.selectForArray('items','reinforce',"name=? and item=?",[this.name,this.itemName])
         prop = Math.random()*100;
         if(this.lev < 5){
