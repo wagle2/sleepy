@@ -505,6 +505,7 @@ item = function(r,Name,itemName,lev){
         } else if(prop > 70){
             this.lev++;
             D.update('items',{reinforce:this.lev},"name=? and item=?",[this.name,this.itemName]);
+            r.replier.reply("★강화성공★\n [+"+ this.lev + "]" +this.name);
         } else if(prop <= 30){
             //items[i].reinforced(r);
         } else {
