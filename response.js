@@ -588,14 +588,14 @@ cheakOverlap = function(Name,itemName){
     }
 }
 
-isCoolTime = function(Name){
-    var realTime = new Date().getTime
+isCoolTime = function(r,Name){
+    var realTime = Number(new Date().getTime());
     var lastTime = Number(D.selectForObject('items',['lastTime'],"name=?",[Name],{orderBy: 'lastTime DESC'})[0]);
     if((realTime-lastTime)<= 10000){
-        //r.repier.reply("realTime:" + realTime + "\nlastTime : "+ lastTime + "\n" + (realTime-lastTime));
+        r.replier.reply("realTime:" + realTime + "\nlastTime : "+ lastTime + "\n" + (realTime-lastTime));
         return true;
     } else {
-        //r.repier.reply("realTime:" + realTime + "\nlastTime : "+ lastTime + "\n" + (realTime-lastTime));
+        r.replier.reply("realTime:" + realTime + "\nlastTime : "+ lastTime + "\n" + (realTime-lastTime));
         return false;
     }
 }
