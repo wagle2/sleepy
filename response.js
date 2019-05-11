@@ -507,7 +507,7 @@ item = function(r,Name,itemName,lev){
     return "";
 }
 
-item.prototype.cheakOverlap = function(Name,itemName){
+cheakOverlap = function(Name,itemName){
     item = D.selectForObject('items',['name','item'],"name=? and item=?",[Name,itemName]);
     if(item[0]==undefined){
         return false;
