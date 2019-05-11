@@ -494,24 +494,22 @@ item = function(r,Name,itemName,lev){
     this.name = Name;
     this.itemName = itemName;
     this.lev = lev || 0;
+    this.add = ""
     //먼저 있는지 체크하고
     if(cheakOverlap(Name,itemName)==true){
         r.replier.reply("이미 있어용!");
-        return ""
     //없으면 만든다.
     } else if(cheakOverlap(Name,itemName)==false){
-        D.insert('items',{name:this.name,item:this.itemName,reinforce:this.lev});
+        var add = D.insert('items',{name:this.name,item:this.itemName,reinforce:this.lev});
         r.replier.reply(r.sender + " 님의 " + (this.itemName).이가() + " 생성되었습니다.");
-        return ""
     } else{
         r.replier.reply("오류!");
-        return ""
     }
     return "";
 }
 
 cheakOverlap = function(Name,itemName){
-    item = D.selectForObject('items',['name','item'],"name=? and item=?",[Name,itemName]);
+    var item = D.selectForObject('items',['name','item'],"name=? and item=?",[Name,itemName]);
     if(item[0]==undefined){
         return false;
     } else{
