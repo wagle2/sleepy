@@ -490,12 +490,30 @@ Battle.Character.prototype.heal = function(percent) {
     
 }
 
-item = function(r,name,senderCode,lev){
-    this.name = name;
+item = function(r,Name,itemName,lev){
+    this.name = Name;
+    this.item = itemName;
     this.lev = lev || 0;
-    this.senderCode = senderCode || 0;
-    r.replier.reply(r.sender + " 님의 " + (this.name).이가() + "생성되었습니다.");
+    //먼저 있는지 체크하고
+    if((this.cheakOverlap(Name,itemName))==true){
+        r.replier.reply("이미 있어용!");
+    //없으면 만든다.
+    } else if((this.cheakOverlap(Name,itemName))==false){
+        D.insert('items',{name=this.name,item=this.item,reinforce=this.lev});
+        r.replier.reply(r.sender + " 님의 " + (this.name).이가() + "생성되었습니다.");
+    } else{
+        r.replier.reply("오류!");
+    }
     return "";
+}
+
+item.prototype.cheakOverlap = function(Name,itemName){
+    item = D.selectForObject('items',['name','item'],"name=? and item=?",[Name,itemName]);
+    if(item[0]==undefined){
+        return false;
+    } else{
+        return true;
+    }
 }
 
 item.prototype.reinforced = function(r){
