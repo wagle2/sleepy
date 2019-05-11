@@ -591,9 +591,9 @@ cheakOverlap = function(Name,itemName){
 isCoolTime = function(Name){
     var lastTime = Number(D.selectForObject('items',['lastTime'],"name=?",[Name],{orderBy: 'lastTime DESC'})[0]);
     if((new Date().getTime-lastTime)>= 10000){
-        return false;
+        return false;s
     } else {
-        return (new Date().getTime-lastTime);
+        return true;
     }
 }
 
