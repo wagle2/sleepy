@@ -589,11 +589,14 @@ cheakOverlap = function(Name,itemName){
 }
 
 isCoolTime = function(Name){
+    var realTime = new Date().getTime
     var lastTime = Number(D.selectForObject('items',['lastTime'],"name=?",[Name],{orderBy: 'lastTime DESC'})[0]);
-    if((new Date().getTime-lastTime)>= 10000){
-        return false;s
-    } else {
+    if((realTime-lastTime)<= 10000){
+        r.repier.reply("realTime:" + realTime + "\nlastTime : "+ lastTime + "\n" + (realTime-lastTime));
         return true;
+    } else {
+        r.repier.reply("realTime:" + realTime + "\nlastTime : "+ lastTime + "\n" + (realTime-lastTime));
+        return false;
     }
 }
 
