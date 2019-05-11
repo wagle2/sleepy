@@ -588,7 +588,7 @@ cheakOverlap = function(Name,itemName){
     }
 }
 
-CoolTime = function(Name){
+isCoolTime = function(Name){
     var realTime = new Date().getTime
     var lastTime = Number(D.selectForObject('items',['lastTime'],"name=?",[Name],{orderBy: 'lastTime DESC'})[0]);
     if((realTime-lastTime)<= 10000){
