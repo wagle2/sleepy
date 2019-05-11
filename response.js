@@ -497,7 +497,10 @@ item = function(r){
     this.add = ""
     
     //쿨타임 체크
-    
+    if(isCoolTime(this.name)!=true){
+        r.replier.reply(isCoolTime());
+        return;
+    }
     //먼저 있는지 체크하고
     if(cheakOverlap(this.name,this.itemName)==true){
         this.lev = D.selectForArray('items','reinforce',"name=? and item=?",[this.name,this.itemName])
@@ -586,7 +589,12 @@ cheakOverlap = function(Name,itemName){
 }
 
 isCoolTime = function(Name){
-    var lastTime = D.selectForObject('items',['lastTime'],"name=?",[Name]);
+    var lastTime = Number(D.selectForObject('items',['lastTime'],"name=?",[Name],{orderBy: 'lastTime DESC'})[0]);
+    if((new Date().getTime-lastTime)>= 10000){
+        return false;
+    } else {
+        return (new Date().getTime-lastTime);
+    }
 }
 
 
