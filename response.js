@@ -495,6 +495,9 @@ item = function(r){
     this.itemName = r.msg.slice(4,r.msg.length+1).trim();
     this.lev = 0;
     this.add = ""
+    this.lastTime = new Date().getTime()
+    //쿨타임 체크
+    
     //먼저 있는지 체크하고
     if(cheakOverlap(this.name,this.itemName)==true){
         this.lev = D.selectForArray('items','reinforce',"name=? and item=?",[this.name,this.itemName])
@@ -561,7 +564,7 @@ item = function(r){
         
     //없으면 만든다.
     } else if(cheakOverlap(this.name,this.itemName)==false){
-        var add = D.insert('items',{name:this.name,item:this.itemName,reinforce:this.lev});
+        var add = D.insert('items',{name:this.name,item:this.itemName,reinforce:this.lev,lastTime:this.lastTime});
         r.replier.reply("★ "+r.sender + "님의 " + (this.itemName).이가() + " 생성되었습니다.");
     } else{
         r.replier.reply("오류!");
@@ -580,6 +583,10 @@ cheakOverlap = function(Name,itemName){
     } else{
         return true;
     }
+}
+
+isCoolTime = function(Name){
+    var lastTime = D.selectForObject('items',['name','item'],"name=? and item=?",[Name,itemName]);
 }
 
 
