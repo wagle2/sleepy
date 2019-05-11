@@ -514,6 +514,7 @@ item = function(r){
                 D.update('items',{reinforce:this.lev,lastTime:(new Date().getTime())},"name=? and item=?",[this.name,this.itemName]);
                 r.replier.reply("★강화성공★\n [+"+ this.lev + "]"+ (this.lev>=5?" 은빛 ":" 동색 ") +this.itemName);
             } else if(prop > 70){
+                D.update('items',{reinforce:this.lev,lastTime:(new Date().getTime())},"name=? and item=?",[this.name,this.itemName]);
                 r.replier.reply("★강화실패★\n [+"+ this.lev + "] 동색 " +this.itemName);
             } else {
                 r.replier.reply("아무런 변화도 일어나지 않았습니다.")
