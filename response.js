@@ -497,8 +497,9 @@ item = function(r){
     this.add = ""
     
     //쿨타임 체크
-    if(isCoolTime(r,this.name)!=false){
-        r.replier.reply("남은 쿨타임"+isCoolTime());
+    remainTime = CoolTime(this.name);
+    if(remainTime<=10000){
+        r.replier.reply("남은 쿨타임 : "+remainTime/1000+"초");
         return;
     }
     //먼저 있는지 체크하고
@@ -588,16 +589,10 @@ cheakOverlap = function(Name,itemName){
     }
 }
 
-isCoolTime = function(Name){
+CoolTime = function(Name){
     var realTime = new Date().getTime
     var lastTime = Number(D.selectForObject('items',['lastTime'],"name=?",[Name],{orderBy: 'lastTime DESC'})[0]);
-    if((realTime-lastTime)<= 10000){
-        //r.repier.reply("realTime:" + realTime + "\nlastTime : "+ lastTime + "\n" + (realTime-lastTime));
-        return true;
-    } else {
-        //r.repier.reply("realTime:" + realTime + "\nlastTime : "+ lastTime + "\n" + (realTime-lastTime));
-        return false;
-    }
+    return (realTime-lastTime)
 }
 
 
