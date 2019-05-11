@@ -109,7 +109,7 @@ Flag=(function(){
         hero = new Battle.Character(r.msg);
         hero.stat(r);
     } else if(r.msg.indexOf("#강화")!=-1){
-        reinforceGame(r);
+        item(r);
     }
 }
 
