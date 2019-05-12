@@ -611,10 +611,15 @@ myItem = function(r){
         r.replier.reply("1. 아이템 확인\n2. 아이템 제거");
         msg=input.getMsg();
         if(msg==1){
-            r.replier.reply(D.selectForString('items',["item","reinforce"],"name=?",[owner],{orderBy: 'reinforce DESC'}));
+            tmp = D.selectForString('items',["item","reinforce"],"name=?",[owner],{orderBy: 'reinforce DESC'});
+            (tmp.length!=0?r.replier.reply(tmp):r.replier.reply("아이템이 없다옹~"));
             return;
         } else if(msg==2){
-            r.replier.reply(D.selectForString('items',["item","reinforce"],"name=?",[owner],{orderBy: 'reinforce DESC'}));
+            tmp = D.selectForString('items',["item","reinforce"],"name=?",[owner],{orderBy: 'reinforce DESC'});
+            if(tmp.length==0){
+                r.replier.reply("아이템이 없다옹~");
+                return;
+            }
             r.replier.reply("아이템 이름을 입력하라옹~");
             msg=input.getMsg();
             D.delete('items',"item=?",[msg]);
