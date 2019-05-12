@@ -620,6 +620,7 @@ myItem = function(r){
                 r.replier.reply("아이템이 없다옹~");
                 return;
             }
+            r.replier.reply(tmp)
             r.replier.reply("아이템 이름을 입력하라옹~");
             msg=input.getMsg();
             D.delete('items',"item=?",[msg]);
