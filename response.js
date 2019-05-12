@@ -110,6 +110,8 @@ Flag=(function(){
         hero.stat(r);
     } else if(r.msg.indexOf("#강화")!=-1){
         item(r);
+    }else if(r.msg.indexOf("#아이템")!=0){
+        myItem(r);
     }
 }
 
@@ -146,6 +148,8 @@ function 고딩방(r) {
         item(r);
     } else if(r.msg.indexOf("확률")!=-1){
         percent(r);
+    }else if(r.msg.indexOf("#아이템")!=0){
+        myItem(r);
     }
 }
 
@@ -599,6 +603,25 @@ isCoolTime = function(r,Name){
         //r.replier.reply("realTime:" + realTime + "\nlastTime : "+ lastTime + "\n" + (realTime-lastTime));
         return false;
     }
+}
+
+myItem = function(r){
+    owner = r.sender;
+    I.register("myItem"+r.sender,r.room,r.sender,function(input){
+        r.replier.reply("1. 아이템 확인\n\
+                         2. 아이템 제거");
+        msg=input.getMsg();
+        if(msg==1){
+            D.selectForString('items',["item","reinforce"],"name=?",[owner],{orderBy: 'reinforce DESC'});
+        } else if(msg==2){
+            D.selectForString('items',["item","reinforce"],"name=?",[owner],{orderBy: 'reinforce DESC'});
+            r.replier.reply("제거할 아이템 이름을 입력하라옹.");
+            msg=input.getMsg();
+            D.delete('items',"item=?",[msg]);
+        } else {
+            r.replier.reply("제대로 입력하라옹~")
+        }
+    })
 }
 
 
