@@ -608,8 +608,7 @@ isCoolTime = function(r,Name){
 myItem = function(r){
     owner = r.sender;
     I.register("myItem"+r.sender,r.room,r.sender,function(input){
-        r.replier.reply("1. 아이템 확인\n\
-                         2. 아이템 제거");
+        r.replier.reply("1. 아이템 확인\n2. 아이템 제거");
         msg=input.getMsg();
         if(msg==1){
             D.selectForString('items',["item","reinforce"],"name=?",[owner],{orderBy: 'reinforce DESC'});
