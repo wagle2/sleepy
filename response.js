@@ -110,7 +110,7 @@ Flag=(function(){
         hero.stat(r);
     } else if(r.msg.indexOf("#강화")!=-1){
         item(r);
-    }else if(r.msg.indexOf("#아이템")!=0){
+    }else if(r.msg.indexOf("#아이템")==0){
         myItem(r);
     }
 }
@@ -148,7 +148,7 @@ function 고딩방(r) {
         item(r);
     } else if(r.msg.indexOf("확률")!=-1){
         percent(r);
-    }else if(r.msg.indexOf("#아이템")!=0){
+    }else if(r.msg.indexOf("#아이템")==0){
         myItem(r);
     }
 }
