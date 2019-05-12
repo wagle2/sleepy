@@ -619,6 +619,7 @@ myItem = function(r){
             D.delete('items',"item=?",[msg]);
         } else {
             r.replier.reply("제대로 입력하라옹~")
+            return;
         }
     })
 }
