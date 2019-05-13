@@ -377,7 +377,7 @@ weather = {
                         + new Date().getHours() + "　" + nowWeather.replace(/\(.*?\)/g,"").extensionRight(한글공백,5) + nowTemp + "　" + nowTemp + "　"+ todayLowTemp + "　"+ todayHighTemp + "\n"
                         + "----------------------------------\n"
                         + "PM10　　PM2.5　　자외선\n"
-                        + pm10 + "　　" + pm2_5 + "　　" + uv
+                        + pm10 + "　　" + pm2_5 + "　　" + uv +"\n"
                         + "----------------------------------\n"
 
         var baseLink = "http://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=" + areaCode;
