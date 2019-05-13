@@ -367,8 +367,8 @@ weather = {
         var nowTime = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > span").text()
         var todayLowTemp = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set > div.set.set_text > div > span.day_low > em").text()
         var todayHighTemp = weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set > div.set.set_text > div > span.day_high > em").text()
-        var pm10 =  weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set_detail > div > ul > li.finedust > span.level2 > em").text()
-        var pm2_5 =  weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set_detail > div > ul > li.finedust > span.level1 > em").text()
+        var pm10 =  weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set_detail > div > ul > li.finedust > span.level2 > em").text().split(" ")[0]
+        var pm2_5 =  weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set_detail > div > ul > li.finedust > span.level2 > em").text().split(" ")[1]
         var uv =  weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set_detail > div > ul > li.uv > span").text()
         this.str = "";
         this.str += "(야옹)" + location + "\n　→ " 
@@ -376,7 +376,8 @@ weather = {
                         + "시　　날씨　기온 습도 최저 최고\n" 
                         + new Date().getHours() + "　" + nowWeather.replace(/\(.*?\)/g,"").extensionRight(한글공백,5) + nowTemp + "　" + nowTemp + "　"+ todayLowTemp + "　"+ todayHighTemp + "\n"
                         + "----------------------------------\n"
-                        + "PM10 : "+ pm10 + " PM2.5 : "+pm2_5+"자외선 : "+uv
+                        + "PM10　　PM2.5　　자외선\n"
+                        + pm10 + "　　" + pm2_5 + "　　" + uv
                         + "----------------------------------\n"
 
         var baseLink = "http://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=" + areaCode;
