@@ -376,7 +376,7 @@ weather = {
                         + "시　　날씨　기온 습도 최저 최고\n" 
                         + new Date().getHours() + "　" + nowWeather.replace(/\(.*?\)/g,"").extensionRight(한글공백,5) + nowTemp + "　" + nowTemp + "　"+ todayLowTemp + "　"+ todayHighTemp + "\n"
                         + "----------------------------------\n"
-                        + "PM10　　PM2.5　　자외선\n"
+                        + "PM10　　PM2.5　　자외선(해)\n"
                         + "　 "+ pm10 + "　　　" + pm2_5 + "　　　" + uv +"\n"
                         + "----------------------------------\n"
 
