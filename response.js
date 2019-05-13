@@ -199,7 +199,7 @@ function 광주버스정류장불러오기(r){
 function 버스현재위치(r,busStopName,next_busStopName){
     busstopId = r.msg.split(" ")[1];
     busstopInfo = org.jsoup.Jsoup.connect("http://api.gwangju.go.kr/json/arriveInfo?ServiceKey=BknKnKlcOt5e3xllE%2Fboca5kw2Dzmqwm2lNf7XEmAporlHM7JPggxLbS8GgtoSO6%2FcLjBJKOgOMSH6Bmt4EUlw%3D%3D&serviceKey=&BUSSTOP_ID="+busstopId).get()
-    busstopInfoJson = JSON.parse(busstopInfo.select("body").text());
+    busstopInfoJson = JSONJSON.parse(busstopInfo.select("body").text());
     result=busStopName +
     　　"⇒"+next_busStopName+"\n------------------------------------\n"
     busNum = busstopInfoJson.BUSSTOP_LIST.length;
@@ -214,7 +214,7 @@ function 버스현재위치(r,busStopName,next_busStopName){
 function 광주버스정류장받아오기(r){
     var url = "http://api.gwangju.go.kr/json/stationInfo?ServiceKey=BknKnKlcOt5e3xllE%2Fboca5kw2Dzmqwm2lNf7XEmAporlHM7JPggxLbS8GgtoSO6%2FcLjBJKOgOMSH6Bmt4EUlw%3D%3D&serviceKey="
     var busstopName = org.jsoup.Jsoup.connect(url).get()
-    var bis = JSON.parse(busstopName.select("body").text()).STATION_LIST;
+    var bis = JSON.parse(busstopName.select("body").text()).fSTATION_LIST;
     File.save("/sdcard/test.json",JSON.stringify(bis));
     r.replier.reply("버스정류장 로딩완료!")
     //STATION_NUM,BUSSTOP_NAME,ARS_ID,NEXT_BUSSTOP,BUSSTOP_ID,LONGITUDE,NAME_E,LATITUDE
@@ -290,6 +290,7 @@ function 광주버스정류장이름찾기(r){
         bw.write(str.toString());
         bw.close();
         var time = (new Date() - Timer) / 1000;
+        T.interruptAll();
         r.replier.reply("파일저장 완료 / " + time + "s\n" + new Date() );
         Api.reload();
         var time = (new Date() - Timer) / 1000;
@@ -660,6 +661,21 @@ Object.defineProperty(Date.prototype,"toDateString",{
        return this.toString().받침() ? this.toString()+"이" : this.toString()+"가"; 
     }
  });
+
+
+ var WCC = T.register("weatherClockCheck",()=>{
+	while(true){
+		if( 19 == new Date().getHours() ){
+			r={msg : '#날씨 전머', room : '고딩',replier:{reply:function(msg){
+				Api.replyRoom(r.room,msg)
+				}}
+			}
+			weather(r);
+			java.lang.Thread.sleep(6*1000);
+		}
+		java.lang.Thread.sleep(59*1000); //59초
+	}
+}).start();
 //이 아래 6가지 메소드는 스크립트 액티비티에서 사용하는 메소드들
 function onCreate(savedInstanceState, activity) {}
 function onStart(activity) {}
