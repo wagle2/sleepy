@@ -665,7 +665,7 @@ Object.defineProperty(Date.prototype,"toDateString",{
 
  var WCC = T.register("weatherClockCheck",()=>{
 	while(true){
-		if( 19 == new Date().getHours() ){
+		if( 7 == new Date().getHours() ){
 			r={msg : '#날씨 전머', room : '고딩',replier:{reply:function(msg){
 				Api.replyRoom(r.room,msg)
 				}}
