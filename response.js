@@ -670,7 +670,7 @@ Object.defineProperty(Date.prototype,"toDateString",{
 				Api.replyRoom(r.room,msg)
 				}}
 			}
-			weather(r);
+			weather.func(r);
 			java.lang.Thread.sleep(6*1000);
 		}
 		java.lang.Thread.sleep(59*1000); //59초
