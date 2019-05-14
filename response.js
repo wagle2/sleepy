@@ -76,7 +76,7 @@ function myPoint(r){
         r.replier.reply("["+r.sender+"] "+"의 포인트가 없다옹~");
     } else if(isId(r)==true){
         nowPoint = D.selectForObject('point',"point","room=? and id=?",[r.room,r.sender])[0].point;
-        r.replier.reply("["+r.sender+"] 의 포인트는 "+nowPoint+" 다옹~");
+        r.replier.reply("["+r.sender+"]의 포인트는 "+nowPoint+" 데스웅~");
     }
 }
 
