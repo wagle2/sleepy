@@ -59,7 +59,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 }
 function givePoint(r){
     points = Math.floor(Math.random()*10)+10;
-    r.replier.reply(points);
+    //r.replier.reply(points);
     if(isId==false){
         D.insert("point",{room:r.room,id:r.sender,point:points})
     } else if(isId==true){
