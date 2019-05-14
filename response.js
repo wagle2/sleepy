@@ -201,7 +201,7 @@ function 광주버스정류장불러오기(r){
 function 버스현재위치(r,busStopName,next_busStopName){
     busstopId = r.msg.split(" ")[1];
     busstopInfo = org.jsoup.Jsoup.connect("http://api.gwangju.go.kr/json/arriveInfo?ServiceKey=BknKnKlcOt5e3xllE%2Fboca5kw2Dzmqwm2lNf7XEmAporlHM7JPggxLbS8GgtoSO6%2FcLjBJKOgOMSH6Bmt4EUlw%3D%3D&serviceKey=&BUSSTOP_ID="+busstopId).get()
-    busstopInfoJson = JSONJSON.parse(busstopInfo.select("body").text());
+    busstopInfoJson = JSON.parse(busstopInfo.select("body").text());
     result=busStopName +
     　　"⇒"+next_busStopName+"\n------------------------------------\n"
     busNum = busstopInfoJson.BUSSTOP_LIST.length;
