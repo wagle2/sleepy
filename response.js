@@ -37,6 +37,9 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
                     return;	
                 }
             } 
+            if(msg!=""){
+                givePoint(r);
+            }
         }catch (e) {
                 replier.reply( e + "\n" + e.stack);
         }
@@ -51,7 +54,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         }else if (room == '시립대 단톡방') {
             다른방(r);
         }
-        givePoint(r);
+        
 
 }
 function givePoint(r){
