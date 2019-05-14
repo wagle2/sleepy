@@ -51,7 +51,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         }else if (room == '시립대 단톡방') {
             다른방(r);
         }
-        if (r.msg != ""){
+        if (msg != ""){
             if(Math.floor(Math.random()*100)<=69){
                 givePoint(r);
             }
