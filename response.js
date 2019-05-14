@@ -72,7 +72,7 @@ function givePoint(r){
 }
 
 function isId(r){
-    if(D.selectForObject('point',"id","room=? and id=?",[r.room,r.sender])[0].id==undefined){
+    if((D.selectForObject('point',"id","room=? and id=?",[r.room,r.sender])[0])==undefined){
         return false;
     } else{
         return true;
