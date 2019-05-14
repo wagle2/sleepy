@@ -183,7 +183,7 @@ function 광주버스(r){
                 r.msg = " "+ info.Name0;
                 버스현재위치(r,info.Id,info.NEXT_BUSSTOP0);
             } else if(msg1 == "2"){
-                r.msg1 = " "+ info.Name1;
+                r.msg = " "+ info.Name1;
                 버스현재위치(r,info.Id,info.NEXT_BUSSTOP1);
             } else{
                 r.replier("제대로 입력해주세요.");
