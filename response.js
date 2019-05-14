@@ -52,7 +52,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             다른방(r);
         }
         if (r.msg != ""){
-            if(Math.floor(Math.random()*100)<=100){
+            if(Math.floor(Math.random()*100)<=69){
                 givePoint(r);
             }
         }
@@ -60,10 +60,10 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 }
 function givePoint(r){
     points = Math.floor(Math.random()*10)+10;
-    if(isId==false){
+    if(isId(r)==false){
         r.replier.reply("["+r.sender+"] "+points+" 포인트 획득!");
         D.insert("point",{room:r.room,id:r.sender,point:points})
-    } else if(isId==true){
+    } else if(isId(r)==true){
         r.replier.reply("["+r.sender+"] "+points+" 포인트 획득!");
         nowPoint = D.selectForObject('point',"point","room=? and id=?",[r.room,r.sender])[0].point;
         newPoint = nowPoint + points;
