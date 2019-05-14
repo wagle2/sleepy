@@ -178,12 +178,12 @@ function 광주버스(r){
             버스현재위치(r,info.Id,info.NEXT_BUSSTOP0);
         } else if(info.length == 2){
             r.replier.reply("조회하실 방향을 선택해주세요.");
-            msg=input.getMsg();
-            if(msg == "1"){
+            msg1=input.getMsg();
+            if(msg1 == "1"){
                 r.msg = " "+ info.Name0;
                 버스현재위치(r,info.Id,info.NEXT_BUSSTOP0);
-            } else if(msg == "2"){
-                r.msg = " "+ info.Name1;
+            } else if(msg1 == "2"){
+                r.msg1 = " "+ info.Name1;
                 버스현재위치(r,info.Id,info.NEXT_BUSSTOP1);
             } else{
                 r.replier("제대로 입력해주세요.");
