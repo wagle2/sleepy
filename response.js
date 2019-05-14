@@ -37,9 +37,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
                     return;	
                 }
             } 
-            if(msg!=""){
-                givePoint(r);
-            }
         }catch (e) {
                 replier.reply( e + "\n" + e.stack);
         }
@@ -54,12 +51,15 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         }else if (room == '시립대 단톡방') {
             다른방(r);
         }
-        
+        if (r.msg != ""){
+            if(Math.floor(Math.random()*100)>=30){
+                givePoint(r);
+            }
+        }
 
 }
 function givePoint(r){
     points = Math.floor(Math.random()*10)+10;
-    //r.replier.reply(points);
     if(isId==false){
         D.insert("point",{room:r.room,id:r.sender,point:points})
     } else if(isId==true){
@@ -71,7 +71,7 @@ function givePoint(r){
 }
 
 function isId(r){
-    var Id = D.selectForObject('point',['name'],"room=? and id=?",[r.room,r.sender]);
+    var Id = D.selectForObject('point',"id","room=? and id=?",[r.room,r.sender])[0].id;
     if(Id[0]==undefined){
         return false;
     } else{
