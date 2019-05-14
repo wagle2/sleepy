@@ -51,46 +51,33 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         }else if (room == '시립대 단톡방') {
             다른방(r);
         }
-
-
-}
-cmd = function (ss) {
-    var p = java.lang.Runtime.getRuntime().exec('su -c ""'+ss+'""');
-    p.waitFor();
-    var r = p.getInputStream() || p.getErrorStream();
-    return isread(r);
-}
-
-
-isread=function (is) {
-        var br = new java.io.BufferedReader(new java.io.InputStreamReader(is));
-        var readStr = "";
-        var str = null;
-        while (((str = br.readLine()) != null)) {
-            readStr += str + "\n";
+        if (r.msg != ""){
+            if(Math.floor(Math.random()*100)>=30){
+                givePoint(r);
+            }
         }
-        br.close();
-        return readStr.trim();
-
 
 }
-
-
-Flag=(function(){
-    var list={};
-    var Flag={};
-    Flag.set=function(flag,room,value){
-       if(list[flag]===undefined){ 
-          list[flag]={};
-          list[flag][room]=value;
-       }else list[flag][room]=value;
+function givePoint(r){
+    points = Math.floor(Math.random()*10)+10;
+    if(isId==false){
+        D.insert("point",{room:r.room,id:r.sender,point:points})
+    } else if(isId==true){
+        nowPoint = D.selectForObject('point',"point","room=? and id=?",[r.room,r.sender])[0].point;
+        newPoint = nowPoint + points;
+        D.update('point',{point:newPoint},"room=? and id=?",[r.room,r.sender]);
+        r.replier.reply("["+r.sender+"] "+points+" 포인트 획득!");
     }
-    Flag.get=function(flag,room){
-       return (list[flag] && list[flag][room]) || 0;
-    }
-    return Flag;
- })();
+}
 
+function isId(r){
+    var Id = D.selectForObject('point',['name'],"room=? and id=?",[r.room,r.sender]);
+    if(Id[0]==undefined){
+        return false;
+    } else{
+        return true;
+    }
+}
 
  function 다른방(r) {
     if(r.msg.indexOf("#버스")!=-1){
