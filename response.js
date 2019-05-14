@@ -71,6 +71,15 @@ function givePoint(r){
     }
 }
 
+function myPoint(r){
+    if(isId(r)==false){
+        r.replier.reply("["+r.sender+"] "+"의 포인트가 없다옹~");
+    } else if(isId(r)==true){
+        nowPoint = D.selectForObject('point',"point","room=? and id=?",[r.room,r.sender])[0].point;
+        r.replier.reply("["+r.sender+"] 의 포인트는 "+points+" 다옹~");
+    }
+}
+
 function isId(r){
     if((D.selectForObject('point',"id","room=? and id=?",[r.room,r.sender])[0])==undefined){
         return false;
@@ -99,6 +108,8 @@ function isId(r){
         item(r);
     }else if(r.msg.indexOf("#아이템")==0){
         myItem(r);
+    }else if(r.msg.indexOf("#포인트")==0){
+        myPoint(r);
     }
 }
 
@@ -137,6 +148,8 @@ function 고딩방(r) {
         percent(r);
     }else if(r.msg.indexOf("#아이템")==0){
         myItem(r);
+    }else if(r.msg.indexOf("#포인트")==0){
+        myPoint(r);
     }
 }
 
