@@ -52,7 +52,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             다른방(r);
         }
         if (msg != ""){
-            if(Math.floor(Math.random()*100)<=1){
+            if(Math.floor(Math.random()*1000)<=5){
                 givePoint(r);
             }
         }
