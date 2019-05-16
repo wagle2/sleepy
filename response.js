@@ -211,8 +211,7 @@ function choNotice(r){
     }
     return;
 }
-//notice_num = org.jsoup.Jsoup.connect("https://www3.chosun.ac.kr/chosun/217/subview.do").get().select("#menu217_obj2192 > div._fnctWrap._articleTable > div > form:nth-child(1) > div > div.total-num > em").text()
-notice_num = 5033;
+notice_num = org.jsoup.Jsoup.connect("https://www3.chosun.ac.kr/chosun/217/subview.do").get().select("#menu217_obj2192 > div._fnctWrap._articleTable > div > form:nth-child(1) > div > div.total-num > em").text()
 
 function choNotice2(r){
     var link = "https://www3.chosun.ac.kr/chosun/217/subview.do";
@@ -226,7 +225,6 @@ function choNotice2(r){
     var new_notice_num = soup.select("#menu217_obj2192 > div._fnctWrap._articleTable > div > form:nth-child(1) > div > div.total-num > em").text()
     r.replier.reply(new_notice_num)
     if(notice_num != new_notice_num){
-        r.replier.reply("변동사항발생")
         for(var i = 0; i<13; i++){
             text = soup.select("#menu217_obj2192 > div._fnctWrap._articleTable > div > form:nth-child(2) > div > table > tbody > tr:nth-child("+(i+1)+") > td.no.notice > span").text()
             if(text == "일반공지"){top_notice++}
