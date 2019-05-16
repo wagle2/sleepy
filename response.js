@@ -110,7 +110,7 @@ function isId(r){
         myItem(r);
     }else if(r.msg.indexOf("#포인트")==0){
         myPoint(r);
-    }else if(r.msg.indexOf("/가사")==0){
+    }else if(r.msg.indexOf("#가사")==0){
         lyric(r);
     }
 }
@@ -152,7 +152,7 @@ function 고딩방(r) {
         myItem(r);
     }else if(r.msg.indexOf("#포인트")==0){
         myPoint(r);
-    }else if(r.msg.indexOf("/가사")==0){
+    }else if(r.msg.indexOf("#가사")==0){
         lyric(r);
     }
 }
@@ -161,12 +161,9 @@ percent = function(r){
     r.replier.reply(r.msg + "은 " + Math.floor(Math.random()*100) + "% 입니다.");
 }
 
+
 function lyric(r) {
-    var replier = r.replier;
-    var room = r.room;
-    var sender = r.sender;
-    var msg = r.msg;
-    var str = r.msg.replace("/\uac00\uc0ac", "").trim();
+    var str = r.msg.replace("#가사", "").trim();
     var title = str.includes("/") ? str.split("/")[0] : str;
     var artist = str.includes("/") ? str.split("/")[1] : "";
     var xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://www.w3.org/2003/05/soap-envelope\"" + " xmlns:SOAP-ENC=\"http://www.w3.org/2003/05/soap-encoding\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " + "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:ns2=\"ALSongWebServer/Service1Soap\" xmlns:ns1=\"ALSongWebServer\" " + "xmlns:ns3=\"ALSongWebServer/Service1Soap12\"><SOAP-ENV:Body><ns1:GetResembleLyric2><ns1:stQuery><ns1:strTitle>" + title.XMLEncode() + "</ns1:strTitle><ns1:strArtistName>" + artist.XMLEncode() + "</ns1:strArtistName><ns1:nCurPage>0</ns1:nCurPage></ns1:stQuery>" + "</ns1:GetResembleLyric2></SOAP-ENV:Body></SOAP-ENV:Envelope>";
@@ -175,12 +172,13 @@ function lyric(r) {
     var strArtistNames = elems.select("strArtistName").eachText().toArray();
     var strLyrics = elems.select("strLyric").eachText().toArray();
     var length = strTitles.length;
-    var res = "\"" + title + (artist ? ("/" + artist) : "") + "\" \uac80\uc0c9\uacb0\uacfc" + "\n";
+    var res = "\"" + title + (artist ? ("/" + artist) : "") + "\" 검색결과" + "\n";
     for (var i = 0; i < 3 && i < str.length; i++) {
         res += "Lyric : " + (i + 1) + "\n" + strTitles[i] + "/" + strArtistNames[i] + "\n" + String(strLyrics[i]).replace(/\<br\>/g, "\n").replace(/\[\d\d:\d\d.\d\d\]/g, "") + "\n\n";
     }
     r.replier.reply(res.trim().cut(1));
 }
+
 String.prototype.cut=function (line) {
     var str = this.toString();
     str = str.split("\n");
