@@ -165,7 +165,7 @@ percent = function(r){
 
 var CHO = T.register("chosun",()=>{
 	while(true){
-        r={msg : '', room : '봇개발',replier:{reply:function(msg){
+        var r={msg : '', room : '봇개발',replier:{reply:function(msg){
             Api.replyRoom(r.room,msg)}}}
         choNotice(r)
 		}
@@ -173,7 +173,7 @@ var CHO = T.register("chosun",()=>{
 
 var CHO2 = T.register("chosun",()=>{
 	while(true){
-        r={msg : '', room : '봇개발',replier:{reply:function(msg){
+        var r={msg : '', room : '봇개발',replier:{reply:function(msg){
             Api.replyRoom(r.room,msg)}}}
         choNotice2(r)
 		}
@@ -787,12 +787,12 @@ Object.defineProperty(Date.prototype,"toDateString",{
  var WCC = T.register("weatherClockCheck",()=>{
 	while(true){
 		if( 7 == new Date().getHours() ){
-			r={msg : '#날씨 전머', room : '고딩',replier:{reply:function(msg){
+			var r={msg : '#날씨 전머', room : '고딩',replier:{reply:function(msg){
 				Api.replyRoom(r.room,msg)
 				}}
 			}
 			weather.func(r);
-			java.lang.Thread.sleep(6*1000);
+			java.lang.Thread.sleep(60*60*1000);
 		}
 		java.lang.Thread.sleep(59*1000); //59초
 	}
