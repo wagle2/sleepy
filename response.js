@@ -165,7 +165,8 @@ percent = function(r){
 
 var CHO = T.register("chosun",()=>{
 	while(true){
-		choNotice(r)
+        choNotice(r)
+        choNotice2(r)
 		}
 }).start();
 
@@ -197,7 +198,32 @@ function choNotice(r){
         r.replier.reply("**[조머]새로운 학사공지**\n"+notice_new_title)
         r.replier.reply(notice_new_href)
         //새로운 공지를 찾아서 프린트해주기;
-        
+        return;
+    }
+    return;
+}
+
+function choNotice2(r){
+    var link = "https://www3.chosun.ac.kr/chosun/217/subview.do";
+    var soup = org.jsoup.Jsoup.connect(link).get();
+    var notice_num = soup.select("#menu217_obj2192 > div._fnctWrap._articleTable > div > form:nth-child(1) > div > div.total-num > em").text()
+    var notice_new_title = ""
+    var notice_new_aherf = ""
+    var top_notice = 0
+
+    java.lang.Thread.sleep(30*1000); //30초동안 대기
+    var new_notice_num = oup.select("#menu217_obj2192 > div._fnctWrap._articleTable > div > form:nth-child(1) > div > div.total-num > em").text()
+   
+    if(notice_num != new_notice_num){
+        for(var i = 0; i<13; i++){
+            text = soup.select("#menu217_obj2192 > div._fnctWrap._articleTable > div > form:nth-child(2) > div > table > tbody > tr:nth-child("+(i+1)+" > td.no.notice > span").text()
+            if(text == "일반공지"){top_notice++}
+        }
+        notice_new_title = soup.select("#menu217_obj2192 > div._fnctWrap._articleTable > div > form:nth-child(2) > div > table > tbody > tr:nth-child("+(top_notice+1)+") > td.subject.new.align-l > a").text()
+        notice_new_aherf = "https://www3.chosun.ac.kr/" + soup.select("#menu217_obj2192 > div._fnctWrap._articleTable > div > form:nth-child(2) > div > table > tbody > tr:nth-child("+(top_notice+1)+") > td.subject.new.align-l > a").attr("href")
+        r.replier.reply("**[조머]새로운 학사공지**\n"+notice_new_title)
+        r.replier.reply(notice_new_href)
+        return;
     }
     return;
 }
