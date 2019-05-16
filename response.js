@@ -163,9 +163,9 @@ percent = function(r){
 
 function lyric(r) {
     var replier = r.replier;
-    var room = r.r;
-    var sender = r.s;
-    var msg = r.m;
+    var room = r.room;
+    var sender = r.sender;
+    var msg = r.msg;
     var str = r.msg.replace("/\uac00\uc0ac", "").trim();
     var title = str.includes("/") ? str.split("/")[0] : str;
     var artist = str.includes("/") ? str.split("/")[1] : "";
@@ -179,7 +179,7 @@ function lyric(r) {
     for (var i = 0; i < 3 && i < str.length; i++) {
         res += "Lyric : " + (i + 1) + "\n" + strTitles[i] + "/" + strArtistNames[i] + "\n" + String(strLyrics[i]).replace(/\<br\>/g, "\n").replace(/\[\d\d:\d\d.\d\d\]/g, "") + "\n\n";
     }
-    r.reply(res.trim().cut(1));
+    r.replier.reply(res.trim().cut(1));
 }
 
 Object.defineProperty(String.prototype,"XMLEncode",{
