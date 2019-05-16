@@ -152,6 +152,8 @@ function 고딩방(r) {
         myItem(r);
     }else if(r.msg.indexOf("#포인트")==0){
         myPoint(r);
+    }else if(r.msg.indexOf("/가사")==0){
+        lyric(r);
     }
 }
 
