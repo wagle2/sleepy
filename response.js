@@ -198,8 +198,6 @@ function choNotice(r){
         r.replier.reply(notice_new_href)
         //새로운 공지를 찾아서 프린트해주기;
         
-    }else if(diffNum==0){
-        //r.replier.reply("변경된 공지가 없다옹~");
     }
     return;
 }
