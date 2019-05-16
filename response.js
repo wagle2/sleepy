@@ -169,6 +169,8 @@ var CHO = T.register("chosun",()=>{
             Api.replyRoom(r.room,msg)}}}
         choNotice(r)
         choNotice2(r)
+        r.replier.reply("잘 작동중")
+        java.lang.Thread.sleep(2*1000);
 		}
 }).start();
 
