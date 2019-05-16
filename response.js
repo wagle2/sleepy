@@ -211,11 +211,13 @@ function choNotice(r){
     }
     return;
 }
+//notice_num = org.jsoup.Jsoup.connect("https://www3.chosun.ac.kr/chosun/217/subview.do").get().select("#menu217_obj2192 > div._fnctWrap._articleTable > div > form:nth-child(1) > div > div.total-num > em").text()
+notice_num = 5033;
 
 function choNotice2(r){
     var link = "https://www3.chosun.ac.kr/chosun/217/subview.do";
     var soup = org.jsoup.Jsoup.connect(link).get();
-    var notice_num = soup.select("#menu217_obj2192 > div._fnctWrap._articleTable > div > form:nth-child(1) > div > div.total-num > em").text()
+    //var notice_num = soup.select("#menu217_obj2192 > div._fnctWrap._articleTable > div > form:nth-child(1) > div > div.total-num > em").text()
     var notice_new_title = ""
     var notice_new_aherf = ""
     var top_notice = 0
