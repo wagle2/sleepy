@@ -211,7 +211,6 @@ function choNotice(r){
     }
     return;
 }
-//notice_num = org.jsoup.Jsoup.connect("https://www3.chosun.ac.kr/chosun/217/subview.do").get().select("#menu217_obj2192 > div._fnctWrap._articleTable > div > form:nth-child(1) > div > div.total-num > em").text()
 
 function choNotice2(r){
     var link = "https://www3.chosun.ac.kr/chosun/217/subview.do";
