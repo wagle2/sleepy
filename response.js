@@ -129,7 +129,9 @@ function 고딩방(r) {
         r.replier.reply("보험계리사");  
     } else if(r.msg == "천승현"){
         r.replier.reply("돌창");
-    } else if(r.msg.indexOf("#버스")!=-1){
+    } else if(r.msg == "최정인"){
+        r.replier.reply("여소좀");
+    }else if(r.msg.indexOf("#버스")!=-1){
         광주버스(r);
     } else if(r.msg.indexOf("!정류장다운로드")!=-1){
         광주버스정류장받아오기(r);
