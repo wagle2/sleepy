@@ -173,7 +173,7 @@ function lyric(r) {
     var strLyrics = elems.select("strLyric").eachText().toArray();
     var length = strTitles.length;
     var res = "\"" + title + (artist ? ("/" + artist) : "") + "\" 검색결과" + "\n";
-    for (var i = 0; i < 3 && i < str.length; i++) {
+    for (var i = 0; i < 2 && i < str.length; i++) {
         res += "Lyric : " + (i + 1) + "\n" + strTitles[i] + "/" + strArtistNames[i] + "\n" + String(strLyrics[i]).replace(/\<br\>/g, "\n").replace(/\[\d\d:\d\d.\d\d\]/g, "") + "\n\n";
     }
     r.replier.reply(res.trim().cut(1));
