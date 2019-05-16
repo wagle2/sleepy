@@ -165,7 +165,7 @@ percent = function(r){
 
 var CHO = T.register("chosun",()=>{
 	while(true){
-        r={msg : '', room : '고딩',replier:{reply:function(msg){
+        r={msg : '', room : '봇개발',replier:{reply:function(msg){
             Api.replyRoom(r.room,msg)}}}
         choNotice(r)
 		}
@@ -173,7 +173,7 @@ var CHO = T.register("chosun",()=>{
 
 var CHO2 = T.register("chosun",()=>{
 	while(true){
-        r={msg : '', room : '고딩',replier:{reply:function(msg){
+        r={msg : '', room : '봇개발',replier:{reply:function(msg){
             Api.replyRoom(r.room,msg)}}}
         choNotice2(r)
 		}
