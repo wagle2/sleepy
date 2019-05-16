@@ -110,6 +110,8 @@ function isId(r){
         myItem(r);
     }else if(r.msg.indexOf("#포인트")==0){
         myPoint(r);
+    }else if(r.msg.indexOf("/가사")==0){
+        lyric(r);
     }
 }
 
@@ -157,6 +159,36 @@ percent = function(r){
     r.replier.reply(r.msg + "은 " + Math.floor(Math.random()*100) + "% 입니다.");
 }
 
+function lyric(r) {
+    var replier = r.replier;
+    var room = r.r;
+    var sender = r.s;
+    var msg = r.m;
+    var str = r.msg.replace("/\uac00\uc0ac", "").trim();
+    var title = str.includes("/") ? str.split("/")[0] : str;
+    var artist = str.includes("/") ? str.split("/")[1] : "";
+    var xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><SOAP-ENV:Envelope xmlns:SOAP-ENV=\"http://www.w3.org/2003/05/soap-envelope\"" + " xmlns:SOAP-ENC=\"http://www.w3.org/2003/05/soap-encoding\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" " + "xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:ns2=\"ALSongWebServer/Service1Soap\" xmlns:ns1=\"ALSongWebServer\" " + "xmlns:ns3=\"ALSongWebServer/Service1Soap12\"><SOAP-ENV:Body><ns1:GetResembleLyric2><ns1:stQuery><ns1:strTitle>" + title.XMLEncode() + "</ns1:strTitle><ns1:strArtistName>" + artist.XMLEncode() + "</ns1:strArtistName><ns1:nCurPage>0</ns1:nCurPage></ns1:stQuery>" + "</ns1:GetResembleLyric2></SOAP-ENV:Body></SOAP-ENV:Envelope>";
+    var elems = org.jsoup.Jsoup.connect("http://lyrics.alsong.co.kr/alsongwebservice/service1.asmx").header("Content-Type", "text/xml;charset=utf-8").requestBody(xml).post().select("ST_GET_RESEMBLELYRIC2_RETURN");
+    var strTitles = elems.select("strTitle").eachText().toArray();
+    var strArtistNames = elems.select("strArtistName").eachText().toArray();
+    var strLyrics = elems.select("strLyric").eachText().toArray();
+    var length = strTitles.length;
+    var res = "\"" + title + (artist ? ("/" + artist) : "") + "\" \uac80\uc0c9\uacb0\uacfc" + "\n";
+    for (var i = 0; i < 3 && i < str.length; i++) {
+        res += "Lyric : " + (i + 1) + "\n" + strTitles[i] + "/" + strArtistNames[i] + "\n" + String(strLyrics[i]).replace(/\<br\>/g, "\n").replace(/\[\d\d:\d\d.\d\d\]/g, "") + "\n\n";
+    }
+    r.reply(res.trim().cut(1));
+}
+
+Object.defineProperty(String.prototype,"XMLEncode",{
+    value:function(){
+       var res=""
+          for(var i=0;i<this.toString().length;i++){
+             res+="&#x"+java.lang.String.format("%04x",java.lang.Integer(this.toString().charCodeAt(i)))+";";
+          }
+          return res;
+       }
+ });
 
 function 광주버스(r){
     I.register("busSelect"+r.sender,r.room,r.sender,function(input){
