@@ -164,6 +164,41 @@ percent = function(r){
 }
 
 
+function choNotice(r){
+    var link = "http://www.chosun.ac.kr/user/indexSub.do?codyMenuSeq=322274&siteId=sukang";
+    var soup = org.jsoup.Jsoup.connect(link).get();
+    var notice_before = [];
+    var notice_after_num = 0;
+    var notice_after = [];
+    var notice_new_title = "";
+    var notice_new_href = "";
+    var diffNum = 0;
+    for (var i = 0; i<20; i++){
+        notice_before.push(soup.select("#list_frm > table > tbody > tr:nth-child("+(i+1)+") a").attr("href"));
+        
+    }
+    java.lang.Thread.sleep(30*1000); //30초동안 대기
+    
+    for (var i = 0; i<20; i++){
+        notice_after.push(soup.select("#list_frm > table > tbody > tr:nth-child("+(i+1)+") a").attr("href"));
+        if(String(soup.select("#list_frm > table > tbody > tr:nth-child("+(i+1)+") > td.no > img").attr("alt"))=="공지"){notice_after_num++}
+    }
+    for (var i = 0; i<20; i++){
+        if(notice_before[i]!=notice_after[i]){diffNum++};
+    }
+    if(diffNum!=0){
+        notice_new_title = soup.select("#list_frm > table > tbody > tr:nth-child("+(notice_after_num+1)+") > td.title > a").text()
+        notice_new_href = "http://www.chosun.ac.kr/user/" + soup.select("#list_frm > table > tbody > tr:nth-child("+(notice_after_num+1)+") > td.title > a").attr("href")
+        r.replier.reply("**[조머]새로운 학사공지**\n"+notice_new_title)
+        r.replier.reply(notice_new_href)
+        //새로운 공지를 찾아서 프린트해주기;
+        
+    }else if(diffNum==0){
+        r.replier.reply("변경된 공지가 없다옹~");
+    }
+}
+
+
 function lyric(r) {
     var str = r.msg.replace("#가사", "").trim();
     var title = str.includes("/") ? str.split("/")[0] : str;
