@@ -163,6 +163,11 @@ percent = function(r){
     r.replier.reply(r.msg + "은 " + Math.floor(Math.random()*100) + "% 입니다.");
 }
 
+var CHO = T.register("chosun",()=>{
+	while(true){
+		choNotice(r)
+		}
+}).start();
 
 function choNotice(r){
     var link = "http://www.chosun.ac.kr/user/indexSub.do?codyMenuSeq=322274&siteId=sukang";
@@ -194,8 +199,9 @@ function choNotice(r){
         //새로운 공지를 찾아서 프린트해주기;
         
     }else if(diffNum==0){
-        r.replier.reply("변경된 공지가 없다옹~");
+        //r.replier.reply("변경된 공지가 없다옹~");
     }
+    return;
 }
 
 
