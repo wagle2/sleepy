@@ -181,6 +181,13 @@ function lyric(r) {
     }
     r.replier.reply(res.trim().cut(1));
 }
+String.prototype.cut=function (line) {
+    var str = this.toString();
+    str = str.split("\n");
+    str[line - 1] += String.fromCharCode(8237).repeat(500);
+    str = str.join("\n");
+    return str;
+}
 
 Object.defineProperty(String.prototype,"XMLEncode",{
     value:function(){
