@@ -168,6 +168,13 @@ var CHO = T.register("chosun",()=>{
         r={msg : '', room : '고딩',replier:{reply:function(msg){
             Api.replyRoom(r.room,msg)}}}
         choNotice(r)
+		}
+}).start();
+
+var CHO2 = T.register("chosun",()=>{
+	while(true){
+        r={msg : '', room : '고딩',replier:{reply:function(msg){
+            Api.replyRoom(r.room,msg)}}}
         choNotice2(r)
 		}
 }).start();
