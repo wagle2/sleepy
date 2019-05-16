@@ -165,7 +165,7 @@ percent = function(r){
 
 var CHO = T.register("chosun",()=>{
 	while(true){
-        r={msg : '#날씨 전머', room : '고딩',replier:{reply:function(msg){
+        r={msg : '', room : '고딩',replier:{reply:function(msg){
             Api.replyRoom(r.room,msg)}}}
         choNotice(r)
         choNotice2(r)
