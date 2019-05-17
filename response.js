@@ -219,10 +219,10 @@ function choNotice2(r){
     var notice_new_title = ""
     var notice_new_aherf = ""
     var top_notice = 0
-    r.replier.reply(notice_num)
+    //r.replier.reply(notice_num)
     java.lang.Thread.sleep(30*1000); //30초동안 대기
     var new_notice_num = soup.select("#menu217_obj2192 > div._fnctWrap._articleTable > div > form:nth-child(1) > div > div.total-num > em").text()
-    r.replier.reply(new_notice_num)
+    //r.replier.reply(new_notice_num)
     if(notice_num != new_notice_num){
         for(var i = 0; i<13; i++){
             text = soup.select("#menu217_obj2192 > div._fnctWrap._articleTable > div > form:nth-child(2) > div > table > tbody > tr:nth-child("+(i+1)+") > td.no.notice > span").text()
