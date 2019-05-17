@@ -487,13 +487,13 @@ weather = {
         var uv =  weatherSoup.select("div > div:nth-child(1) > div > div.card.card_now > div.weather_set_detail > div > ul > li.uv > span").text()
         this.str = "";
         this.str += "(야옹)" + location + "\n　→ " 
-                        + nowTime + "\n----------------------------------\n"
+                        + nowTime + "\n__________________________________\n"
                         + "시　날씨 　기온 습도 최저 최고\n" 
                         + new Date().getHours() + "　" + nowWeather.replace(/\(.*?\)/g,"").extensionRight(한글공백,3) + nowTemp + "　" + nowTemp + "　"+ todayLowTemp + "　"+ todayHighTemp + "\n"
-                        + "----------------------------------\n"
+                        + "__________________________________\n"
                         + "PM10　　PM2.5　　자외선(해)\n"
                         + "　"+ pm10 + "　　　 " + pm2_5 + "　 　　 " + uv +"\n"
-                        + "----------------------------------\n"
+                        + "__________________________________\n"
 
         var baseLink = "http://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=" + areaCode;
         var baseParse = org.jsoup.Jsoup.connect(baseLink).get();
