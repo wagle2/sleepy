@@ -640,7 +640,6 @@ item = function(r){
     //먼저 있는지 체크하고
     if(cheakOverlap(this.name,this.itemName)==true){
         this.lev = D.selectForArray('items','reinforce',"name=? and item=?",[this.name,this.itemName])
-        D.update('items',{reinforce:this.lev,lastTime:(new Date().getTime())},"name=? and item=?",[this.name,this.itemName]);
         D.update('point',{point :(showPoint(r)-10)},"room=? and id=?",[r.room,r.sender]);
         prop = Math.random()*100;
         if(this.lev < 5){
