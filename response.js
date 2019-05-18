@@ -740,14 +740,14 @@ showPoint = function(r){
 
 gameOddEven = function(r){
     var myPoint = showPoint(r);
-    if(myPoint < 0){
+    if(myPoint == 0){
         r.replier.reply("포인트가 부족하다옹~.");
         return
     }
     I.register("busSelect"+r.sender,r.room,r.sender,function(input){
     r.replier.reply("배팅 포인트를 입력하라옹~");
     var point=input.getMsg();
-    if(myPoint<point){
+    if(myPoint<point && myPoint >= 0){
         r.replier.reply("포인트가 부족하다옹~ 현재 포인트["+myPoint+"]");
         return
     }
