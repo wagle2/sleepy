@@ -112,6 +112,8 @@ function isId(r){
         myPoint(r);
     }else if(r.msg.indexOf("#가사")==0){
         lyric(r);
+    }else if(r.msg.indexOf("#홀짝")==0){
+        gameOddEven(r);
     }
 }
 
@@ -156,6 +158,8 @@ function 고딩방(r) {
         myPoint(r);
     }else if(r.msg.indexOf("#가사")==0){
         lyric(r);
+    }else if(r.msg.indexOf("#홀짝")==0){
+        gameOddEven(r);
     }
 }
 
