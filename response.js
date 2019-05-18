@@ -622,14 +622,26 @@ item = function(r){
     this.lev = 0;
     this.add = ""
     
-    //쿨타임 체크
+    /*쿨타임 체크
     if(isCoolTime(r,this.name)!=false){
         r.replier.reply("강화를 준비중이다옹~(야옹)");
+        return;
+    } 
+    */
+   // 포인트체크
+    if(hasPoint(r)==false){
+        r.replier.reply("포인트가 부족하다옹~")
+        return;
+    }
+    if(showPoint(r)<10){
+        r.replier.reply("포인트가 부족하다옹~")
         return;
     }
     //먼저 있는지 체크하고
     if(cheakOverlap(this.name,this.itemName)==true){
         this.lev = D.selectForArray('items','reinforce',"name=? and item=?",[this.name,this.itemName])
+        D.update('items',{reinforce:this.lev,lastTime:(new Date().getTime())},"name=? and item=?",[this.name,this.itemName]);
+        D.update('point',{point :(showPoint(r)-10)},"room=? and id=?",[r.room,r.sender]);
         prop = Math.random()*100;
         if(this.lev < 5){
             if(prop < 0){
@@ -714,6 +726,15 @@ cheakOverlap = function(Name,itemName){
         return true;
     }
 }
+
+hasPoint = function(r){
+    return (D.selectForObject('point',"point","room=? and id=?",[r.room,r.sender])[0].point > 0 ? true : false);
+}
+
+showPoint = function(r){
+    return D.selectForObject('point',"point","room=? and id=?",[r.room,r.sender])[0].point;
+}
+
 
 isCoolTime = function(r,Name){
     var realTime = Number(new Date().getTime());
