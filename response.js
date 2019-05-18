@@ -754,7 +754,7 @@ gameOddEven = function(r){
     D.update('point',{point :(myPoint-point)},"room=? and id=?",[r.room,r.sender]);
     r.replier.reply("홀? 짝? 랜덤?");
     msg=input.getMsg();
-    if(floor(Math.random()*101)>=50){
+    if(Math.floor(Math.random()*101)>=50){
         r.replier.reply("축하한다옹~");
         D.update('point',{point :(showPoint(r)+(point*2))},"room=? and id=?",[r.room,r.sender]);
         r.replier.reply("획득포인트 :"+point*2 +" / 남은포인트 : "+showPoint(r));
