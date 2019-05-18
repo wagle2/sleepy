@@ -734,6 +734,33 @@ showPoint = function(r){
     return D.selectForObject('point',"point","room=? and id=?",[r.room,r.sender])[0].point;
 }
 
+gameOddEven = function(r){
+    myPoint = showPoint(r);
+    if(myPoint < 0){
+        r.replier.reply("포인트가 부족하다옹~.");
+        return
+    }
+    I.register("busSelect"+r.sender,r.room,r.sender,function(input){
+    r.replier.reply("배팅 포인트를 입력하라옹~");
+    point=input.getMsg();
+    if(myPoint<point){
+        r.replier.reply("포인트가 부족하다옹~ 현재 포인트["+myPoint+"]");
+        return
+    }
+    D.update('point',{point :(myPoint-point)},"room=? and id=?",[r.room,r.sender]);
+    r.replier.reply("홀? 짝? 랜덤?");
+    msg=input.getMsg();
+    if(floor(Math.random()*101)>=50){
+        r.replier.reply("축하한다옹~");
+        D.update('point',{point :(showPoint(r)+(point*2))},"room=? and id=?",[r.room,r.sender]);
+        r.replier.reply("획득포인트 :"+point*2 +" / 남은포인트 : "+showPoint(r));
+    }else{
+        r.replier.reply("77ㅓ억~~~");
+        r.replier.reply("잃은포인트 :"+point +" / 남은포인트 : "+showPoint(r));
+    }
+    })
+}
+
 
 isCoolTime = function(r,Name){
     var realTime = Number(new Date().getTime());
