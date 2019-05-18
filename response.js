@@ -739,7 +739,7 @@ showPoint = function(r){
 }
 
 gameOddEven = function(r){
-    myPoint = showPoint(r);
+    var myPoint = showPoint(r);
     if(myPoint < 0){
         r.replier.reply("포인트가 부족하다옹~.");
         return
