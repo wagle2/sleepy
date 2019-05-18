@@ -746,14 +746,14 @@ gameOddEven = function(r){
     }
     I.register("busSelect"+r.sender,r.room,r.sender,function(input){
     r.replier.reply("배팅 포인트를 입력하라옹~");
-    point=input.getMsg();
+    var point=input.getMsg();
     if(myPoint<point){
         r.replier.reply("포인트가 부족하다옹~ 현재 포인트["+myPoint+"]");
         return
     }
     D.update('point',{point :(myPoint-point)},"room=? and id=?",[r.room,r.sender]);
     r.replier.reply("홀? 짝? 랜덤?");
-    msg=input.getMsg();
+    var msg=input.getMsg();
     if(Math.floor(Math.random()*101)>=50){
         r.replier.reply("축하한다옹~");
         D.update('point',{point :(showPoint(r)+(point*2))},"room=? and id=?",[r.room,r.sender]);
