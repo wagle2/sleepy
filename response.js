@@ -747,7 +747,7 @@ gameOddEven = function(r){
     I.register("busSelect"+r.sender,r.room,r.sender,function(input){
     r.replier.reply("배팅 포인트를 입력하라옹~");
     var point=input.getMsg();
-    if(point < 0){
+    if(point < 0 || isNaN(point)==true || String(point).length > 10 ){
         r.replier.reply("제대로 입력하라옹!!!!")
         return
     }
