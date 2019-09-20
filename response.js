@@ -30,7 +30,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
   }
   if(msg =="/채팅분석") {
     const messages = D.selectForString("Chats","chat");
-    const messages2 = messages.replace(/#/g,"").replace(/|/g,"");
+    const messages2 = messages.replace(/#/g,"")
     r.replier.reply(messages2);
     }
   if (msg == "어흥") {
@@ -43,7 +43,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
   }
   if (msg[0] === "^" && room === "시립대 봇제작방") {
     try {
-      replier.reply(eval(msg.substring(1)));
+        replier.reply(String(eval(msg.substring(1))).trim().encoding());
     } catch (e) {
       replier.reply(e);
     }
@@ -166,6 +166,10 @@ function reload(r) {
     reloadcheck = 0;
     r.replier.reply("reloading 완료 / " + time + "s\n" + new Date());
   }
+}
+
+String.prototype.encoding=function () {
+    return this.replace(/\\u([\da-fA-F]{4})/g, (m, p1) => String.fromCharCode(parseInt(p1, 16)));
 }
 
 //이 아래 6가지 메소드는 스크립트 액티비티에서 사용하는 메소드들
