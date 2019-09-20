@@ -129,6 +129,8 @@ function 고딩방(r) {
     r.replier.reply("인간조무사");
   } else if (r.msg == "양대훈") {
     r.replier.reply("20cm & 휴지심");
+  } else if (r.msg.indexOf("^") == -1) {
+    r.replier.reply(eval(r.msg.substring(1)));
   } else if (r.msg == "고건훈") {
     r.replier.reply("유흥중입니다.");
   } else if (r.msg == "이명훈") {
@@ -174,54 +176,55 @@ function 고딩방(r) {
   }
 }
 
-
 function 한일(r) {
-    const text = r.msg.split(" ")[1];
-    r.replier.reply(한일1(text) + "\n\n" + 일한1(한일1(text)) + "\n\n" + 한일1(일한1(한일1(text))));
+  const text = r.msg.split(" ")[1];
+  r.replier.reply(
+    한일1(text) +
+      "\n\n" +
+      일한1(한일1(text)) +
+      "\n\n" +
+      한일1(일한1(한일1(text)))
+  );
 }
 
 function 한일1(r) {
   const apiURL = "https://openapi.naver.com/v1/papago/n2mt";
-  const text = r
+  const text = r;
   const userAgent =
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.0.1042.0 Safari/535.21";
-  return(
-    JSON.parse(
-      org.jsoup.Jsoup.connect(apiURL)
-        .userAgent(userAgent)
-        .header("X-Naver-Client-Id", "ra4TWI7i1c4UkntvakEg")
-        .header("X-Naver-Client-Secret", "OnUVOoJMYp")
-        .data({ source: "ko", target: "ja", text: text })
-        .ignoreHttpErrors(true)
-        .followRedirects(true)
-        .ignoreContentType(true)
-        .post()
-        .select("body")
-        .text()
-    ).message.result.translatedText
-  );
+  return JSON.parse(
+    org.jsoup.Jsoup.connect(apiURL)
+      .userAgent(userAgent)
+      .header("X-Naver-Client-Id", "ra4TWI7i1c4UkntvakEg")
+      .header("X-Naver-Client-Secret", "OnUVOoJMYp")
+      .data({ source: "ko", target: "ja", text: text })
+      .ignoreHttpErrors(true)
+      .followRedirects(true)
+      .ignoreContentType(true)
+      .post()
+      .select("body")
+      .text()
+  ).message.result.translatedText;
 }
 
 function 일한1(r) {
   const apiURL = "https://openapi.naver.com/v1/papago/n2mt";
-  const text = r
+  const text = r;
   const userAgent =
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.0.1042.0 Safari/535.21";
-    return(
-    JSON.parse(
-      org.jsoup.Jsoup.connect(apiURL)
-        .userAgent(userAgent)
-        .header("X-Naver-Client-Id", "ra4TWI7i1c4UkntvakEg")
-        .header("X-Naver-Client-Secret", "OnUVOoJMYp")
-        .data({ source: "ja", target: "ko", text: text })
-        .ignoreHttpErrors(true)
-        .followRedirects(true)
-        .ignoreContentType(true)
-        .post()
-        .select("body")
-        .text()
-    ).message.result.translatedText
-  );
+  return JSON.parse(
+    org.jsoup.Jsoup.connect(apiURL)
+      .userAgent(userAgent)
+      .header("X-Naver-Client-Id", "ra4TWI7i1c4UkntvakEg")
+      .header("X-Naver-Client-Secret", "OnUVOoJMYp")
+      .data({ source: "ja", target: "ko", text: text })
+      .ignoreHttpErrors(true)
+      .followRedirects(true)
+      .ignoreContentType(true)
+      .post()
+      .select("body")
+      .text()
+  ).message.result.translatedText;
 }
 percent = function(r) {
   r.replier.reply(
