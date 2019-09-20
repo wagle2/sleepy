@@ -150,9 +150,18 @@ function 고딩방(r) {
         lyric(r);
     }else if(r.msg.indexOf("#홀짝")==0){
         gameOddEven(r);
+    }else if(r.msg.indexOf("!일한")==0){
+        한일1(r);
     }
 }
 
+function 한일1(r){
+    var text = r.msg.split(" ")[1];
+    JSON.parse(org.jsoup.Jsoup.connect(apiURL).userAgent(userAgent)
+    .header("X-Naver-Client-Id", "ra4TWI7i1c4UkntvakEg").header("X-Naver-Client-Secret", "OnUVOoJMYp")
+    .data({'source’:’ja’, 'target’:’ko’, 'text':text}).ignoreHttpErrors(true).followRedirects(true)
+    .ignoreContentType(true).post().select("body").text()).message.result.translatedText
+} 
 percent = function(r){
     r.replier.reply(r.msg + "은 " + Math.floor(Math.random()*100) + "% 입니다.");
 }
