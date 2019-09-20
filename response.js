@@ -30,6 +30,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             bisLength = bis.length;
             if (room == 'test' || room == '시립대 봇제작방' || room == '고딩' || room == '정인'|| room == '카톡봇 개발') {
                 if(msg =="!로딩" ){
+                    r.replier.reply("로딩한다옹");
                     reload(r);
                     return;
                 }else if (msg.indexOf("*") == 0) {
