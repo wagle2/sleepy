@@ -167,14 +167,14 @@ function 고딩방(r) {
     lyric(r);
   } else if (r.msg.indexOf("#홀짝") == 0) {
     gameOddEven(r);
-  } else if (r.msg.indexOf("!일한") == 0) {
+  } else if (r.msg.indexOf("!한일") == 0) {
     한일(r);
   }
 }
 
 function 한일(r) {
     const text = r.msg.split(" ")[1];
-    r.replier.reply(한일1(text) + "\n\n" + 일한1(한일1(text)));
+    r.replier.reply(일한1(text) + "\n\n" + 한일1(text) + "\n\n" + 일한1(한일1(text)));
 }
 
 function 한일1(r) {
@@ -188,7 +188,7 @@ function 한일1(r) {
         .userAgent(userAgent)
         .header("X-Naver-Client-Id", "ra4TWI7i1c4UkntvakEg")
         .header("X-Naver-Client-Secret", "OnUVOoJMYp")
-        .data({ source: "ja", target: "ko", text: text })
+        .data({ source: "ko", target: "ja", text: text })
         .ignoreHttpErrors(true)
         .followRedirects(true)
         .ignoreContentType(true)
