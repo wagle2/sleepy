@@ -31,12 +31,12 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
   if(msg =="/채팅분석") {
     const messages = D.selectForArray("Chats","chat").join(",");
     const messages2 = messages.replace(/[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,"");
+    r.replier.reply("http://wagle.dlinkddns.com/stat.png");
     org.jsoup.Jsoup.connect(
         "http://wagle.dlinkddns.com:5000/messages/"+encodeURI(messages2)
       )
         .get().timeout(5000)
         .text()
-    r.replier.reply("http://wagle.dlinkddns.com/stat.png");
     }
   if (msg == "어흥") {
     r.replier.reply("애옹애옹");
