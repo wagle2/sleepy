@@ -98,8 +98,8 @@ function 다른방(r) {
     광주버스(r);
   } else if (r.msg.indexOf("!정류장다운로드") != -1) {
     광주버스정류장받아오기(r);
-  } else if (msg.indexOf("^") == 0) {
-    replier.reply(String(eval(msg.substring(1))));
+  } else if (r.msg.indexOf("^") == 0) {
+    replier.reply(String(eval(r.msg.substring(1))));
     return;
   } else if (r.msg.indexOf("#날씨") != -1) {
     weather.func(r);
