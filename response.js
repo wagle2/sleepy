@@ -22,10 +22,10 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
   cut = String.fromCharCode(8237).repeat(500);
   var r = { replier: replier, msg: msg, sender: sender, room: room };
 
-if (room == "test" || room == "시립대 봇제작방") {
-			if (msg.indexOf("]") == 0) {
-				replier.reply(eval(msg.substring(1)));
-			} else if (msg.indexof("^로딩")){
+if (r.room == "test" || r.room == "시립대 봇제작방") {
+			if (r.msg.indexOf("]") == -1) {
+				r.replier.reply(eval(r.msg.substring(1)));
+			} else if (r.msg.indexof("^로딩")){
                 reload(r);
             }
 
