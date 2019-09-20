@@ -25,7 +25,9 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 if (room == "test" || room == "시립대 봇제작방") {
 			if (msg.indexOf("]") == 0) {
 				replier.reply(eval(msg.substring(1)));
-			}
+			} else if (msg.indexof("^로딩")){
+                reload(r);
+            }
 
 function 한일(r) {
   const text = r.msg.split(" ")[1];
