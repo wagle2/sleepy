@@ -28,7 +28,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
   } else if (msg == "애옹") {
     r.replier.reply("어흐으응");
   }
-  if(msg[0] === "^한일"){
+  if(msg === "^한일"){
     한일(r);
   }
   if (msg[0] === "^" && room === "시립대 봇제작방") {
@@ -43,8 +43,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
 
 function 한일(r) {
-    const text = msg.split(" ")[1];
-    replier.reply(
+    const text = r.msg.split(" ")[1];
+    r.replier.reply(
       한일1(text) +
         "\n\n" +
         일한1(한일1(text)) +
