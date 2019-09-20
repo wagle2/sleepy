@@ -100,7 +100,6 @@ function 다른방(r) {
     광주버스정류장받아오기(r);
   } else if (r.msg.indexOf("^") == 0) {
     r.replier.reply(eval(r.msg.substring(1)));
-    return;
   } else if (r.msg.indexOf("#날씨") != -1) {
     weather.func(r);
   } else if (r.msg.indexOf("#대전") != -1) {
