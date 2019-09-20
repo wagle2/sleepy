@@ -43,8 +43,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
   }
 }
 
-function save(msg){
-    D.insert("Chats",{room:r.room,date:Date.now(),user:r.sender,chat:r.msg})
+function save(r){
+    D.insert("Chats",{room:r.room,date:Date.now(),user:r.sender,chat:r.msg});
 }
 
 function 번역다운(txt) {
