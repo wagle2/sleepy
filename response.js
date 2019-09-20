@@ -17,10 +17,9 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
    * @method imageDB.getProfileImage() - Base64 인코딩 되어있는 JPEG 프로필 이미지 반환, 기본 값 null
    * @method replier.reply("문자열") - 메시지가 도착한 방에 답장을 보내는 메소드 */
   r = { replier: replier, msg: msg, sender: sender, room: room };
+
+  save(r);
   if (1) {
-      if(1){
-          save(r);
-      }
     if (msg == "^로딩") {
       reload(r);
       return;
@@ -44,7 +43,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 }
 
 function save(r){
-    D.insert("Chats",{room:r.room,date:Date.now(),user:r.sender,chat:r.msg});
+    D.insert("Chats",{room:r.room,date:new Date(),user:r.sender,chat:r.msg});
 }
 
 function 번역다운(txt) {
