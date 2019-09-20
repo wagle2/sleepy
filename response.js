@@ -36,7 +36,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
       )
         .get().timeout(5000)
         .text()
-    return "http://wagle.dlinkddns.com/stat.png"
+    r.replier.reply("http://wagle.dlinkddns.com/stat.png");
     }
   if (msg == "어흥") {
     r.replier.reply("애옹애옹");
