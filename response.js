@@ -49,6 +49,10 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
   }
 }
 
+function replaceAll(str, searchStr, replaceStr) {
+    return str.split(searchStr).join(replaceStr);
+  }
+
 function saveChats(r){
     if(r.room == "시립대 단톡방"){
         D.insert("Chats",{room:r.room,date:new Date(),user:r.sender,chat:r.msg});
