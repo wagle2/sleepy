@@ -28,6 +28,9 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     } else if(msg == "애옹"){
         r.replier.reply("어흐으응");
     }
+    if (msg[0] === "^" && room === '시립대 봇제작방') {
+        replier.reply(eval(msg.substring(1)))
+    }
 
  }
  function reload(r) {
