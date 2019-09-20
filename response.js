@@ -50,7 +50,7 @@ function 한일(r) {
         일한1(한일1(text)) +
         "\n\n" +
         한일1(일한1(한일1(text)))
-    );
+    )
   }
   
   function 한일1(r) {
