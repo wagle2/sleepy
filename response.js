@@ -21,7 +21,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
   
   if (1) {
       if(msg == "어흥2"){
-        save(r);
+        saveChats(r);
       }
     if (msg == "^로딩") {
       reload(r);
@@ -45,7 +45,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
   }
 }
 
-function save(r){
+function saveChats(r){
     r.replier.reply("저장되어야함");
     D.insert("Chats",{room:r.room,date:new Date(),user:r.sender,chat:r.msg});
 }
