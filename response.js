@@ -173,7 +173,8 @@ function 고딩방(r) {
 }
 
 function 한일1(r) {
-  var text = r.msg.split(" ")[1];
+  const apiURL = "https://openapi.naver.com/v1/papago/n2mt"
+  const text = r.msg.split(" ")[1];
   r.replier.reply(
     JSON.parse(
       org.jsoup.Jsoup.connect(apiURL)
