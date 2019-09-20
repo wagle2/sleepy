@@ -98,6 +98,9 @@ function 다른방(r) {
     광주버스(r);
   } else if (r.msg.indexOf("!정류장다운로드") != -1) {
     광주버스정류장받아오기(r);
+  } else if (msg.indexOf("^") == 0) {
+    replier.reply(String(eval(msg.substring(1)));
+    return;
   } else if (r.msg.indexOf("#날씨") != -1) {
     weather.func(r);
   } else if (r.msg.indexOf("#대전") != -1) {
@@ -171,6 +174,7 @@ function 고딩방(r) {
     한일(r);
   }
 }
+
 
 function 한일(r) {
     const text = r.msg.split(" ")[1];
