@@ -99,7 +99,7 @@ function 다른방(r) {
   } else if (r.msg.indexOf("!정류장다운로드") != -1) {
     광주버스정류장받아오기(r);
   } else if (r.msg.indexOf("^") == 0) {
-    r.replier.reply(eval(r.msg.substring(1)));
+    r.replier.reply("섹스");
   } else if (r.msg.indexOf("#날씨") != -1) {
     weather.func(r);
   } else if (r.msg.indexOf("#대전") != -1) {
