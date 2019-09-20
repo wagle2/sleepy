@@ -30,7 +30,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
   }
   if(msg =="/채팅분석") {
     const messages = D.selectForArray("Chats","chat").join(",");
-    const messages2 = messages.replace(/#/g,"")
+    const messages2 = messages.replace(/[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,"");
     r.replier.reply(messages2);
     }
   if (msg == "어흥") {
