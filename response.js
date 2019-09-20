@@ -29,8 +29,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     }
   }
   if(msg =="/채팅분석") {
-    r.replier.reply("내용나와야함");
-    const messages = D.selectForString("Chats","chat");
+    const messages = D.selectForArray("Chats","chat");
     r.replier.reply(messages);
     }
   if (msg == "어흥") {
