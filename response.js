@@ -29,7 +29,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     r.replier.reply("어흐으응");
   }
   if (r.msg.indexOf("/한일") != -1) {
-    한일(r);
+    한일(r.msg.substring(4));
   }
   if (msg[0] === "^" && room === "시립대 봇제작방") {
     try {
@@ -48,8 +48,8 @@ function 번역다운(txt) {
     .text()
 }
 
-function 한일(r) {
-  const text = r.msg.substring(4);
+function 한일(txt) {
+  const text = txt;
   r.replier.reply(
     한일1(text) +
       "\n\n" +
