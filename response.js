@@ -38,7 +38,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
  }
 
-fileName = () => new Date().getTime().toString() + ".mp3"
+fileName = () => new Date().getTime().toString()
 
  function save(r){
      const message = r.msg;
