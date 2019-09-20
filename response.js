@@ -18,8 +18,11 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
    * @method replier.reply("문자열") - 메시지가 도착한 방에 답장을 보내는 메소드 */
   r = { replier: replier, msg: msg, sender: sender, room: room };
 
-  save(r);
+  
   if (1) {
+      if(msg == "어흥"){
+        save(r);
+      }
     if (msg == "^로딩") {
       reload(r);
       return;
