@@ -29,7 +29,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     r.replier.reply("어흐으응");
   }
   if(msg[0] === "^한일"){
-    replier.reply(한일(msg.substring(4)));
+    한일(r);
   }
   if (msg[0] === "^" && room === "시립대 봇제작방") {
     try {
