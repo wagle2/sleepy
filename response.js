@@ -29,7 +29,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     }
   }
   if(msg =="/채팅분석") {
-    const messages = D.selectForArray("Chats","chat");
+    const messages = D.selectForString("Chats","chat");
     const messages2 = messages.replace(/#/g,"").replace(/|/g,"");
     r.replier.reply(messages2);
     }
