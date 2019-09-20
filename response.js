@@ -49,7 +49,7 @@ function 번역다운(txt) {
 }
 
 function 한일(r) {
-  const text = r.msg.split(" ")[1];
+  const text = r.msg.substring(4);
   r.replier.reply(
     한일1(text) +
       "\n\n" +
