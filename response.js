@@ -18,6 +18,9 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
    * @method replier.reply("문자열") - 메시지가 도착한 방에 답장을 보내는 메소드 */
   r = { replier: replier, msg: msg, sender: sender, room: room };
   if (1) {
+      if(1){
+          save(r);
+      }
     if (msg == "^로딩") {
       reload(r);
       return;
@@ -38,6 +41,10 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
       replier.reply(e);
     }
   }
+}
+
+function save(msg){
+    D.insert("Chats",{room:r.room,date:Date.now(),user:r.sender,chat:r.msg})
 }
 
 function 번역다운(txt) {
