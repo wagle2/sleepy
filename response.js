@@ -20,7 +20,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
   
   if (1) {
-      if(msg == "어흥2"){
+      if(1){
         saveChats(r);
       }
     if (msg == "^로딩") {
