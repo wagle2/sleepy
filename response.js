@@ -29,7 +29,10 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         r.replier.reply("어흐으응");
     }
     if (msg[0] === "^" && room === '시립대 봇제작방') {
-        replier.reply(eval(msg.substring(1)))
+        try{
+            replier.reply(eval(msg.substring(1)));
+        } catch(e)
+            replier.reply(e);
     }
 
  }
