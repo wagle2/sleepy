@@ -28,13 +28,13 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
       return;
     }
   }
+  if(msg =="/채팅분석") {
+    r.replier.reply("내용나와야함");
+    const messages = D.selectForString("Chats","chat");
+    r.replier.reply(messages);
+    }
   if (msg == "어흥") {
     r.replier.reply("애옹애옹");
-  if(msg =="/채팅분석") {
-      r.replier.reply("내용나와야함")
-      const messages = D.selectForString("Chats","chat");
-      r.replier.reply(messages);
-  }
   } else if (msg == "애옹") {
     r.replier.reply("어흐으응");
   }
