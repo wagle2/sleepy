@@ -30,8 +30,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
   }
   if (msg == "어흥") {
     r.replier.reply("애옹애옹");
-  if(msg =="채팅분석") {
-      const messages = D.selectForArray("Chats","chat");
+  if(msg =="/채팅분석") {
+      const messages = D.selectForString("Chats","chat");
       r.replier.reply(messages);
   }
   } else if (msg == "애옹") {
