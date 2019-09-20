@@ -37,6 +37,18 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     }
 
  }
+
+fileName = () => new Date().getTime().toString() + ".mp3"
+
+ function save(r){
+     const message = r.msg;
+     const file = "storage/emulated/0/kbot/"+fileName()+".txt";
+     const filedir = new java.io.File(file);
+     var bw = new java.io.BufferedWriter(new java.io.FileWriter(filedir));
+        bw.write(r.msg);
+        bw.close();
+ }
+
  function reload(r) {
     if(r.sender=='잠만보'){
         reloadcheck = 1;
