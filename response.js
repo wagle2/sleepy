@@ -28,7 +28,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
   } else if (msg == "애옹") {
     r.replier.reply("어흐으응");
   }
-  if(r.msg.indexOf("/한일") != -1){
+  if (r.msg.indexOf("/한일") != -1) {
     한일(r);
   }
   if (msg[0] === "^" && room === "시립대 봇제작방") {
@@ -40,58 +40,64 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
   }
 }
 
-
+function 번역다운(txt) {
+  return org.jsoup.Jsoup.connect(
+    "http://wagle.dlinkddns.com:5000/text/"+encodeURI(txt)
+  )
+    .get()
+    .text()
+}
 
 function 한일(r) {
-    const text = r.msg.split(" ")[1];
-    r.replier.reply(
-      한일1(text) +
-        "\n\n" +
-        일한1(한일1(text)) +
-        "\n\n" +
-        한일1(일한1(한일1(text)))
-    );
-  }
-  
-  function 한일1(txt) {
-    const apiURL = "https://openapi.naver.com/v1/papago/n2mt";
-    const text = txt;
-    const userAgent =
-      "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.0.1042.0 Safari/535.21";
-    return JSON.parse(
-      org.jsoup.Jsoup.connect(apiURL)
-        .userAgent(userAgent)
-        .header("X-Naver-Client-Id", "ra4TWI7i1c4UkntvakEg")
-        .header("X-Naver-Client-Secret", "OnUVOoJMYp")
-        .data({ source: "ko", target: "ja", text: text })
-        .ignoreHttpErrors(true)
-        .followRedirects(true)
-        .ignoreContentType(true)
-        .post()
-        .select("body")
-        .text()
-    ).message.result.translatedText;
-  }
-  
-  function 일한1(txt) {
-    const apiURL = "https://openapi.naver.com/v1/papago/n2mt";
-    const text = txt;
-    const userAgent =
-      "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.0.1042.0 Safari/535.21";
-    return JSON.parse(
-      org.jsoup.Jsoup.connect(apiURL)
-        .userAgent(userAgent)
-        .header("X-Naver-Client-Id", "ra4TWI7i1c4UkntvakEg")
-        .header("X-Naver-Client-Secret", "OnUVOoJMYp")
-        .data({ source: "ja", target: "ko", text: text })
-        .ignoreHttpErrors(true)
-        .followRedirects(true)
-        .ignoreContentType(true)
-        .post()
-        .select("body")
-        .text()
-    ).message.result.translatedText;
-  }
+  const text = r.msg.split(" ")[1];
+  r.replier.reply(
+    한일1(text) +
+      "\n\n" +
+      일한1(한일1(text)) +
+      "\n\n" +
+      한일1(일한1(한일1(text)))
+  );
+}
+
+function 한일1(txt) {
+  const apiURL = "https://openapi.naver.com/v1/papago/n2mt";
+  const text = txt;
+  const userAgent =
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.0.1042.0 Safari/535.21";
+  return JSON.parse(
+    org.jsoup.Jsoup.connect(apiURL)
+      .userAgent(userAgent)
+      .header("X-Naver-Client-Id", "ra4TWI7i1c4UkntvakEg")
+      .header("X-Naver-Client-Secret", "OnUVOoJMYp")
+      .data({ source: "ko", target: "ja", text: text })
+      .ignoreHttpErrors(true)
+      .followRedirects(true)
+      .ignoreContentType(true)
+      .post()
+      .select("body")
+      .text()
+  ).message.result.translatedText;
+}
+
+function 일한1(txt) {
+  const apiURL = "https://openapi.naver.com/v1/papago/n2mt";
+  const text = txt;
+  const userAgent =
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.0.1042.0 Safari/535.21";
+  return JSON.parse(
+    org.jsoup.Jsoup.connect(apiURL)
+      .userAgent(userAgent)
+      .header("X-Naver-Client-Id", "ra4TWI7i1c4UkntvakEg")
+      .header("X-Naver-Client-Secret", "OnUVOoJMYp")
+      .data({ source: "ja", target: "ko", text: text })
+      .ignoreHttpErrors(true)
+      .followRedirects(true)
+      .ignoreContentType(true)
+      .post()
+      .select("body")
+      .text()
+  ).message.result.translatedText;
+}
 
 fileName = () => new Date().getTime().toString();
 
