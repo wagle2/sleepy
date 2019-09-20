@@ -40,12 +40,11 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
 fileName = () => new Date().getTime().toString()
 
- function save(r){
-     const message = msg;
+ function save(text){
      const file = "storage/emulated/0/kbot/"+fileName()+".txt";
      const filedir = new java.io.File(file);
      var bw = new java.io.BufferedWriter(new java.io.FileWriter(filedir));
-        bw.write(msg);
+        bw.write(text);
         bw.close();
  }
 
