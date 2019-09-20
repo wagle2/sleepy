@@ -174,7 +174,7 @@ function 고딩방(r) {
 
 function 한일(r) {
     const text = r.msg.split(" ")[1];
-    r.replier.reply(일한1(text) + "\n\n" + 한일1(text) + "\n\n" + 일한1(한일1(text)));
+    r.replier.reply(한일1(text) + "\n\n" + 일한1(한일1(text)) + "\n\n" + 한일1(일한1(한일1(text))));
 }
 
 function 한일1(r) {
