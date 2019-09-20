@@ -179,7 +179,7 @@ function 한일(r) {
 
 function 한일1(r) {
   const apiURL = "https://openapi.naver.com/v1/papago/n2mt";
-  const text = r.msg.split(" ")[1];
+  const text = r
   const userAgent =
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.0.1042.0 Safari/535.21";
   return(
@@ -201,7 +201,7 @@ function 한일1(r) {
 
 function 일한1(r) {
   const apiURL = "https://openapi.naver.com/v1/papago/n2mt";
-  const text = r.msg.split(" ")[1];
+  const text = r
   const userAgent =
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.0.1042.0 Safari/535.21";
     return(
