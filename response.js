@@ -46,7 +46,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 }
 
 function saveChats(r){
-    r.replier.reply("저장되어야함");
     D.insert("Chats",{room:r.room,date:new Date(),user:r.sender,chat:r.msg});
 }
 
