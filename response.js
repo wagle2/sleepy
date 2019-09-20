@@ -34,7 +34,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     return org.jsoup.Jsoup.connect(
         "http://wagle.dlinkddns.com:5000/messages/"+encodeURI(messages2)
       )
-        .get()
+        .get().timeout(5000)
         .text()
     }
   if (msg == "어흥") {
