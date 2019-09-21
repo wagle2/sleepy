@@ -195,8 +195,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         org.jsoup.Jsoup.connect(
           "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
         )
-        .timeout(10000).get()
-          .text();
+        .timeout(10000).post();
           java.lang.Thread.sleep(10000);
           r.replier.reply("http://wagle.dlinkddns.com:7777/chats.png")
     }
