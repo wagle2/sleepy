@@ -29,9 +29,15 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     }
   }
   if(msg =="/채팅분석") {
-    const messages = D.selectForArray("Chats","chat").join(",");
+      if(room =="시립대 단톡방"){
+        const messages = D.selectForArray("Chats","chat","room is ?","시립대 단톡방").join(",");
+      } else if (room == "고딩"){
+        const messages = D.selectForArray("Chats","chat","room is ?","고딩").join(",");
+      } else if (room == "시립대 봇제작방"){
+        const messages = D.selectForArray("Chats","chat","room is ?","시립대 봇제작방").join(",");
+      }
+    
     const messages2 = messages.replace(/[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,"");
-    r.replier.reply("http://wagle.dlinkddns.com/stat.png");
     r.replier.reply(org.jsoup.Jsoup.connect(
         "http://wagle.dlinkddns.com:5000/messages/"+encodeURI(messages2)
       )
