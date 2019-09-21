@@ -100,6 +100,24 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             .get()
             .text()
         );
+      } if (room === "회기 광장") {
+        var messages = D.selectForArray(
+          "Chats",
+          "chat",
+          "room is ?",
+          "회기 광장"
+        ).join(",");
+        var messages2 = messages.replace(
+          /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
+          ""
+        );
+        r.replier.reply(
+          org.jsoup.Jsoup.connect(
+            "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
+          )
+            .get()
+            .text()
+        );
       }
   }
   if (msg == "어흥") {
