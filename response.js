@@ -63,7 +63,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         org.jsoup.Jsoup.connect(
           "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
         )
-        .timeout(10000).post();
+        .timeout(10000).get().text();
     }
     if (room === "고딩") {
       var messages = D.selectForArray(
