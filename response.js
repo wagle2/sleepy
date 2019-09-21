@@ -27,6 +27,9 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
       return;
     }
   }
+  if (msg === "/기상") {
+    r.replier.reply(org.jsoup.Jsoup.connect("https://weather.naver.com/photo/satPhoto.nhn?photoType=IR&photoRgn=R").get().select("#satPhotoImage").attr("src"));
+  }
   if (msg === "/채팅분석") {
     if (room === "시립대 단톡방") {
       var messages = D.selectForArray(
