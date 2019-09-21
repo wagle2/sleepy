@@ -78,15 +78,13 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
         ""
       );
+      
       r.replier.reply(
-        "10초후에 클릭하세요\nhttp://wagle.dlinkddns.com:7777/chats.png"
+        org.jsoup.Jsoup.connect("http://wagle.dlinkddns.com:5000/foo")
+        .requestBody(messages2)
+        .ignoreContentType(true)
+        .post().text()
       );
-      org.jsoup.Jsoup.connect(
-        "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
-      )
-        .timeout(10000)
-        .get()
-        .text();
     }
     if (room === "시립대 봇제작방") {
       var messages = D.selectForArray(
