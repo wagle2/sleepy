@@ -32,11 +32,11 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     const messages = D.selectForArray("Chats","chat").join(",");
     const messages2 = messages.replace(/[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,"");
     r.replier.reply("http://wagle.dlinkddns.com/stat.png");
-    org.jsoup.Jsoup.connect(
+    r.replier.reply(org.jsoup.Jsoup.connect(
         "http://wagle.dlinkddns.com:5000/messages/"+encodeURI(messages2)
       )
         .get().timeout(5000)
-        .text()
+        .text())
     }
   if (msg == "어흥") {
     r.replier.reply("애옹애옹");
