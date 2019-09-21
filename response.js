@@ -27,8 +27,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
       return;
     }
   }
-  if (msg == "/채팅분석") {
-    if (room == "시립대 단톡방") {
+  if (msg === "/채팅분석") {
+    if (room === "시립대 단톡방") {
       const messages = D.selectForArray(
         "Chats",
         "chat",
@@ -46,7 +46,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
           .get()
           .text()
       );
-    } else if (room == "고딩") {
+    } else if (room === "고딩") {
       const messages = D.selectForArray(
         "Chats",
         "chat",
@@ -64,7 +64,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
           .get()
           .text()
       );
-    } else if (room == "시립대 봇제작방") {
+    } else if (room === "시립대 봇제작방") {
       const messages = D.selectForArray(
         "Chats",
         "chat",
