@@ -28,7 +28,22 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     }
   }
   if (msg === "/기상") {
-    r.replier.reply(org.jsoup.Jsoup.connect("https://weather.naver.com/photo/satPhoto.nhn?photoType=IR&photoRgn=R").get().select("#satPhotoImage").attr("src"));
+    r.replier.reply(
+      org.jsoup.Jsoup.connect(
+        "https://weather.naver.com/photo/satPhoto.nhn?photoType=IR&photoRgn=R"
+      )
+        .get()
+        .select("#satPhotoImage")
+        .attr("src")
+    );
+  }
+  if (msg === "/태풍") {
+    org.jsoup.Jsoup.connect(
+      "https://search.naver.com/search.naver?sm=top_hty&fbm=0&ie=utf8&query=%ED%83%9C%ED%92%8D"
+    )
+      .get()
+      .select("#etcinfo_typhoon > div.map_dzst > a > img")
+      .attr("src");
   }
   if (msg === "/채팅분석") {
     if (room === "시립대 단톡방") {
@@ -49,7 +64,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
           .get()
           .text()
       );
-    } if (room === "고딩") {
+    }
+    if (room === "고딩") {
       var messages = D.selectForArray(
         "Chats",
         "chat",
@@ -67,7 +83,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
           .get()
           .text()
       );
-    } if (room === "시립대 봇제작방") {
+    }
+    if (room === "시립대 봇제작방") {
       var messages = D.selectForArray(
         "Chats",
         "chat",
@@ -85,97 +102,102 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
           .get()
           .text()
       );
-    } if (room === "시립대 전전컴 톡방") {
-        var messages = D.selectForArray(
-          "Chats",
-          "chat",
-          "room is ?",
-          "시립대 전전컴 톡방"
-        ).join(",");
-        var messages2 = messages.replace(
-          /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
-          ""
-        );
-        r.replier.reply(
-          org.jsoup.Jsoup.connect(
-            "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
-          )
-            .get()
-            .text()
-        );
-      } if (room === "회기광장") {
-        var messages = D.selectForArray(
-          "Chats",
-          "chat",
-          "room is ?",
-          "회기광장"
-        ).join(",");
-        var messages2 = messages.replace(
-          /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
-          ""
-        );
-        r.replier.reply(
-          org.jsoup.Jsoup.connect(
-            "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
-          )
-            .get()
-            .text()
-        );
-      }  if (room === "국민대 잡담방") {
-        var messages = D.selectForArray(
-          "Chats",
-          "chat",
-          "room is ?",
-          "국민대 잡담방"
-        ).join(",");
-        var messages2 = messages.replace(
-          /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
-          ""
-        );
-        r.replier.reply(
-          org.jsoup.Jsoup.connect(
-            "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
-          )
-            .get()
-            .text()
-        );
-      } if (room === "카톡봇 질문&탐구방 [은빛]") {
-        var messages = D.selectForArray(
-          "Chats",
-          "chat",
-          "room is ?",
-          "카톡봇 질문&탐구방 [은빛]"
-        ).join(",");
-        var messages2 = messages.replace(
-          /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
-          ""
-        );
-        r.replier.reply(
-          org.jsoup.Jsoup.connect(
-            "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
-          )
-            .get()
-            .text()
-        );
-      } if (room === "대학교") {
-        var messages = D.selectForArray(
-          "Chats",
-          "chat",
-          "room is ?",
-          "대학교"
-        ).join(",");
-        var messages2 = messages.replace(
-          /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
-          ""
-        );
-        r.replier.reply(
-          org.jsoup.Jsoup.connect(
-            "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
-          )
-            .get()
-            .text()
-        );
-      }
+    }
+    if (room === "시립대 전전컴 톡방") {
+      var messages = D.selectForArray(
+        "Chats",
+        "chat",
+        "room is ?",
+        "시립대 전전컴 톡방"
+      ).join(",");
+      var messages2 = messages.replace(
+        /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
+        ""
+      );
+      r.replier.reply(
+        org.jsoup.Jsoup.connect(
+          "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
+        )
+          .get()
+          .text()
+      );
+    }
+    if (room === "회기광장") {
+      var messages = D.selectForArray(
+        "Chats",
+        "chat",
+        "room is ?",
+        "회기광장"
+      ).join(",");
+      var messages2 = messages.replace(
+        /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
+        ""
+      );
+      r.replier.reply(
+        org.jsoup.Jsoup.connect(
+          "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
+        )
+          .get()
+          .text()
+      );
+    }
+    if (room === "국민대 잡담방") {
+      var messages = D.selectForArray(
+        "Chats",
+        "chat",
+        "room is ?",
+        "국민대 잡담방"
+      ).join(",");
+      var messages2 = messages.replace(
+        /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
+        ""
+      );
+      r.replier.reply(
+        org.jsoup.Jsoup.connect(
+          "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
+        )
+          .get()
+          .text()
+      );
+    }
+    if (room === "카톡봇 질문&탐구방 [은빛]") {
+      var messages = D.selectForArray(
+        "Chats",
+        "chat",
+        "room is ?",
+        "카톡봇 질문&탐구방 [은빛]"
+      ).join(",");
+      var messages2 = messages.replace(
+        /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
+        ""
+      );
+      r.replier.reply(
+        org.jsoup.Jsoup.connect(
+          "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
+        )
+          .get()
+          .text()
+      );
+    }
+    if (room === "대학교") {
+      var messages = D.selectForArray(
+        "Chats",
+        "chat",
+        "room is ?",
+        "대학교"
+      ).join(",");
+      var messages2 = messages.replace(
+        /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
+        ""
+      );
+      r.replier.reply(
+        org.jsoup.Jsoup.connect(
+          "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
+        )
+          .get()
+          .text()
+      );
+    }
   }
   if (msg == "어흥") {
     r.replier.reply("애옹애옹");
