@@ -60,7 +60,7 @@ function replaceAll(str, searchStr, replaceStr) {
   }
 
 function saveChats(r){
-        D.insert("Chats",{room:r.room,date:new Date(),user:r.sender,chat:r.msg});ㄴ
+        D.insert("Chats",{room:r.room,date:new Date(),user:r.sender,chat:r.msg});
 }
 
 function 번역다운(txt) {
