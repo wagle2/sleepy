@@ -63,7 +63,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
       r.replier.reply(
         org.jsoup.Jsoup.connect("http://wagle.dlinkddns.com:5000/foo")
         .requestBody(messages2)
-        .ignoreContentType(true)
+        .ignoreContentType(true).timeout(30000)
         .post().text()
       );
     }
