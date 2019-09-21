@@ -18,26 +18,30 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
    * @method replier.reply("문자열") - 메시지가 도착한 방에 답장을 보내는 메소드 */
   r = { replier: replier, msg: msg, sender: sender, room: room };
 
-  
   if (1) {
-      if(1){
-        saveChats(r);
-      }
+    if (1) {
+      saveChats(r);
+    }
     if (msg == "^로딩") {
       reload(r);
       return;
     }
   }
-  if(msg =="/채팅분석") {
-    const messages = D.selectForArray("Chats","chat").join(",");
-    const messages2 = messages.replace(/[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,"");
-    r.replier.reply("http://wagle.dlinkddns.com/stat.png");
+  if (msg == "/채팅분석") {
+    const messages = D.selectForArray("Chats", "chat").join(",");
+    const messages2 = messages.replace(
+      /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
+      ""
+    );
+
     org.jsoup.Jsoup.connect(
-        "http://wagle.dlinkddns.com:5000/messages/"+encodeURI(messages2)
-      )
-        .get().timeout(5000)
-        .text()
-    }
+      "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
+    )
+      .post()
+      .timeout(5000)
+      .text();
+    r.replier.reply("http://wagle.dlinkddns.com/stat.png");
+  }
   if (msg == "어흥") {
     r.replier.reply("애옹애옹");
   } else if (msg == "애옹") {
@@ -48,7 +52,11 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
   }
   if (msg[0] === "^" && room === "시립대 봇제작방") {
     try {
-        replier.reply(String(eval(msg.substring(1))).trim().encoding());
+      replier.reply(
+        String(eval(msg.substring(1)))
+          .trim()
+          .encoding()
+      );
     } catch (e) {
       replier.reply(e);
     }
@@ -56,21 +64,26 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 }
 
 function replaceAll(str, searchStr, replaceStr) {
-    return str.split(searchStr).join(replaceStr);
-  }
+  return str.split(searchStr).join(replaceStr);
+}
 
-function saveChats(r){
-    if(r.room == "시립대 단톡방"){
-        D.insert("Chats",{room:r.room,date:new Date(),user:r.sender,chat:r.msg});
-    }
+function saveChats(r) {
+  if (r.room == "시립대 단톡방") {
+    D.insert("Chats", {
+      room: r.room,
+      date: new Date(),
+      user: r.sender,
+      chat: r.msg
+    });
+  }
 }
 
 function 번역다운(txt) {
   return org.jsoup.Jsoup.connect(
-    "http://wagle.dlinkddns.com:5000/text/"+encodeURI(txt)
+    "http://wagle.dlinkddns.com:5000/text/" + encodeURI(txt)
   )
     .get()
-    .text()
+    .text();
 }
 
 function 한일(txt) {
@@ -80,7 +93,9 @@ function 한일(txt) {
       "\n\n" +
       일한1(한일1(text)) +
       "\n\n" +
-      한일1(일한1(한일1(text))) + "\n" + 번역다운(한일1(text))
+      한일1(일한1(한일1(text))) +
+      "\n" +
+      번역다운(한일1(text))
   );
 }
 
@@ -173,9 +188,11 @@ function reload(r) {
   }
 }
 
-String.prototype.encoding=function () {
-    return this.replace(/\\u([\da-fA-F]{4})/g, (m, p1) => String.fromCharCode(parseInt(p1, 16)));
-}
+String.prototype.encoding = function() {
+  return this.replace(/\\u([\da-fA-F]{4})/g, (m, p1) =>
+    String.fromCharCode(parseInt(p1, 16))
+  );
+};
 
 //이 아래 6가지 메소드는 스크립트 액티비티에서 사용하는 메소드들
 function onCreate(savedInstanceState, activity) {}
