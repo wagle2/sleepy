@@ -29,13 +29,13 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
   }
   if (msg === "/채팅분석") {
     if (room === "시립대 단톡방") {
-      const messages = D.selectForArray(
+      var messages = D.selectForArray(
         "Chats",
         "chat",
         "room is ?",
         "시립대 단톡방"
       ).join(",");
-      const messages2 = messages.replace(
+      var messages2 = messages.replace(
         /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
         ""
       );
@@ -47,13 +47,13 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
           .text()
       );
     } if (room === "고딩") {
-      const messages = D.selectForArray(
+      var messages = D.selectForArray(
         "Chats",
         "chat",
         "room is ?",
         "고딩"
       ).join(",");
-      const messages2 = messages.replace(
+      var messages2 = messages.replace(
         /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
         ""
       );
@@ -65,13 +65,13 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
           .text()
       );
     } if (room === "시립대 봇제작방") {
-      const messages = D.selectForArray(
+      var messages = D.selectForArray(
         "Chats",
         "chat",
         "room is ?",
         "시립대 봇제작방"
       ).join(",");
-      const messages2 = messages.replace(
+      var messages2 = messages.replace(
         /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
         ""
       );
