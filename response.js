@@ -46,7 +46,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
           .get()
           .text()
       );
-    } else if (room === "고딩") {
+    } if (room === "고딩") {
       const messages = D.selectForArray(
         "Chats",
         "chat",
@@ -64,7 +64,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
           .get()
           .text()
       );
-    } else if (room === "시립대 봇제작방") {
+    } if (room === "시립대 봇제작방") {
       const messages = D.selectForArray(
         "Chats",
         "chat",
