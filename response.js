@@ -39,12 +39,12 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
   }
   if (msg === "/태풍") {
     r.replier.reply(
-    org.jsoup.Jsoup.connect(
-      "https://search.naver.com/search.naver?sm=top_hty&fbm=0&ie=utf8&query=%ED%83%9C%ED%92%8D"
-    )
-      .get()
-      .select("#etcinfo_typhoon > div.map_dzst > a > img")
-      .attr("src")
+      org.jsoup.Jsoup.connect(
+        "https://search.naver.com/search.naver?sm=top_hty&fbm=0&ie=utf8&query=%ED%83%9C%ED%92%8D"
+      )
+        .get()
+        .select("#etcinfo_typhoon > div.map_dzst > a > img")
+        .attr("src")
     );
   }
   if (msg === "/채팅분석") {
@@ -63,7 +63,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         org.jsoup.Jsoup.connect(
           "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
         )
-          .timeout(10000).get()
+          .timeout(10000)
+          .get()
           .text()
       );
     }
@@ -82,7 +83,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         org.jsoup.Jsoup.connect(
           "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
         )
-        .timeout(10000).get()
+          .timeout(10000)
+          .get()
           .text()
       );
     }
@@ -101,7 +103,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         org.jsoup.Jsoup.connect(
           "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
         )
-        .timeout(10000).get()
+          .timeout(10000)
+          .get()
           .text()
       );
     }
@@ -120,7 +123,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         org.jsoup.Jsoup.connect(
           "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
         )
-        .timeout(10000).get()
+          .timeout(10000)
+          .get()
           .text()
       );
     }
@@ -139,7 +143,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         org.jsoup.Jsoup.connect(
           "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
         )
-        .timeout(10000).get()
+          .timeout(10000)
+          .get()
           .text()
       );
     }
@@ -158,7 +163,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         org.jsoup.Jsoup.connect(
           "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
         )
-        .timeout(10000).get()
+          .timeout(10000)
+          .get()
           .text()
       );
     }
@@ -177,7 +183,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         org.jsoup.Jsoup.connect(
           "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
         )
-        .timeout(10000).get()
+          .timeout(10000)
+          .get()
           .text()
       );
     }
@@ -192,13 +199,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
         ""
       );
-      r.replier.reply(
-        org.jsoup.Jsoup.connect(
-          "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
-        )
-        .timeout(10000).get()
-          .text()
-      );
+      java.lang.Thread.sleep(10000)
+      r.replier.reply("http://wagle.dlinkddns.com:7777/chats.png");
     }
   }
   if (msg == "어흥") {
