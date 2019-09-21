@@ -63,7 +63,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         org.jsoup.Jsoup.connect(
           "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
         )
-          .get()
+          .timeout(10000).get()
           .text()
       );
     }
@@ -82,7 +82,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         org.jsoup.Jsoup.connect(
           "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
         )
-          .get()
+        .timeout(10000).get()
           .text()
       );
     }
@@ -101,7 +101,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         org.jsoup.Jsoup.connect(
           "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
         )
-          .get()
+        .timeout(10000).get()
           .text()
       );
     }
@@ -120,7 +120,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         org.jsoup.Jsoup.connect(
           "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
         )
-          .get()
+        .timeout(10000).get()
           .text()
       );
     }
@@ -139,7 +139,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         org.jsoup.Jsoup.connect(
           "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
         )
-          .get()
+        .timeout(10000).get()
           .text()
       );
     }
@@ -158,7 +158,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         org.jsoup.Jsoup.connect(
           "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
         )
-          .get()
+        .timeout(10000).get()
           .text()
       );
     }
@@ -177,7 +177,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         org.jsoup.Jsoup.connect(
           "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
         )
-          .get()
+        .timeout(10000).get()
           .text()
       );
     }
@@ -196,7 +196,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         org.jsoup.Jsoup.connect(
           "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
         )
-          .get()
+        .timeout(10000).get()
           .text()
       );
     }
