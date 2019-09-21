@@ -118,15 +118,13 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
         ""
       );
+      
       r.replier.reply(
-        "10초후에 클릭하세요\nhttp://wagle.dlinkddns.com:7777/chats.png"
+        org.jsoup.Jsoup.connect("http://wagle.dlinkddns.com:5000/foo")
+        .requestBody(messages2)
+        .ignoreContentType(true)
+        .post().text()
       );
-      org.jsoup.Jsoup.connect(
-        "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
-      )
-        .timeout(10000)
-        .get()
-        .text();
     }
     if (room === "회기광장") {
       var messages = D.selectForArray(
@@ -139,15 +137,13 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
         ""
       );
+      
       r.replier.reply(
-        "10초후에 클릭하세요\nhttp://wagle.dlinkddns.com:7777/chats.png"
+        org.jsoup.Jsoup.connect("http://wagle.dlinkddns.com:5000/foo")
+        .requestBody(messages2)
+        .ignoreContentType(true)
+        .post().text()
       );
-      org.jsoup.Jsoup.connect(
-        "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
-      )
-        .timeout(10000)
-        .get()
-        .text();
     }
     if (room === "국민대 잡담방") {
       var messages = D.selectForArray(
@@ -160,15 +156,13 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
         ""
       );
+      
       r.replier.reply(
-        "10초후에 클릭하세요\nhttp://wagle.dlinkddns.com:7777/chats.png"
+        org.jsoup.Jsoup.connect("http://wagle.dlinkddns.com:5000/foo")
+        .requestBody(messages2)
+        .ignoreContentType(true)
+        .post().text()
       );
-      org.jsoup.Jsoup.connect(
-        "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
-      )
-        .timeout(10000)
-        .get()
-        .text();
     }
     if (room === "대학교") {
       var messages = D.selectForArray(
@@ -181,15 +175,13 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
         ""
       );
+      
       r.replier.reply(
-        "10초후에 클릭하세요\nhttp://wagle.dlinkddns.com:7777/chats.png"
+        org.jsoup.Jsoup.connect("http://wagle.dlinkddns.com:5000/foo")
+        .requestBody(messages2)
+        .ignoreContentType(true)
+        .post().text()
       );
-      org.jsoup.Jsoup.connect(
-        "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
-      )
-        .timeout(10000)
-        .get()
-        .text();
     }
   }
   if (msg == "어흥") {
