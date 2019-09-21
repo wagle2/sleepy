@@ -136,6 +136,24 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             .get()
             .text()
         );
+      } if (room === "카톡봇 질문&탐구방 [은빛]") {
+        var messages = D.selectForArray(
+          "Chats",
+          "chat",
+          "room is ?",
+          "카톡봇 질문&탐구방 [은빛]"
+        ).join(",");
+        var messages2 = messages.replace(
+          /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
+          ""
+        );
+        r.replier.reply(
+          org.jsoup.Jsoup.connect(
+            "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
+          )
+            .get()
+            .text()
+        );
       }
   }
   if (msg == "어흥") {
