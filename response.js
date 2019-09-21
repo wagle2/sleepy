@@ -100,12 +100,12 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             .get()
             .text()
         );
-      } if (room === "회기 광장") {
+      } if (room === "회기광장") {
         var messages = D.selectForArray(
           "Chats",
           "chat",
           "room is ?",
-          "회기 광장"
+          "회기광장"
         ).join(",");
         var messages2 = messages.replace(
           /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
