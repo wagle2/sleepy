@@ -154,6 +154,24 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
             .get()
             .text()
         );
+      } if (room === "대학교") {
+        var messages = D.selectForArray(
+          "Chats",
+          "chat",
+          "room is ?",
+          "대학교"
+        ).join(",");
+        var messages2 = messages.replace(
+          /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
+          ""
+        );
+        r.replier.reply(
+          org.jsoup.Jsoup.connect(
+            "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
+          )
+            .get()
+            .text()
+        );
       }
   }
   if (msg == "어흥") {
