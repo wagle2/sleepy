@@ -86,7 +86,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
       org.jsoup.Jsoup.connect(
         "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
       )
-       .timeout(10000)
+        .timeout(10000)
         .get()
         .text();
     }
@@ -101,15 +101,16 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
         ""
       );
-      r.replier.reply(
-        "10초후에 클릭하세요\nhttp://wagle.dlinkddns.com:7777/chats.png"
-      );
+
       org.jsoup.Jsoup.connect(
         "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
       )
-       .timeout(10000)
+        .timeout(10000)
         .get()
         .text();
+      r.replier.reply(
+        "10초후에 클릭하세요\nhttp://wagle.dlinkddns.com:7777/chats.png"
+      );
     }
     if (room === "시립대 전전컴 톡방") {
       var messages = D.selectForArray(
@@ -128,7 +129,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
       org.jsoup.Jsoup.connect(
         "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
       )
-       .timeout(10000)
+        .timeout(10000)
         .get()
         .text();
     }
@@ -149,7 +150,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
       org.jsoup.Jsoup.connect(
         "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
       )
-       .timeout(10000)
+        .timeout(10000)
         .get()
         .text();
     }
@@ -170,7 +171,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
       org.jsoup.Jsoup.connect(
         "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
       )
-       .timeout(10000)
+        .timeout(10000)
         .get()
         .text();
     }
@@ -191,7 +192,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
       org.jsoup.Jsoup.connect(
         "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
       )
-       .timeout(10000)
+        .timeout(10000)
         .get()
         .text();
     }
@@ -212,7 +213,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
       org.jsoup.Jsoup.connect(
         "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
       )
-       .timeout(10000)
+        .timeout(10000)
         .get()
         .text();
     }
