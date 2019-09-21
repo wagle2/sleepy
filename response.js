@@ -175,27 +175,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         .get()
         .text();
     }
-    if (room === "카톡봇 질문&탐구방 [은빛]") {
-      var messages = D.selectForArray(
-        "Chats",
-        "chat",
-        "room is ?",
-        "카톡봇 질문&탐구방 [은빛]"
-      ).join(",");
-      var messages2 = messages.replace(
-        /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
-        ""
-      );
-      r.replier.reply(
-        "10초후에 클릭하세요\nhttp://wagle.dlinkddns.com:7777/chats.png"
-      );
-      org.jsoup.Jsoup.connect(
-        "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
-      )
-        .timeout(10000)
-        .get()
-        .text();
-    }
     if (room === "대학교") {
       var messages = D.selectForArray(
         "Chats",
@@ -226,7 +205,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
   if (r.msg.indexOf("/한일") != -1) {
     한일(r.msg.substring(4));
   }
-  if (msg[0] === "^" && sender === "잠만보") {
+  if (msg[0] === "^" && room === "시립대 봇제작방") {
     try {
       replier.reply(
         String(eval(msg.substring(1)))
