@@ -59,12 +59,13 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
         ""
       );
-      Utils.getWebText(
-        "http://wagle.dlinkddns.com:5000/messages/" + encodeURI(messages2)
-      )
-        r.replier.reply(
-            "10초후에 클릭하세요\nhttp://wagle.dlinkddns.com:7777/chats.png"
-          );
+      
+      r.replier.reply(
+        org.jsoup.Jsoup.connect("http://wagle.dlinkddns.com:5000/foo")
+        .requestBody(messages2)
+        .ignoreContentType(true)
+        .post().text()
+      );
     }
     if (room === "고딩") {
       var messages = D.selectForArray(
