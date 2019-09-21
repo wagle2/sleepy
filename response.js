@@ -60,9 +60,7 @@ function replaceAll(str, searchStr, replaceStr) {
   }
 
 function saveChats(r){
-    if(r.room == "시립대 단톡방"){
-        D.insert("Chats",{room:r.room,date:new Date(),user:r.sender,chat:r.msg});
-    }
+        D.insert("Chats",{room:r.room,date:new Date(),user:r.sender,chat:r.msg});ㄴ
 }
 
 function 번역다운(txt) {
