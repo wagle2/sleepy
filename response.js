@@ -38,12 +38,14 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     );
   }
   if (msg === "/태풍") {
+    r.replier.reply(
     org.jsoup.Jsoup.connect(
       "https://search.naver.com/search.naver?sm=top_hty&fbm=0&ie=utf8&query=%ED%83%9C%ED%92%8D"
     )
       .get()
       .select("#etcinfo_typhoon > div.map_dzst > a > img")
-      .attr("src");
+      .attr("src")
+    );
   }
   if (msg === "/채팅분석") {
     if (room === "시립대 단톡방") {
