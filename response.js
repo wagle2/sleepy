@@ -244,8 +244,8 @@ function 한일1(txt) {
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.1.1042.0 Safari/535.21";
   return JSON.parse(
     org.jsoup.Jsoup.connect(apiURL)
-      .header("X-Naver-Client-Id", "ra4TWI7i1c4UkntvakEg")
-      .header("X-Naver-Client-Secret", "OnUVOoJMYp")
+      .header("X-Naver-Client-Id", "p3HqeWKxZLXiX9QKSN0m")
+      .header("X-Naver-Client-Secret", "OmKzleb4Cd")
       .data({ source: "ko", target: "ja", text: text })
       .ignoreHttpErrors(true)
       .followRedirects(true)
@@ -263,8 +263,8 @@ function 일한1(txt) {
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.0.1042.0 Safari/535.21";
   return JSON.parse(
     org.jsoup.Jsoup.connect(apiURL)
-      .header("X-Naver-Client-Id", "ra4TWI7i1c4UkntvakEg")
-      .header("X-Naver-Client-Secret", "OnUVOoJMYp")
+      .header("X-Naver-Client-Id", "p3HqeWKxZLXiX9QKSN0m")
+      .header("X-Naver-Client-Secret", "OmKzleb4Cd")
       .data({ source: "ja", target: "ko", text: text })
       .ignoreHttpErrors(true)
       .followRedirects(true)
