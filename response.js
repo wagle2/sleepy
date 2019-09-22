@@ -241,7 +241,7 @@ function 한일1(txt) {
   const apiURL = "https://openapi.naver.com/v1/papago/n2mt";
   const text = txt;
   const userAgent =
-    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.0.1042.0 Safari/535.21";
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.1.1042.0 Safari/535.21";
   return JSON.parse(
     org.jsoup.Jsoup.connect(apiURL)
       .userAgent(userAgent)
