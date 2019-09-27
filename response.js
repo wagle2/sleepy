@@ -231,9 +231,9 @@ function weather(loc) {
   const main = currentWeather.weather[0].main;
   const temp = currentWeather.main.temp;
   const temp_min = currentWeather.main.temp_min;
-  const temp_max = currentWeather.amin.temp_max;
+  const temp_max = currentWeather.main.temp_max;
   const clouds = currentWeather.clouds.all;
-  r.replier.reply(loc + "날씨\n" + main + " / 기온 : " + temp + "ºC");
+  r.replier.reply(loc + "날씨\n" + main + " / 기온 : " + temp + "ºC/n최저 : " + temp_min + " 최고 : "+ temp_max);
 }
 
 function getLoc(loc) {
