@@ -245,7 +245,7 @@ function weather(loc) {
       .get()
       .text()
   );
-  const forecast2 = forecast.list.map(v=>/ (\d\d)/.exec(v.dt_txt)[1]+"시 "+Math.round(v.main.temp)+"℃ "+v.weather[0].main).join("\n")
+  const forecast2 = forecast.list.map(v=>Number(/ (\d\d)/.exec(v.dt_txt)[1])+8+"시 "+Math.round(v.main.temp)+"℃ "+v.weather[0].main).join("\n")
   r.replier.reply(
     loc +
       " 날씨\n" +
