@@ -27,6 +27,25 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
       return;
     }
   }
+  if (r.msg == "어흥") {
+    r.replier.reply("애옹애옹");
+  } else if (r.msg == "애옹") {
+    r.replier.reply("어흐으응");
+  }
+  if (r.msg.indexOf("/한일") != -1) {
+    한일(r.msg.substring(4));
+  }
+  if (msg[0] === "^" && room === "시립대 봇제작방") {
+    try {
+      replier.reply(
+        String(eval(msg.substring(1)))
+          .trim()
+          .encoding()
+      );
+    } catch (e) {
+      replier.reply(e);
+    }
+  }
   if (msg === "/기상") {
     r.replier.reply(
       org.jsoup.Jsoup.connect(
@@ -190,25 +209,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     );
   }
 }
-if (r.msg == "어흥") {
-  r.replier.reply("애옹애옹");
-} else if (r.msg == "애옹") {
-  r.replier.reply("어흐으응");
-}
-if (r.msg.indexOf("/한일") != -1) {
-  한일(r.msg.substring(4));
-}
-if (msg[0] === "^" && room === "시립대 봇제작방") {
-  try {
-    replier.reply(
-      String(eval(msg.substring(1)))
-        .trim()
-        .encoding()
-    );
-  } catch (e) {
-    replier.reply(e);
-  }
-}
+
 
 function weather(location) {
   const geo = getLoc(location);
