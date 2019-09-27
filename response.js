@@ -213,7 +213,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
   }
 }
 
-
 function weather(location) {
   const geo = JSON.parse(getLoc(location).text()).results[0].geometry.location;
   const currentWeather = JSON.parse(
@@ -229,7 +228,7 @@ function weather(location) {
   );
 
   const weather = currentWeather.weather[0].main;
-  const temp  = currentWeather.main.temp;
+  const temp = currentWeather.main.temp;
   const temp_min = currentWeather.main.temp_min;
   const temp_max = currentWeather.amin.temp_max;
   const clouds = currentWeather.clouds.all;
