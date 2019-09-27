@@ -227,12 +227,12 @@ function weather(loc) {
       .get()
   );
 
-  const weather = currentWeather.weather[0].main;
+  const main = currentWeather.weather[0].main;
   const temp = currentWeather.main.temp;
   const temp_min = currentWeather.main.temp_min;
   const temp_max = currentWeather.amin.temp_max;
   const clouds = currentWeather.clouds.all;
-  r.replier.reply(location + "날씨\n" + weather + " / 기온 : " + temp + "ºC");
+  r.replier.reply(location + "날씨\n" + main + " / 기온 : " + temp + "ºC");
 }
 
 getLoc = loc =>
