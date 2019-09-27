@@ -233,7 +233,7 @@ function weather(loc) {
   const temp_min = currentWeather.main.temp_min;
   const temp_max = currentWeather.main.temp_max;
   const clouds = currentWeather.clouds.all;
-  const forecast = SON.parse(
+  const forecast = JSON.parse(
     org.jsoup.Jsoup.connect(
       "http://api.openweathermap.org/data/2.5/forecast?lat=" +
         geo.lat +
