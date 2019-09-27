@@ -214,7 +214,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 }
 
 function weather(loc) {
-  const geo = JSON.parse(getLoc(loc).text()).results[0].geometry.location;
+  const geo = getLoc(loc);
   const currentWeather = JSON.parse(
     org.jsoup.Jsoup.connect(
       "http://api.openweathermap.org/data/2.5/weather?lat=" +
@@ -236,7 +236,7 @@ function weather(loc) {
 }
 
 getLoc = loc =>
-  org.jsoup.Jsoup.connect(
+JSON.parse(org.jsoup.Jsoup.connect(
     encodeURI(
       "https://maps.googleapis.com/maps/api/geocode/json?address=" +
         loc +
@@ -244,7 +244,7 @@ getLoc = loc =>
     )
   )
     .ignoreContentType(true)
-    .get();
+    .get().text()).results[0].geometry.location;
 
 function replaceAll(str, searchStr, replaceStr) {
   return str.split(searchStr).join(replaceStr);
