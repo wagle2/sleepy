@@ -258,7 +258,7 @@ function weather(loc) {
       Math.round(temp_max) +
       "℃\n" + 
       "---------상세보기-------\n" + 투명공백.repeat(500) +
-      +forecast2
+      + forecast2
       
   );
 }
