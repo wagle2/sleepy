@@ -380,6 +380,18 @@ String.prototype.encoding = function() {
   );
 };
 
+Object.defineProperty(Object.prototype.__proto__,"prop",   {
+  get:function(){
+     return Object.getOwnPropertyNames(this);
+  }
+});
+Object.defineProperty(Object.prototype.__proto__,"prop2",   {
+  get:function(){
+     var self=this;
+     return Object.getOwnPropertyNames(this).map(v=>v+" : "+self[v]).join("\n");
+  }
+});
+
 //이 아래 6가지 메소드는 스크립트 액티비티에서 사용하는 메소드들
 function onCreate(savedInstanceState, activity) {}
 function onStart(activity) {}
