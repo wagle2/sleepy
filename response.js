@@ -237,7 +237,7 @@ function weather(loc) {
 }
 
 function getLoc(loc) {
-  JSON.parse(
+  return JSON.parse(
     org.jsoup.Jsoup.connect(
       encodeURI(
         "https://maps.googleapis.com/maps/api/geocode/json?address=" +
