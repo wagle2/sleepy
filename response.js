@@ -224,7 +224,8 @@ function weather(loc) {
         "&APPID=29651a70baa0ef6b0d27750f1581ad8a&units=metric"
     )
       .ignoreContentType(true)
-      .get().text()
+      .get()
+      .text()
   );
 
   const main = currentWeather.weather[0].main;
@@ -235,16 +236,20 @@ function weather(loc) {
   r.replier.reply(location + "날씨\n" + main + " / 기온 : " + temp + "ºC");
 }
 
-getLoc = loc =>
-JSON.parse(org.jsoup.Jsoup.connect(
-    encodeURI(
-      "https://maps.googleapis.com/maps/api/geocode/json?address=" +
-        loc +
-        "&language=ko&key=AIzaSyAfu7q_gMnCG3XGAl4dithaqcW-xmwIKhw"
+function getLoc(loc) {
+  JSON.parse(
+    org.jsoup.Jsoup.connect(
+      encodeURI(
+        "https://maps.googleapis.com/maps/api/geocode/json?address=" +
+          loc +
+          "&language=ko&key=AIzaSyAfu7q_gMnCG3XGAl4dithaqcW-xmwIKhw"
+      )
     )
-  )
-    .ignoreContentType(true)
-    .get().text()).results[0].geometry.location;
+      .ignoreContentType(true)
+      .get()
+      .text()
+  ).results[0].geometry.location;
+}
 
 function replaceAll(str, searchStr, replaceStr) {
   return str.split(searchStr).join(replaceStr);
