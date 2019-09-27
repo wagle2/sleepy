@@ -59,12 +59,14 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
         ""
       );
-      
+
       r.replier.reply(
         org.jsoup.Jsoup.connect("http://wagle.dlinkddns.com:5000/foo")
-        .requestBody(messages2)
-        .ignoreContentType(true).timeout(30000)
-        .post().text()
+          .requestBody(messages2)
+          .ignoreContentType(true)
+          .timeout(30000)
+          .post()
+          .text()
       );
     }
     if (room === "고딩") {
@@ -78,12 +80,13 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
         ""
       );
-      
+
       r.replier.reply(
         org.jsoup.Jsoup.connect("http://wagle.dlinkddns.com:5000/foo")
-        .requestBody(messages2)
-        .ignoreContentType(true)
-        .post().text()
+          .requestBody(messages2)
+          .ignoreContentType(true)
+          .post()
+          .text()
       );
     }
     if (room === "시립대 봇제작방") {
@@ -97,12 +100,13 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
         ""
       );
-      
+
       r.replier.reply(
         org.jsoup.Jsoup.connect("http://wagle.dlinkddns.com:5000/foo")
-        .requestBody(messages2)
-        .ignoreContentType(true)
-        .post().text()
+          .requestBody(messages2)
+          .ignoreContentType(true)
+          .post()
+          .text()
       );
     }
     if (room === "시립대 전전컴 톡방") {
@@ -116,12 +120,13 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
         ""
       );
-      
+
       r.replier.reply(
         org.jsoup.Jsoup.connect("http://wagle.dlinkddns.com:5000/foo")
-        .requestBody(messages2)
-        .ignoreContentType(true)
-        .post().text()
+          .requestBody(messages2)
+          .ignoreContentType(true)
+          .post()
+          .text()
       );
     }
     if (room === "회기광장") {
@@ -135,12 +140,13 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
         ""
       );
-      
+
       r.replier.reply(
         org.jsoup.Jsoup.connect("http://wagle.dlinkddns.com:5000/foo")
-        .requestBody(messages2)
-        .ignoreContentType(true)
-        .post().text()
+          .requestBody(messages2)
+          .ignoreContentType(true)
+          .post()
+          .text()
       );
     }
     if (room === "국민대 잡담방") {
@@ -154,12 +160,13 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
         ""
       );
-      
+
       r.replier.reply(
         org.jsoup.Jsoup.connect("http://wagle.dlinkddns.com:5000/foo")
-        .requestBody(messages2)
-        .ignoreContentType(true)
-        .post().text()
+          .requestBody(messages2)
+          .ignoreContentType(true)
+          .post()
+          .text()
       );
     }
     if (room === "대학교") {
@@ -174,32 +181,32 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         ""
       );
     }
-      r.replier.reply(
-        org.jsoup.Jsoup.connect("http://wagle.dlinkddns.com:5000/foo")
+    r.replier.reply(
+      org.jsoup.Jsoup.connect("http://wagle.dlinkddns.com:5000/foo")
         .requestBody(messages2)
         .ignoreContentType(true)
-        .post().text()
-      );
-    }
+        .post()
+        .text()
+    );
   }
-  if (msg == "어흥") {
-    r.replier.reply("애옹애옹");
-  } else if (msg == "애옹") {
-    r.replier.reply("어흐으응");
-  }
-  if (r.msg.indexOf("/한일") != -1) {
-    한일(r.msg.substring(4));
-  }
-  if (msg[0] === "^" && room === "시립대 봇제작방") {
-    try {
-      replier.reply(
-        String(eval(msg.substring(1)))
-          .trim()
-          .encoding()
-      );
-    } catch (e) {
-      replier.reply(e);
-    }
+}
+if (msg == "어흥") {
+  r.replier.reply("애옹애옹");
+} else if (msg == "애옹") {
+  r.replier.reply("어흐으응");
+}
+if (r.msg.indexOf("/한일") != -1) {
+  한일(r.msg.substring(4));
+}
+if (msg[0] === "^" && room === "시립대 봇제작방") {
+  try {
+    replier.reply(
+      String(eval(msg.substring(1)))
+        .trim()
+        .encoding()
+    );
+  } catch (e) {
+    replier.reply(e);
   }
 }
 
