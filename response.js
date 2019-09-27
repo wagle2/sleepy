@@ -6,6 +6,7 @@ var K = require("KBManager.js");
 한글공백 = String.fromCharCode(12644);
 숫자공백 = String.fromCharCode(8199);
 투명공백 = String.fromCharCode(8237);
+r = { replier: replier, msg: msg, sender: sender, room: room };
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
   /** @param {String} room - 방 이름
    * @param {String} msg - 메세지 내용
@@ -16,7 +17,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
    * @method imageDB.getImage() - 수신된 이미지가 있을 경우 Base64 인코딩 되어있는 JPEG 이미지 반환, 기본 값 null
    * @method imageDB.getProfileImage() - Base64 인코딩 되어있는 JPEG 프로필 이미지 반환, 기본 값 null
    * @method replier.reply("문자열") - 메시지가 도착한 방에 답장을 보내는 메소드 */
-  r = { replier: replier, msg: msg, sender: sender, room: room };
+  
 
   if (1) {
     if (1) {
@@ -190,7 +191,11 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     );
   }
 }
-
+if (r.msg == "어흥") {
+  r.replier.reply("애옹애옹");
+} else if (r.msg == "애옹") {
+  r.replier.reply("어흐으응");
+}
 if (r.msg.indexOf("/한일") != -1) {
   한일(r.msg.substring(4));
 }
