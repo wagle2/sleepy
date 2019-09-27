@@ -257,7 +257,7 @@ function weather(loc) {
       "℃ 최고 : " +
       Math.round(temp_max) +
       "℃\n" + 
-      "--------------------" + forecast2.split("\n").slice(0,6).join("\n")
+      "--------------------\n" + forecast2.split("\n").slice(0,6).join("\n")
       
   );
 }
