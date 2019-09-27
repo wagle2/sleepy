@@ -224,7 +224,7 @@ function weather(loc) {
         "&APPID=29651a70baa0ef6b0d27750f1581ad8a&units=metric"
     )
       .ignoreContentType(true)
-      .get()
+      .get().text()
   );
 
   const main = currentWeather.weather[0].main;
