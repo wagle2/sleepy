@@ -226,16 +226,44 @@ function weather(loc) {
       .ignoreContentType(true)
       .get()
       .text()
-  )
+  );
 
   const main = currentWeather.weather[0].main;
   const temp = currentWeather.main.temp;
   const temp_min = currentWeather.main.temp_min;
   const temp_max = currentWeather.main.temp_max;
   const clouds = currentWeather.clouds.all;
-  r.replier.reply(loc + " 날씨\n" + main + "  /   기온 : " + Math.round(temp) 
-  + "℃\n최저 : " + Math.round(temp_min) + "℃ 최고 : "+ Math.round(temp_max) + "℃\n"
-  + "--------------------");
+  const forecast = SON.parse(
+    org.jsoup.Jsoup.connect(
+      "http://api.openweathermap.org/data/2.5/forecast?lat=" +
+        geo.lat +
+        "&lon=" +
+        geo.lng +
+        "&APPID=29651a70baa0ef6b0d27750f1581ad8a&units=metric"
+    )
+      .ignoreContentType(true)
+      .get()
+      .text()
+  );
+  r.replier.reply(
+    loc +
+      " 날씨\n" +
+      main +
+      "  /   기온 : " +
+      Math.round(temp) +
+      "℃\n최저 : " +
+      Math.round(temp_min) +
+      "℃ 최고 : " +
+      Math.round(temp_max) +
+      "℃\n" +
+      "--------------------" +
+      forecast.list
+        .map(
+          v =>
+            / (\d\d)/.exec(v.dt_txt)[1] + "시 " + Math.round(v.main.temp) + "℃"
+        )
+        .join("\n")
+  );
 }
 
 function getLoc(loc) {
@@ -380,15 +408,17 @@ String.prototype.encoding = function() {
   );
 };
 
-Object.defineProperty(Object.prototype.__proto__,"prop",   {
-  get:function(){
-     return Object.getOwnPropertyNames(this);
+Object.defineProperty(Object.prototype.__proto__, "prop", {
+  get: function() {
+    return Object.getOwnPropertyNames(this);
   }
 });
-Object.defineProperty(Object.prototype.__proto__,"prop2",   {
-  get:function(){
-     var self=this;
-     return Object.getOwnPropertyNames(this).map(v=>v+" : "+self[v]).join("\n");
+Object.defineProperty(Object.prototype.__proto__, "prop2", {
+  get: function() {
+    var self = this;
+    return Object.getOwnPropertyNames(this)
+      .map(v => v + " : " + self[v])
+      .join("\n");
   }
 });
 
