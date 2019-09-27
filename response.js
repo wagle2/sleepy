@@ -190,9 +190,9 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
     );
   }
 }
-if (msg == "어흥") {
+if (r.msg == "어흥") {
   r.replier.reply("애옹애옹");
-} else if (msg == "애옹") {
+} else if (r.msg == "애옹") {
   r.replier.reply("어흐으응");
 }
 if (r.msg.indexOf("/한일") != -1) {
