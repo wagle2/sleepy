@@ -221,7 +221,7 @@ function weather(loc) {
         geo.lat +
         "&lon=" +
         geo.lng +
-        "&APPID=29651a70baa0ef6b0d27750f1581ad8a&units=metric&lang=kr"
+        "&APPID=29651a70baa0ef6b0d27750f1581ad8a&units=metric"
     )
       .ignoreContentType(true)
       .get()
