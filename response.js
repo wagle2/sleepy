@@ -213,8 +213,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
   }
 }
 
-function weather(location) {
-  var geo = JSON.parse(getLoc(location).text()).results[0].geometry.location;
+function weather(loc) {
+  const geo = JSON.parse(getLoc(loc).text()).results[0].geometry.location;
   const currentWeather = JSON.parse(
     org.jsoup.Jsoup.connect(
       "http://api.openweathermap.org/data/2.5/weather?lat=" +
