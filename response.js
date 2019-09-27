@@ -245,12 +245,7 @@ function weather(loc) {
       .get()
       .text()
   );
-  const forecast2 = forecast.list
-  .map(
-    v =>
-      / (\d\d)/.exec(v.dt_txt)[1] + "시 " + Math.round(v.main.temp) + "℃"
-  )
-  .join("\n");
+  const forecast2 = forecast.list.map(v=>/ (\d\d)/.exec(v.dt_txt)[1]+"시 "+Math.round(v.main.temp)+"℃ "+v.weather[0].main).join("\n")
   r.replier.reply(
     loc +
       " 날씨\n" +
@@ -261,7 +256,7 @@ function weather(loc) {
       Math.round(temp_min) +
       "℃ 최고 : " +
       Math.round(temp_max) +
-      "℃\n" +
+      "℃\n" + 투명공백.repeat(500) +
       "--------------------\n" +forecast2
       
   );
