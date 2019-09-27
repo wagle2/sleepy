@@ -198,6 +198,9 @@ if (msg == "어흥") {
 if (r.msg.indexOf("/한일") != -1) {
   한일(r.msg.substring(4));
 }
+if (r.msg.indexOf("/날씨") != -1) {
+  weather(r.msg.substring(4));
+}
 if (msg[0] === "^" && room === "시립대 봇제작방") {
   try {
     replier.reply(
@@ -209,6 +212,39 @@ if (msg[0] === "^" && room === "시립대 봇제작방") {
     replier.reply(e);
   }
 }
+
+function weather(location) {
+  const geo = getLoc(location);
+  const currentWeather = JSON.parse(
+    org.jsoup.Jsoup.connect(
+      "http://api.openweathermap.org/data/2.5/weather?lat" +
+        geo.lat +
+        "&lon=" +
+        geo.lng +
+        "&APPID=29651a70baa0ef6b0d27750f1581ad8a&units=metric"
+    )
+      .ignoreContentType(true)
+      .get()
+  );
+
+  const weather = currentWeather.weather[0].main;
+  const temp  = currentWeather.main.temp;
+  const temp_min = currentWeather.main.temp_min;
+  const temp_max = currentWeather.amin.temp_max;
+  const clouds = currentWeather.clouds.all;
+  r.replier.reply(location + "날씨\n" + weather + " / 기온 : " + temp + "ºC");
+}
+
+getLoc = loc =>
+  org.jsoup.Jsoup.connect(
+    encodeURI(
+      "https://maps.googleapis.com/maps/api/geocode/json?address=" +
+        loc +
+        "&language=ko&key=AIzaSyAfu7q_gMnCG3XGAl4dithaqcW-xmwIKhw"
+    )
+  )
+    .ignoreContentType(true)
+    .get();
 
 function replaceAll(str, searchStr, replaceStr) {
   return str.split(searchStr).join(replaceStr);
