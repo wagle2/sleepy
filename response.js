@@ -35,6 +35,9 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
   if (r.msg.indexOf("/한일") != -1) {
     한일(r.msg.substring(4));
   }
+  if (r.msg.indexOf("/날씨") != -1) {
+    weather(r.msg.substring(4));
+  }
   if (msg[0] === "^" && room === "시립대 봇제작방") {
     try {
       replier.reply(
