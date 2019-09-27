@@ -135,17 +135,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
         ""
       );
-      if (room === "카카오톡 봇 코딩,실험,만들기") {
-        var messages = D.selectForArray(
-          "Chats",
-          "chat",
-          "room is ?",
-          "카카오톡 봇 코딩,실험,만들기"
-        ).join(",");
-        var messages2 = messages.replace(
-          /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
-          ""
-        );
       
       r.replier.reply(
         org.jsoup.Jsoup.connect("http://wagle.dlinkddns.com:5000/foo")
@@ -184,7 +173,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
         /[\{\}\[\]\/?.;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g,
         ""
       );
-      
+    }
       r.replier.reply(
         org.jsoup.Jsoup.connect("http://wagle.dlinkddns.com:5000/foo")
         .requestBody(messages2)
