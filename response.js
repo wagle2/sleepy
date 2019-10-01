@@ -16,7 +16,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
    * @method imageDB.getImage() - 수신된 이미지가 있을 경우 Base64 인코딩 되어있는 JPEG 이미지 반환, 기본 값 null
    * @method imageDB.getProfileImage() - Base64 인코딩 되어있는 JPEG 프로필 이미지 반환, 기본 값 null
    * @method replier.reply("문자열") - 메시지가 도착한 방에 답장을 보내는 메소드 */
-  r = { replier: replier, msg: msg, sender: sender, room: room };
+  var r = { replier: replier, msg: msg, sender: sender, room: room };
 
   if (1) {
     if (1) {
