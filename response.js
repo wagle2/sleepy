@@ -82,7 +82,7 @@ function monitor(room, sender, checkFunc, extractFunc, time) {
           if (
             (room == "" || tmp.room == room) &&
             (sender == "" || tmp.s == sender) &&
-            checkFunc(tmp)
+            //checkFunc(tmp)
           ) {
             //조건충족시
             //Api.replyRoom(room,"감지")
