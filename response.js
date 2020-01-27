@@ -83,8 +83,8 @@ function monitor(room, sender, checkFunc, extractFunc, time) {
           Api.replyRoom(room, "ㅇㅇㅇ.\n");
           if (
             (room == "" || tmp.room == room) &&
-            (sender == "" || tmp.s == sender) &&
-            checkFunc(tmp)
+            (sender == "" || tmp.s == sender)
+            //checkFunc(tmp)
           ) {
             //조건충족시
             //Api.replyRoom(room,"감지")
