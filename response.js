@@ -77,8 +77,8 @@ function monitor(room, sender, checkFunc, extractFunc, time) {
   var thr = new java.lang.Thread(
     new java.lang.Runnable(function() {
       try {
-        Api.replyRoom(room, "ㅇㅇㅇ1.\n");
         while (true) {
+          Api.replyRoom(room, "ㅇㅇㅇ1.\n");
           var tmp = q.take(); //메세지 큐 소비
           Api.replyRoom(room, "ㅇㅇㅇ.\n");
           if (checkFunc(tmp)) {
