@@ -7,7 +7,9 @@ var H = require("Hangul.js");
 숫자공백 = String.fromCharCode(8199);
 투명공백 = String.fromCharCode(8237);
 Minigame = require("Minigame.js");
+AnswerSet = new java.util.concurrent.ConcurrentHashMap();
 
+omokRoom = [];
 tajaRoom = [];
 //============================================================================================================================
 
@@ -144,6 +146,22 @@ Object.defineProperty(Object.prototype.__proto__, "prop2", {
       .join("\n");
   }
 });
+
+function readFile(file) {
+  var filedir = new java.io.File("/sdcard/kbot/" + file);
+  try {
+    var br = new java.io.BufferedReader(new java.io.FileReader(filedir));
+    var readStr = "";
+    var str = null;
+    while ((str = br.readLine()) != null) {
+      readStr += str + "\n";
+    }
+    br.close();
+    return readStr.trim();
+  } catch (e) {
+    return e;
+  }
+}
 
 //이 아래 6가지 메소드는 스크립트 액티비티에서 사용하는 메소드들
 function onCreate(savedInstanceState, activity) {}
