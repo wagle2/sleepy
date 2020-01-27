@@ -79,7 +79,6 @@ function monitor(room, sender, checkFunc, extractFunc, time) {
       try {
         while (true) {
           var tmp = q.take(); //메세지 큐 소비
-          Api.replyRoom(room, "ㅇㅇ" + sender + " ");
           Api.replyRoom(room, "ㅇㅇㅇ.\n");
           if (
             (room == "" || tmp.room == room) &&
