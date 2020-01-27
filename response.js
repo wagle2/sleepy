@@ -78,8 +78,8 @@ function monitor(room, sender, checkFunc, extractFunc, time) {
     new java.lang.Runnable(function() {
       try {
         while (true) {
-          Api.replyRoom(room, "ㅇㅇㅇ1.\n");
           var tmp = q.take(); //메세지 큐 소비
+          Api.replyRoom(room, "ㅇㅇㅇ1.\n");
           Api.replyRoom(room, "ㅇㅇㅇ.\n");
           if (checkFunc(tmp)) {
             //조건충족시
