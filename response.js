@@ -761,7 +761,7 @@ function Taja(room) {
   this.test = list[Math.floor(Math.random() * list.length)];
   var tasu = H.d(this.test).length;
   var time = 0.5 * tasu;
-  var minus = room == "시갤톡방" ? 1.4 : 1.4;
+  var minus = room == "시갤톡방" ? 1.1 : 1.1;
 
   function chg(str) {
     return (
@@ -772,7 +772,7 @@ function Taja(room) {
   }
 
   function start() {
-    Api.replyRoom(room, "타자대결을 시작합니다.\n3");
+    Api.replyRoom(room, "타자대결.\n3");
     java.lang.Thread.sleep(1000);
     Api.replyRoom(room, "2");
     java.lang.Thread.sleep(1000);
