@@ -2,7 +2,7 @@ var T = require("ThreadManager.js");
 var I = require("Interactive.js");
 var D = require("DBManager.js")("DB");
 var K = require("KBManager.js");
-
+var H = require("Hangul.js")
 한글공백 = String.fromCharCode(12644);
 숫자공백 = String.fromCharCode(8199);
 투명공백 = String.fromCharCode(8237);
@@ -759,7 +759,7 @@ function readFile(file) {
 function Taja(room) {
   var list = readFile("s.txt").split("\n");
   this.test = list[Math.floor(Math.random() * list.length)];
-  var tasu = disassemble(this.test).length;
+  var tasu = H.d(this.test).length;
   var time = 0.5 * tasu;
   var minus = room == "시갤톡방" ? 1.4 : 1.4;
 
