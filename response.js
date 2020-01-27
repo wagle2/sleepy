@@ -6,7 +6,7 @@ var H = require("Hangul.js")
 한글공백 = String.fromCharCode(12644);
 숫자공백 = String.fromCharCode(8199);
 투명공백 = String.fromCharCode(8237);
-
+AnswerSet=new java.util.concurrent.ConcurrentHashMap()
 /**
  * Hangul.js
  * https://github.com/e-/Hangul.js
