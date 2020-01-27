@@ -825,11 +825,7 @@ omokRoom = []
 tajaRoom = []
 //============================================================================================================================
 
-var r = {replier: replier, m: msg, msg: msg, s: sender, sender: sender, r: room, room: room, g: isGroupChat, i: imageDB, imageDB:imageDB,
-  reply: function (str) {
-    this.replier.reply(new String(str).encoding().rmspace());
-  }
-  }
+
 
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
   /** @param {String} room - 방 이름
@@ -841,7 +837,11 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
    * @method imageDB.getImage() - 수신된 이미지가 있을 경우 Base64 인코딩 되어있는 JPEG 이미지 반환, 기본 값 null
    * @method imageDB.getProfileImage() - Base64 인코딩 되어있는 JPEG 프로필 이미지 반환, 기본 값 null
    * @method replier.reply("문자열") - 메시지가 도착한 방에 답장을 보내는 메소드 */
-    
+    var r = {replier: replier, m: msg, msg: msg, s: sender, sender: sender, r: room, room: room, g: isGroupChat, i: imageDB, imageDB:imageDB,
+		reply: function (str) {
+			this.replier.reply(new String(str).encoding().rmspace());
+		}
+    }
 
     if (msg == "^로딩") {
       reload(r);
@@ -860,6 +860,7 @@ function monitor(room,sender,checkFunc,extractFunc,time){
 	AnswerSet.put(q,q); //대기 큐에 추가
 	var thr = new java.lang.Thread( new java.lang.Runnable(function(){
 		try{
+      this.replier.reply("어흥")
 			while(true){
 				var tmp=q.take(); //메세지 큐 소비
 				if((room == "" || tmp.room == room) && (sender == "" || tmp.s == sender) && checkFunc(tmp)) { //조건충족시
