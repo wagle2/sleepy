@@ -815,6 +815,38 @@ function Taja(room) {
   this.start = start;
 }
 
+function monitor(room,sender,checkFunc,extractFunc,time){
+	var returner = ""
+
+	var q= new java.util.concurrent.LinkedBlockingQueue();
+	AnswerSet.put(q,q); //대기 큐에 추가
+	var thr = new java.lang.Thread( new java.lang.Runnable(function(){
+		try{
+			while(true){
+				var tmp=q.take(); //메세지 큐 소비
+				if((room == "" || tmp.room == room) && (sender == "" || tmp.s == sender) && checkFunc(tmp)) { //조건충족시
+					//Api.replyRoom(room,"감지")
+					AnswerSet.remove(q); //대기큐에서 삭제
+					returner = extractFunc(tmp)
+					return;
+				}
+			}
+		}catch(e){
+			//Api.replyRoom(room,"timeout");
+			AnswerSet.remove(q); //대기큐에서 삭제
+			returner = -1
+
+		}
+	}))
+	thr.start();
+	new java.lang.Thread( new java.lang.Runnable(function(){
+		java.lang.Thread.sleep(time*1000);
+		thr.interrupt();
+	})).start()
+	thr.join()
+	return returner
+}
+
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
   /** @param {String} room - 방 이름
    * @param {String} msg - 메세지 내용
