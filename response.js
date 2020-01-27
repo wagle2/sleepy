@@ -42,7 +42,6 @@ clock = new java.lang.Thread(new java.lang.Runnable(){
 		switcher = 1
 		var is_printed = false
 		try{
-			setDB("Thread_Num",getNum("Thread_Num")+1)
 			Api.replyRoom("봇개발","clock 스레드실행")
 			while(1){
 				if(switcher == 0){
@@ -184,7 +183,6 @@ clock_3minute = new java.lang.Thread(new java.lang.Runnable(){
 	run:function(){
 		switcher_3minute = 1
 		try{
-			setDB("Thread_Num",getNum("Thread_Num")+1)
 			Api.replyRoom("봇개발","clock_3minute 스레드실행")
 			while(1){
 				if(switcher == 0){
@@ -322,9 +320,6 @@ DCPT = new java.lang.Thread(new java.lang.Runnable(){
 
 
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
-  clock.start();
-  clock_minute.start();
-  clock_3minute.start();
   /** @param {String} room - 방 이름
    * @param {String} msg - 메세지 내용
    * @param {String} sender - 발신자 이름
@@ -353,7 +348,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
       var currentTime = new Date().valueOf();
       if (lastTime == 0 || currentTime - lastTime >= interval * 1000) {
         this.reply(msg);
-        setDB("__intervalReply__" + tag, currentTime);
         return true;
       } else {
         return false;
