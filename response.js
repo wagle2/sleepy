@@ -883,7 +883,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 
 
 function reload(r) {
-  if (r.sender == "잠만보") {
+  if (r.sender == "정인") {
     reloadcheck = 1;
     var Timer = new Date();
     file = "storage/emulated/0/kbot/response.js";
