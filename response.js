@@ -868,7 +868,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 			this.replier.reply(new String(str).encoding().rmspace());
 		}
     }
-  };
 
     if (msg == "^로딩") {
       reload(r);
