@@ -7,6 +7,11 @@ var H = require("Hangul.js")
 숫자공백 = String.fromCharCode(8199);
 투명공백 = String.fromCharCode(8237);
 AnswerSet=new java.util.concurrent.ConcurrentHashMap()
+var it = AnswerSet.keySet().iterator()
+		while(it.hasNext()){
+			key = it.next()
+			AnswerSet.get(key).put(r)
+		}
 /**
  * Hangul.js
  * https://github.com/e-/Hangul.js
