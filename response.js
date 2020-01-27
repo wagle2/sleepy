@@ -821,6 +821,38 @@ function Taja(room) {
   this.start = start;
 }
 
+omokRoom = []
+tajaRoom = []
+//============================================================================================================================
+
+var r = {replier: replier, m: msg, msg: msg, s: sender, sender: sender, r: room, room: room, g: isGroupChat, i: imageDB, imageDB:imageDB,
+  reply: function (str) {
+    this.replier.reply(new String(str).encoding().rmspace());
+  }
+  }
+
+function response(room, msg, sender, isGroupChat, replier, imageDB) {
+  /** @param {String} room - 방 이름
+   * @param {String} msg - 메세지 내용
+   * @param {String} sender - 발신자 이름
+   * @param {Boolean} isGroupChat - 단체채팅 여부
+   * @param {Object} replier - 세션 캐싱 답장 메소드 객체
+   * @param {Object} imageDB - 프로필 이미지와 수신된 이미지 캐싱 객체
+   * @method imageDB.getImage() - 수신된 이미지가 있을 경우 Base64 인코딩 되어있는 JPEG 이미지 반환, 기본 값 null
+   * @method imageDB.getProfileImage() - Base64 인코딩 되어있는 JPEG 프로필 이미지 반환, 기본 값 null
+   * @method replier.reply("문자열") - 메시지가 도착한 방에 답장을 보내는 메소드 */
+    
+
+    if (msg == "^로딩") {
+      reload(r);
+      return;
+    }
+  if(msg == "!타자대결") {
+    tajaRoom.push(room)
+    var taja = new Minigame.Taja(room)
+    taja.start()
+  }
+}
 function monitor(room,sender,checkFunc,extractFunc,time){
 	var returner = ""
 
@@ -852,34 +884,6 @@ function monitor(room,sender,checkFunc,extractFunc,time){
 	thr.join()
 	return returner
 }
-
-function response(room, msg, sender, isGroupChat, replier, imageDB) {
-  /** @param {String} room - 방 이름
-   * @param {String} msg - 메세지 내용
-   * @param {String} sender - 발신자 이름
-   * @param {Boolean} isGroupChat - 단체채팅 여부
-   * @param {Object} replier - 세션 캐싱 답장 메소드 객체
-   * @param {Object} imageDB - 프로필 이미지와 수신된 이미지 캐싱 객체
-   * @method imageDB.getImage() - 수신된 이미지가 있을 경우 Base64 인코딩 되어있는 JPEG 이미지 반환, 기본 값 null
-   * @method imageDB.getProfileImage() - Base64 인코딩 되어있는 JPEG 프로필 이미지 반환, 기본 값 null
-   * @method replier.reply("문자열") - 메시지가 도착한 방에 답장을 보내는 메소드 */
-    var r = {replier: replier, m: msg, msg: msg, s: sender, sender: sender, r: room, room: room, g: isGroupChat, i: imageDB, imageDB:imageDB,
-		reply: function (str) {
-			this.replier.reply(new String(str).encoding().rmspace());
-		}
-    }
-
-    if (msg == "^로딩") {
-      reload(r);
-      return;
-    }
-  if(msg == "!타자대결") {
-    tajaRoom.push(room)
-    var taja = new Minigame.Taja(room)
-    taja.start()
-  }
-}
-
 
 function reload(r) {
   if (r.sender == "정인") {
