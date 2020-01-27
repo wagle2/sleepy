@@ -8,11 +8,6 @@ var H = require("Hangul.js")
 투명공백 = String.fromCharCode(8237);
 Minigame = require("Minigame.js")
 AnswerSet=new java.util.concurrent.ConcurrentHashMap()
-var it = AnswerSet.keySet().iterator()
-		while(it.hasNext()){
-			key = it.next()
-			AnswerSet.get(key).put(r)
-		}
 /**
  * Hangul.js
  * https://github.com/e-/Hangul.js
@@ -860,7 +855,6 @@ function monitor(room,sender,checkFunc,extractFunc,time){
 	AnswerSet.put(q,q); //대기 큐에 추가
 	var thr = new java.lang.Thread( new java.lang.Runnable(function(){
 		try{
-      this.replier.reply("어흥")
 			while(true){
 				var tmp=q.take(); //메세지 큐 소비
 				if((room == "" || tmp.room == room) && (sender == "" || tmp.s == sender) && checkFunc(tmp)) { //조건충족시
