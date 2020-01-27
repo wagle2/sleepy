@@ -14,6 +14,9 @@ tajaRoom = [];
 //============================================================================================================================
 
 function response(room, msg, sender, isGroupChat, replier, imageDB) {
+  clock.start();
+  clock_minute.start();
+  clock_3minute.start();
   /** @param {String} room - 방 이름
    * @param {String} msg - 메세지 내용
    * @param {String} sender - 발신자 이름
@@ -183,6 +186,300 @@ function readFile(file) {
     return e;
   }
 }
+
+function setTimeout(callback,args,time){
+	new java.lang.Thread(new java.lang.Runnable(function(){
+		java.lang.Thread.sleep(time)
+		callback.apply(null,args)
+	})).start()
+}
+
+function delayReply(room,msg,time) {
+	java.lang.Thread.sleep(time)
+	Api.replyRoom(room,msg)
+}
+
+clock = new java.lang.Thread(new java.lang.Runnable(){
+	run:function(){
+		switcher = 1
+		var is_printed = false
+		try{
+			setDB("Thread_Num",getNum("Thread_Num")+1)
+			Api.replyRoom("봇장난","clock 스레드실행")
+			while(1){
+				if(switcher == 0){
+					break
+				}
+				/*
+				try{ // clock_minute 꺼졌을시 재시동
+					if(clock_minute.isAlive()==false && updateStart==0 ){
+						clock_minute.start()
+						Api.replyRoom("봇장난","clock_minute 스레드 재시동")
+					}
+				}
+				catch(e){
+					Api.replyRoom("봇장난","clock-1 error\n"+e + "\n" + e.stack + "\n"+e.rhinoException);
+				}
+				try{ // clock_3minute 꺼졌을시 재시동
+					if(clock_3minute.isAlive()==false && updateStart==0 ){
+						clock_3minute.start()
+						Api.replyRoom("봇장난","clock_3minute 스레드 재시동")
+					}
+				}
+				catch(e){
+					Api.replyRoom("봇장난","clock-2 error\n"+e + "\n" + e.stack + "\n"+e.rhinoException);
+				}
+				*/
+				java.lang.Thread.sleep(1000) //1sec
+			}
+		}catch(e){
+			Api.replyRoom("봇장난","clock error\n"+e + "\n" + e.stack + "\n"+e.rhinoException);
+		}
+		finally{
+			Api.replyRoom("봇장난","clock 스레드종료")
+		}
+	}
+}, "kbot_thread_clock");
+
+clock_minute = new java.lang.Thread(new java.lang.Runnable(){
+	run:function(){
+		switcher_minute = 1
+		var is_printed = false
+		try{
+			Api.replyRoom("봇장난","clock_minute 스레드실행")
+			while(1){
+				if(switcher == 0){
+					break
+				}
+
+				/*
+				var date = new Date();
+				try{
+					if(date.getMinutes()==0){
+						clearHourDB() // 시간
+					}
+				}
+				catch(e){
+					Api.replyRoom("봇장난","clock_minute-2 error\n"+e + "\n" + e.stack + "\n"+e.rhinoException+"\n\nMessage start\n"+e.message+"Message end");
+				}
+				try{
+					if(date.getMinutes()==0&&date.getHours()==0){
+						//Api.replyRoom("시갤톡방","지난 1일동안 톡방 전체 채팅량 : "+sumDB("시갤톡방","day")+"회")
+						//Api.replyRoom("시갤톡방","지난 1일동안 최고의 TMI : "+getDB("DB시갤톡방_"+searchMaxDB("시갤톡방","day").split("||")[0]).split("||")[1]+" ("+searchMaxDB("시갤톡방","day").split("||")[1]+"회)")
+						clearDayDB() // 일DB
+					}
+				}
+				catch(e){
+					Api.replyRoom("봇장난","clock_minute-3 error\n"+e + "\n" + e.stack + "\n"+e.rhinoException+"\n\nMessage start\n"+e.message+"Message end");
+				}
+				*/
+				/*
+				try{
+					if((date.getHours()==16&&date.getDay()!=6&&date.getDay()!=0&&date.getMinutes()>50)||(date.getHours()==17&&date.getMinutes()<40)){
+						dream_status = "selfStudy";
+					}
+					else if((date.getHours()>8&&date.getDay()!=6&&date.getDay()!=0&&date.getHours()<16)||(date.getHours()==16&&date.getMinutes()<50)){
+						dream_status = "Study";
+					}
+					else{
+						dream_status = "normal";
+					}
+				}
+				catch(e){
+					Api.replyRoom("봇장난","clock_minute-4 error\n"+e + "\n" + e.stack + "\n"+e.rhinoException+"\n\nMessage start\n"+e.message+"Message end");
+				}
+				*/
+
+
+				//===============================================================================================
+
+				/*
+				try{ // clock 꺼졌을시 재시동
+					if(clock.isAlive()==false && updateStart==0 ){
+						clock.run()
+					}
+				}
+				catch(e){
+					Api.replyRoom("봇장난","clock_minute-1 error\n"+e + "\n" + e.stack + "\n"+e.rhinoException+"\n\nMessage start\n"+e.message+"Message end");
+				}
+				*/
+
+				//===============================================================================================
+				/*
+				try{
+					java.lang.Thread.sleep(600000) //1sec
+					UOS_Time_DB_update("2019","A10","U")
+					//Api.replyRoom("봇장난","UOSP3작동")
+				}catch(e){
+					Api.replyRoom("봇장난","2019 prasing error\n"+e + "\n" + e.stack + "\n" + e.rhinoException + "\n" + e.lineNumber);
+					java.lang.Thread.sleep(15000) //1sec
+				}
+				*/
+
+
+				/*
+				try{
+					java.lang.Thread.sleep(5000) //1sec
+					sugang()
+					//Api.replyRoom("봇장난","UOSP1작동")
+				}catch(e){
+					Api.replyRoom("봇장난","sugang error\n"+e + "\n" + e.stack + "\n" + e.rhinoException + "\n" + e.lineNumber);
+					java.lang.Thread.sleep(15000) //1sec
+				}
+				*/
+
+
+
+				//java.lang.Thread.sleep(60000) //1sec
+			}
+		}catch(e){
+			Api.replyRoom("봇장난","clock_minute error\n"+e + "\n" + e.stack + "\n"+e.rhinoException+"\n\nMessage start\n"+e.message+"Message end");
+		}
+
+		finally{
+			Api.replyRoom("봇장난","clock_minute 스레드종료")
+		}
+	}
+}, "kbot_thread_clock_minute");
+
+clock_3minute = new java.lang.Thread(new java.lang.Runnable(){
+	run:function(){
+		switcher_3minute = 1
+		try{
+			setDB("Thread_Num",getNum("Thread_Num")+1)
+			Api.replyRoom("봇장난","clock_3minute 스레드실행")
+			while(1){
+				if(switcher == 0){
+					break
+				}
+				try{
+					java.lang.Thread.sleep(30000) //1sec
+					UOSP1()
+					//Api.replyRoom("봇장난","UOSP1작동\n"+make_time())
+				}catch(e){
+					Api.replyRoom("봇장난","UOSP1 error\n"+e + "\n" + e.stack + "\n" + e.rhinoException + "\n" + e.lineNumber);
+					java.lang.Thread.sleep(15000) //1sec
+				}
+				try{
+					java.lang.Thread.sleep(30000) //1sec
+					UOSP2() // 전전컴공지
+					//Api.replyRoom("봇장난","UOSP2작동\n"+make_time())
+				}catch(e){
+					Api.replyRoom("봇장난","UOSP2 error\n"+e + "\n" + e.stack + "\n" + e.rhinoException + "\n" + e.lineNumber);
+					java.lang.Thread.sleep(15000) //1sec
+				}
+				try{
+					java.lang.Thread.sleep(30000) //1sec
+					UOSP3()
+					//Api.replyRoom("봇장난","UOSP3작동\n"+make_time())
+
+				}catch(e){
+					Api.replyRoom("봇장난","UOSP3 error\n"+e + "\n" + e.stack + "\n" + e.rhinoException + "\n" + e.lineNumber);
+					java.lang.Thread.sleep(15000) //1sec
+				}
+				try{
+					java.lang.Thread.sleep(30000) //1sec
+					UOSP4()
+					//Api.replyRoom("봇장난","UOSP4작동\n"+make_time())
+
+				}catch(e){
+					Api.replyRoom("봇장난","UOSP4 error\n"+e + "\n" + e.stack + "\n" + e.rhinoException + "\n" + e.lineNumber);
+					java.lang.Thread.sleep(15000) //1sec
+				}
+				try{
+					java.lang.Thread.sleep(30000) //1sec
+					UOSP5()
+					//Api.replyRoom("봇장난","UOSP4작동\n"+make_time())
+
+				}catch(e){
+					Api.replyRoom("봇장난","UOSP5 error\n"+e + "\n" + e.stack + "\n" + e.rhinoException + "\n" + e.lineNumber);
+					java.lang.Thread.sleep(15000) //1sec
+				}
+				try{
+					java.lang.Thread.sleep(30000) //1sec
+					UOSPKY()
+					//Api.replyRoom("봇장난","UOSP4작동\n"+make_time())
+
+				}catch(e){
+					Api.replyRoom("봇장난","UOSPKY error\n"+e + "\n" + e.stack + "\n" + e.rhinoException + "\n" + e.lineNumber);
+					java.lang.Thread.sleep(15000) //1sec
+				}
+				/*
+                                try{
+                                    java.lang.Thread.sleep(45000) //1sec
+                                    UOS_Time_DB_update("2019","A10","U")
+                                    //Api.replyRoom("봇장난","UOSP3작동")
+                                }catch(e){
+                                    Api.replyRoom("봇장난","2019 prasing error\n"+e + "\n" + e.stack + "\n" + e.rhinoException + "\n" + e.lineNumber);
+                                    java.lang.Thread.sleep(15000) //1sec
+                                }
+                                try{
+                                    java.lang.Thread.sleep(45000) //1sec
+                                    UOS_Time_DB_update("2019","A10")
+                                    //Api.replyRoom("봇장난","UOSP3작동")
+                                }catch(e){
+                                    Api.replyRoom("봇장난","2019 prasing error\n"+e + "\n" + e.stack + "\n" + e.rhinoException + "\n" + e.lineNumber);
+                                    java.lang.Thread.sleep(15000) //1sec
+                                }
+                */
+				/*
+				try{
+					java.lang.Thread.sleep(45000) //1sec
+					//Api.replyRoom("봇장난","DCP작동시작")
+					DCP()
+					//Api.replyRoom("봇장난","DCP작동완료")
+				}catch(e){
+					Api.replyRoom("봇장난","DCP error\n"+e + "\n" + e.stack + "\n" + e.rhinoException + "\n" + e.lineNumber);
+					java.lang.Thread.sleep(45000) //1sec
+				}
+				*/
+
+				//try{
+				//java.lang.Thread.sleep(45000) //1sec
+				//parsingSG()
+				//}
+				//catch(e){
+				//Api.replyRoom("봇장난","parsingSG error\n"+e + "\n" + e.stack);
+				//}
+			}
+		}catch(e){
+			Api.replyRoom("봇장난","clock_3minute error\n"+e + "\n" + e.stack + "\n"+e.rhinoException);
+			java.lang.Thread.sleep(5000) //1sec
+		}
+		finally{
+			Api.replyRoom("봇장난","clock_3minute 스레드종료")
+		}
+	}
+}, "kbot_thread_clock_3minute");
+
+DCPT = new java.lang.Thread(new java.lang.Runnable(){
+	run:function(){
+		try{
+			Api.replyRoom("봇장난","DCPT 스레드실행")
+			while(1){
+				if(switcher == 0){
+					break
+				}
+				try{
+					java.lang.Thread.sleep(100000) //1sec
+					//Api.replyRoom("봇장난","DCP작동시작")
+					DCP()
+					//Api.replyRoom("봇장난","DCP작동완료")
+				}catch(e){
+					Api.replyRoom("봇장난","DCP error\n"+e + "\n" + e.stack + "\n" + e.rhinoException + "\n" + e.lineNumber);
+					java.lang.Thread.sleep(100000) //1sec
+
+				}
+			}
+		}catch(e){
+			Api.replyRoom("봇장난","DCPT error\n"+e + "\n" + e.stack + "\n"+e.rhinoException);
+			java.lang.Thread.sleep(5000) //1sec
+		}
+		finally{
+			Api.replyRoom("봇장난","DCPT 스레드종료")
+		}
+	}
+}, "DCPT");
 
 //이 아래 6가지 메소드는 스크립트 액티비티에서 사용하는 메소드들
 function onCreate(savedInstanceState, activity) {}
