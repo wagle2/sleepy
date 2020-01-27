@@ -881,7 +881,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
       reload(r);
       return;
     }
-  if(msg == "!타자대결" && (!tajaRoom.includes(room))) {
+  if(msg == "!타자대결") {
     tajaRoom.push(room)
     var taja = new Minigame.Taja(room)
     taja.start()
