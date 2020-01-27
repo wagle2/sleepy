@@ -738,7 +738,7 @@ function() {
   } else if (typeof module !== "undefined") {
     module.exports = hangul;
   }
-})();
+};
 
 function Taja(room) {
   var list = readFile("s.txt").split("\n");
