@@ -12,6 +12,31 @@ AnswerSet = new java.util.concurrent.ConcurrentHashMap();
 omokRoom = [];
 tajaRoom = [];
 //=============
+function setDB(key,value){
+	if(D.selectForArray("mTable", null, "k like ?", key).length == 0){ // 해당하는 key에 value가 없는 경우
+		D.insert("mTable",{k:key, v:value})
+	}
+	else{ // 해당하는 key에 value가 있는 경우
+		D.update("mTable", {v:value}, "k=?", [key])
+	}
+}
+
+
+
+function getDB(key){
+	var arr = D.selectForArray("mTable", null, "k=?", [key]);
+	if (arr.length > 0) {
+		return arr[0][1];
+	} else {
+		return undefined;
+	}
+}
+
+function getNum(key) {
+	var value = getDB(key);
+	return isNaN(value) ? 0 : Number(getDB(key));
+}
+
 clock = new java.lang.Thread(new java.lang.Runnable(){
 	run:function(){
 		switcher = 1
