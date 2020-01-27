@@ -759,7 +759,7 @@ function readFile(file) {
 function Taja(room) {
   var list = readFile("s.txt").split("\n");
   this.test = list[Math.floor(Math.random() * list.length)];
-  var tasu = d(this.test).length;
+  var tasu = disassemble(this.test).length;
   var time = 0.5 * tasu;
   var minus = room == "시갤톡방" ? 1.4 : 1.4;
 
