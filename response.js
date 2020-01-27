@@ -737,8 +737,6 @@ var K = require("KBManager.js");
     });
   } else if (typeof module !== "undefined") {
     module.exports = hangul;
-  } else {
-    window.Hangul = hangul;
   }
 })();
 
