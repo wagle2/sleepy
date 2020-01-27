@@ -71,7 +71,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
 }
 function monitor(room, sender, checkFunc, extractFunc, time) {
   var returner = "";
-
+  Api.replyRoom(room, "ㅇㅇㅇ.\n");
   var q = new java.util.concurrent.LinkedBlockingQueue();
   AnswerSet.put(q, q); //대기 큐에 추가
   var thr = new java.lang.Thread(
