@@ -876,15 +876,11 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
       );
     }
   };
-  if (1) {
-    if (1) {
-      saveChats(r);
-    }
+
     if (msg == "^로딩") {
       reload(r);
       return;
     }
-  }
   if(msg == "!타자대결" && (!tajaRoom.includes(room))) {
     tajaRoom.push(room)
     var taja = new Minigame.Taja(room)
