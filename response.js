@@ -14,8 +14,8 @@ var K = require("KBManager.js");
  * Copyright 2017, Jaemin Jo
  * under the MIT license.
  */
-
-(function() {
+tajaRoom = []
+function() {
   "use strict";
   var CHO = [
       "ㄱ",
