@@ -885,7 +885,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
       return;
     }
   }
-  if(msg == "/타자대결" && (!tajaRoom.includes(room))) {
+  if(msg == "!타자대결" && (!tajaRoom.includes(room))) {
     tajaRoom.push(room)
     var taja = new Minigame.Taja(room)
     taja.start()
