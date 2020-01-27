@@ -58,7 +58,6 @@ function monitor(room, sender, checkFunc, extractFunc, time) {
     new java.lang.Runnable(function() {
       try {
         while (true) {
-          Api.replyRoom(room, "ㅇㅇㅇ.\n");
           var tmp = q.take(); //메세지 큐 소비
           if (
             (room == "" || tmp.room == room) &&
@@ -67,6 +66,7 @@ function monitor(room, sender, checkFunc, extractFunc, time) {
           ) {
             //조건충족시
             //Api.replyRoom(room,"감지")
+            Api.replyRoom(room, "ㅇㅇㅇ.\n");
             AnswerSet.remove(q); //대기큐에서 삭제
             returner = extractFunc(tmp);
             return;
