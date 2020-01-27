@@ -863,17 +863,10 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
    * @method imageDB.getImage() - 수신된 이미지가 있을 경우 Base64 인코딩 되어있는 JPEG 이미지 반환, 기본 값 null
    * @method imageDB.getProfileImage() - Base64 인코딩 되어있는 JPEG 프로필 이미지 반환, 기본 값 null
    * @method replier.reply("문자열") - 메시지가 도착한 방에 답장을 보내는 메소드 */
-  var r = {
-    replier: replier,
-    msg: msg,
-    sender: sender,
-    room: room,
-    reply: function(str) {
-      this.replier.reply(
-        String(str)
-          .trim()
-          .encoding()
-      );
+    var r = {replier: replier, m: msg, msg: msg, s: sender, sender: sender, r: room, room: room, g: isGroupChat, i: imageDB, imageDB:imageDB,
+		reply: function (str) {
+			this.replier.reply(new String(str).encoding().rmspace());
+		}
     }
   };
 
@@ -888,103 +881,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB) {
   }
 }
 
-function getLoc(loc) {
-  return JSON.parse(
-    org.jsoup.Jsoup.connect(
-      encodeURI(
-        "https://maps.googleapis.com/maps/api/geocode/json?address=" +
-          loc +
-          "&language=ko&key=AIzaSyAfu7q_gMnCG3XGAl4dithaqcW-xmwIKhw"
-      )
-    )
-      .ignoreContentType(true)
-      .get()
-      .text()
-  ).results[0].geometry.location;
-}
-
-function replaceAll(str, searchStr, replaceStr) {
-  return str.split(searchStr).join(replaceStr);
-}
-
-function saveChats(r) {
-  D.insert("Chats", {
-    room: r.room,
-    date: new Date(),
-    user: r.sender,
-    chat: r.msg
-  });
-}
-
-function 번역다운(txt) {
-  return org.jsoup.Jsoup.connect(
-    "http://wagle.dlinkddns.com:5000/text/" + encodeURI(txt)
-  )
-    .get()
-    .text();
-}
-
-function 한일(txt) {
-  const text = txt;
-  r.replier.reply(
-    한일1(text) +
-      "\n\n" +
-      일한1(한일1(text)) +
-      "\n\n" +
-      한일1(일한1(한일1(text))) +
-      "\n" +
-      번역다운(한일1(text))
-  );
-}
-
-function 한일1(txt) {
-  const apiURL = "https://openapi.naver.com/v1/papago/n2mt";
-  const text = txt;
-  const userAgent =
-    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.1.1042.0 Safari/535.21";
-  return JSON.parse(
-    org.jsoup.Jsoup.connect(apiURL)
-      .header("X-Naver-Client-Id", "p3HqeWKxZLXiX9QKSN0m")
-      .header("X-Naver-Client-Secret", "OmKzleb4Cd")
-      .data({ source: "ko", target: "ja", text: text })
-      .ignoreHttpErrors(true)
-      .followRedirects(true)
-      .ignoreContentType(true)
-      .post()
-      .select("body")
-      .text()
-  ).message.result.translatedText;
-}
-
-function 일한1(txt) {
-  const apiURL = "https://openapi.naver.com/v1/papago/n2mt";
-  const text = txt;
-  const userAgent =
-    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.21 (KHTML, like Gecko) Chrome/19.0.1042.0 Safari/535.21";
-  return JSON.parse(
-    org.jsoup.Jsoup.connect(apiURL)
-      .header("X-Naver-Client-Id", "p3HqeWKxZLXiX9QKSN0m")
-      .header("X-Naver-Client-Secret", "OmKzleb4Cd")
-      .data({ source: "ja", target: "ko", text: text })
-      .ignoreHttpErrors(true)
-      .followRedirects(true)
-      .ignoreContentType(true)
-      .post()
-      .select("body")
-      .text()
-  ).message.result.translatedText;
-}
-
-fileName = () => new Date().getTime().toString();
-
-function save(text) {
-  const file = "storage/emulated/0/kbot/" + fileName() + ".txt";
-  const filedir = new java.io.File(file);
-  var bw = new java.io.BufferedWriter(new java.io.FileWriter(filedir));
-  bw.write(text);
-  bw.close();
-  return 0;
-}
 
 function reload(r) {
   if (r.sender == "잠만보") {
