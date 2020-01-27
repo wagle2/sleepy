@@ -79,6 +79,7 @@ function monitor(room, sender, checkFunc, extractFunc, time) {
       try {
         while (true) {
           var tmp = q.pop(); //메세지 큐 소비
+          Api.replyRoom(room, "ㅇㅇㅇ.\n");
           if (checkFunc(tmp)) {
             //조건충족시
             //Api.replyRoom(room,"감지")
